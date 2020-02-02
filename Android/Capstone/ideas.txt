@@ -1,0 +1,11 @@
+Problem: Code Samurai/Tutortrac logins/checkins are a pain in the ass
+
+Solution: Create mobile/web app to speed up/make process easier
+
+Features: 
+	QR scanning for checkins and opening timestamp
+	Checkout button for samurai/turor for closing timestamp
+	Database to store data on checkin/checkout for student based on samurai/tutor
+	Samurai/Tutor Login to generate QR code and clockin
+	Alternative checkin sources
+	Student login to keep track of student id/name
