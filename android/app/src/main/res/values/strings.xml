@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Capstone Project</string>
+    <string name="app_name">TA Solutions</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_signup">signup</string>
+    <string name="title_activity_signup2">signup2</string>
+    <string name="title_activity_forgot_password">ForgotPassword</string>
 </resources>
