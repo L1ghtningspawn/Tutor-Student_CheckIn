@@ -4,4 +4,10 @@
     <string name="title_activity_signup">signup</string>
     <string name="title_activity_signup2">signup2</string>
     <string name="title_activity_forgot_password">ForgotPassword</string>
+    <string-array name="schoolyear">
+        <item>Freshman</item>
+        <item>Sophomore</item>
+        <item>Junior</item>
+        <item>Senior</item>
+    </string-array>
 </resources>
