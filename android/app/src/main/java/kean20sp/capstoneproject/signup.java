@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import kean20sp.capstoneproject.util.CheckUserInput;
 
 public class signup extends AppCompatActivity
 {
-    EditText mail,mophone,pswd,usrusr;
+    EditText mail,pswd;
     TextView lin,sup;
 
     @Override
@@ -21,7 +24,6 @@ public class signup extends AppCompatActivity
 
         sup = (TextView) findViewById(R.id.sup);
         lin = (TextView) findViewById(R.id.lin);
-        usrusr = (EditText) findViewById(R.id.usrusr);
         pswd = (EditText) findViewById(R.id.pswrdd);
         mail = (EditText) findViewById(R.id.mail);
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
@@ -29,15 +31,28 @@ public class signup extends AppCompatActivity
         sup.setTypeface(custom_font1);
         pswd.setTypeface(custom_font);
         lin.setTypeface(custom_font);
-        usrusr.setTypeface(custom_font);
         mail.setTypeface(custom_font);
         sup.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                Intent it = new Intent(signup.this,signup2.class);
-                startActivity(it);
+                boolean isGoodInput = true;
+                if(!CheckUserInput.isValidEmail(mail.getText().toString())){
+                    Toast.makeText(v.getContext(),"That Email is Not Valid",Toast.LENGTH_SHORT).show();
+                    isGoodInput = false;
+                }
+                if(!CheckUserInput.isValidPassword(pswd.getText().toString())) {
+                    Toast.makeText(v.getContext(), "That Password is Not Valid", Toast.LENGTH_SHORT).show();
+                    isGoodInput = false;
+                }
+
+                if(isGoodInput) {
+                    Intent it = new Intent(signup.this, signup2.class);
+                    it.putExtra("email", mail.getText().toString());
+                    it.putExtra("password", pswd.getText().toString());
+                    startActivity(it);
+                }
             }
         });
         lin.setOnClickListener(new View.OnClickListener()

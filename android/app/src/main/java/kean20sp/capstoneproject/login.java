@@ -7,10 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import kean20sp.capstoneproject.http.LoginHandler;
+import kean20sp.capstoneproject.util.CheckUserInput;
 
 public class login extends AppCompatActivity {
     EditText pswd,usrusr;
-    TextView sup,lin, fgtpsswd;
+    TextView sup,lin,fgtpsswd;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -19,7 +23,7 @@ public class login extends AppCompatActivity {
 
         fgtpsswd = (TextView) findViewById(R.id.forgotpswd);
         lin = (TextView) findViewById(R.id.lin);
-        usrusr = (EditText) findViewById(R.id.usrusr);
+        usrusr = (EditText) findViewById(R.id.email);
         pswd = (EditText) findViewById(R.id.pswrdd);
         sup = (TextView) findViewById(R.id.sup);
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
@@ -47,5 +51,30 @@ public class login extends AppCompatActivity {
                 startActivity(it);
             }
         });
+    }
+
+    protected void login(View view){
+        String pswd_text = pswd.getText().toString();
+        String email_text = usrusr.getText().toString();
+
+        boolean isGoodInput = true;
+        if(!CheckUserInput.isValidEmail(email_text)){
+            Toast.makeText(this,"That Email is Not Valid",Toast.LENGTH_SHORT).show();
+            isGoodInput = false;
+        }
+        if(!CheckUserInput.isValidPassword(pswd_text)){
+            Toast.makeText(this,"That Password is Not Valid",Toast.LENGTH_SHORT).show();
+            isGoodInput = false;
+        }
+
+        if(isGoodInput) {
+            //send post request
+            LoginHandler h = new LoginHandler();
+            String result = h.login(email_text, pswd_text);
+            String session_id = h.session_id();
+
+            Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "session_id: " + session_id, Toast.LENGTH_LONG).show();
+        }
     }
 }

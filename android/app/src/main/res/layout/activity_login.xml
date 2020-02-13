@@ -23,13 +23,13 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/usrusr"
+                    android:src="@drawable/message"
                     android:layout_gravity="center"/>
                 <EditText
-                    android:id="@+id/usrusr"
+                    android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Username"
+                    android:hint="email@college.edu"
                     android:textColorHint="#000000"
                     android:layout_marginLeft="15dp"
                     android:background="#00000000"
@@ -80,6 +80,7 @@
         android:layout_marginBottom="20dp">
         <TextView
             android:id="@+id/lin"
+            android:onClick='login'
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#000000"
