@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">TA Solutions</string>
-    <string name="title_activity_login">Login</string>
+    <string name="title_activity_login">TA Solutions</string>
     <string name="title_activity_signup">signup</string>
     <string name="title_activity_signup2">signup2</string>
     <string name="title_activity_forgot_password">ForgotPassword</string>
@@ -10,4 +10,17 @@
         <item>Junior</item>
         <item>Senior</item>
     </string-array>
+    <string-array name="choose_course">
+        <item>Select A Course...</item>
+    </string-array>
+    <string-array name="choose_program">
+        <item>Select A Program...</item>
+    </string-array>
+    <string name="title_activity_student_">Student</string>
+    <string name="title_activity_tutor_">Tutor_Activity</string>
+    <string name="title_activity_clocked_in_">ClockedIn_Activity</string>
+    <string name="title_activity_check_in_">CheckIn_Activity</string>
+    <string name="title_activity_tutor__checked__in_">Tutor_Checked_In_Activity</string>
+    <string name="title_activity_student__checked__in_">Student_Checked_In_Activity</string>
+    <string name="title_activity_sample__kotlin_">Sample_Kotlin_Activity</string>
 </resources>

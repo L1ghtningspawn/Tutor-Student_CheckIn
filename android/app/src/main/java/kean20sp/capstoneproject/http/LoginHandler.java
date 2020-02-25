@@ -76,14 +76,19 @@ public class LoginHandler extends HTTPConnectionHandler{
         if(code.equals("SL0")){
             String session_id = response.substring(3,response.length());
             this.session_id = session_id;
-            return "Login Successful";
+            return LOGIN_SUCCESSFUL;
         } else if(code.equals("FL0")){
-            return "Email Not Found";
+            return EMAIL_NOT_FOUND;
         } else if(code.equals("FL1")){
-            return "Password Does Not Match";
+            return PASSWORD_DOESNT_MATCH;
         } else {
-            return "Unknown Login Failure";
+            return UNKNOWN_LOGIN_FAILURE;
         }
     }
+
+    public static final String LOGIN_SUCCESSFUL = "Login Successful";
+    public static final String EMAIL_NOT_FOUND = "Email Not Found";
+    public static final String PASSWORD_DOESNT_MATCH = "Password Does Not Match";
+    public static final String UNKNOWN_LOGIN_FAILURE = "Unknown Login Failure";
 
 }

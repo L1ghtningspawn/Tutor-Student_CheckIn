@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kean20sp.capstoneproject">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:networkSecurityConfig="@xml/network_security_config">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".login"
             android:label="@string/title_activity_login"
@@ -31,6 +33,34 @@
         <activity
             android:name=".ForgotPassword"
             android:label="@string/title_activity_forgot_password"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Student_Activity"
+            android:label="@string/title_activity_student_"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Tutor_Activity"
+            android:label="@string/title_activity_tutor_"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ClockedIn_Activity"
+            android:label="@string/title_activity_clocked_in_"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".CheckIn_Activity"
+            android:label="@string/title_activity_check_in_"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Tutor_Checked_In_Activity"
+            android:label="@string/title_activity_tutor__checked__in_"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Student_Checked_In_Activity"
+            android:label="@string/title_activity_student__checked__in_"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Sample_Kotlin_Activity"
+            android:label="@string/title_activity_sample__kotlin_"
             android:theme="@style/AppTheme"></activity>
     </application>
 
