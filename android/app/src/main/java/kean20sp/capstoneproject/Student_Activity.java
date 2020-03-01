@@ -62,4 +62,9 @@ public class Student_Activity extends AppCompatActivity {
         startActivity(it);
     }
 
+    @Override
+    public void onBackPressed() {
+        return;
+    }
+
 }

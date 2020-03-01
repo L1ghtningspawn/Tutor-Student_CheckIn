@@ -18,11 +18,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import kean20sp.capstoneproject.http.ClockinHandler;
 import kean20sp.capstoneproject.http.LogoutHandler;
 import kean20sp.capstoneproject.http.TutorDeptListHandler;
 
 public class Tutor_Activity extends AppCompatActivity {
-    String user_email, session_id, user_roles;
+    String user_email, session_id, user_roles, clockin_date, clockin_id;
     Spinner select_program;
     TextView clock_in, student_mode, logout;
     String[] str_user_roles, departments;
@@ -76,6 +77,13 @@ public class Tutor_Activity extends AppCompatActivity {
             Toast.makeText(this,TutorDeptListHandler.UNKNOWN_FAILURE,Toast.LENGTH_SHORT).show();
         }
 
+        clock_in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clockin(v);
+            }
+        });
+
     }
 
     public void on_click_logout(View v){
@@ -85,6 +93,44 @@ public class Tutor_Activity extends AppCompatActivity {
         Intent it = new Intent(Tutor_Activity.this, login.class);
 
         startActivity(it);
+    }
+
+    public void clockin(View v){
+        ClockinHandler clockinhandler = new ClockinHandler();
+        int selected = select_program.getSelectedItemPosition();
+        String user_role_id = str_user_roles[selected];
+        String response = clockinhandler.clockin(user_email,session_id, user_role_id);
+
+        clockin_date = clockinhandler.getClockinDate();
+        clockin_id = clockinhandler.getClockin_id();
+        if(response.equals(ClockinHandler.CLOCKIN_FAILURE)){
+
+        } else if(response.equals(ClockinHandler.CLOCKIN_SUCCESS)){
+            Toast.makeText(this,response,Toast.LENGTH_SHORT).show();
+
+            Intent it = new Intent(Tutor_Activity.this, ClockedIn_Activity.class);
+            it.putExtra("email",user_email);
+            it.putExtra("session_id",session_id);
+            it.putExtra("available_roles",user_roles);
+            it.putExtra("clockin_date", clockin_date);
+            it.putExtra("clockin_id", clockin_id);
+            startActivity(it);
+
+        } else if(response.equals(ClockinHandler.SESSION_EXPIRED)){
+            Toast.makeText(this,response,Toast.LENGTH_SHORT).show();
+            on_click_logout(null);
+        } else if(response.equals(ClockinHandler.UNKNOWN_FAILURE)){
+            Toast.makeText(this,response,Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+       if(getIntent().getStringExtra("just_clocked_out") != null){
+           return;
+       } else {
+           super.onBackPressed();
+       }
     }
 
 }

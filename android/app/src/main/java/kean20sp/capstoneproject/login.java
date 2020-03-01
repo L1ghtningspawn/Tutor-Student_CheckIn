@@ -51,9 +51,14 @@ public class login extends AppCompatActivity {
                 startActivity(it);
             }
         });
+        lin.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                login(v);
+            }
+        });
     }
 
-    protected void login(View view){
+    public void login(View view){
         String pswd_text = pswd.getText().toString();
         String email_text = usrusr.getText().toString();
 
