@@ -57,7 +57,18 @@ public class signup2 extends AppCompatActivity {
             {
                 SignupHandler shandler = new SignupHandler();
                 String result = shandler.signup(email,password,fname.getText().toString(),lname.getText().toString(),orgyear.getText().toString());
-                Toast.makeText(v.getContext(),result,Toast.LENGTH_LONG).show();
+
+                String session_id = shandler.session_id();
+                String available_roles = shandler.available_rolse();
+                if(result.equals(SignupHandler.SIGNUP_SUCCESSFUL)) {
+                    Intent it = new Intent(signup2.this, Student_Activity.class);
+                    it.putExtra("session_id",session_id);
+                    it.putExtra("available_roles",available_roles);
+                    it.putExtra("email",email);
+                    startActivity(it);
+                } else {
+                    Toast.makeText(signup2.this,result,Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

@@ -14,6 +14,7 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 public class LoginHandler extends HTTPConnectionHandler{
     private String host = null, filepath = null;
     private String session_id = null;
+    private String available_roles = null;
 
     public LoginHandler(String host, String filepath){
         this.host = host;
@@ -28,6 +29,7 @@ public class LoginHandler extends HTTPConnectionHandler{
     public String session_id(){
         return session_id;
     }
+    public String available_roles() { return available_roles; }
 
     private String response;
     private boolean response_done = false;
@@ -72,10 +74,13 @@ public class LoginHandler extends HTTPConnectionHandler{
         if(response==null){
             return "null";
         }
-        String code = response.substring(0,3);
+        String[] response_split = response.split(";");
+        String code = response_split[0];
         if(code.equals("SL0")){
-            String session_id = response.substring(3,response.length());
+            String available_roles = response_split[1];
+            String session_id = response.replace(response_split[0]+';'+response_split[1]+';',"");
             this.session_id = session_id;
+            this.available_roles = available_roles;
             return LOGIN_SUCCESSFUL;
         } else if(code.equals("FL0")){
             return EMAIL_NOT_FOUND;

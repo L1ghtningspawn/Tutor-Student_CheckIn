@@ -68,7 +68,8 @@
 
             android:letterSpacing="0.1"
             android:text="Logout"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:onClick="on_click_logout"/>
     </LinearLayout>
 
     <LinearLayout
