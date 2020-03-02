@@ -12,6 +12,7 @@ public class SignupHandler extends HTTPConnectionHandler {
     private String host = null;
     private String filepath = null;
     private String session_id = null;
+    private String available_roles = null;
     private ArrayList<NameValuePair> pairs;
 
     public SignupHandler(){
@@ -26,6 +27,7 @@ public class SignupHandler extends HTTPConnectionHandler {
     public String session_id(){
         return session_id;
     }
+    public String available_rolse() { return available_roles; }
 
     private String response;
     private boolean response_done = false;
@@ -68,18 +70,26 @@ public class SignupHandler extends HTTPConnectionHandler {
         if(response==null){
             return "null";
         }
-        String code = response.substring(0,3);
+        String[] response_split = response.split(";");
+        String code = response_split[0];
         if(code.equals("SS0")){
-            String session_id = response.substring(3,response.length());
+            String available_roles = response_split[1];
+            String session_id = response.replace(response_split[0]+';'+response_split[1]+';',"");
             this.session_id = session_id;
-            return "Signup Successful";
+            this.available_roles = available_roles;;
+            return SIGNUP_SUCCESSFUL;
         } else if(code.equals("FSO")){
-            return "Email Belongs to Existing User";
+            return EMAIL_EXISTS;
         } else if(code.equals("FS1")){
-            return "Unexepected Database Failure";
+            return PASSWORD_DOESNT_MATCH;
         } else {
-            return "Unknown Signup Failure";
+            return UNEXPECTED_DB_FAILURE;
         }
     }
+
+    public static final String SIGNUP_SUCCESSFUL = "Signup Successful";
+    public static final String EMAIL_EXISTS = "Email Belongs to Existing User";
+    public static final String PASSWORD_DOESNT_MATCH = "Password Does Not Match";
+    public static final String UNEXPECTED_DB_FAILURE = "Unexepected Database Failure";
 
 }

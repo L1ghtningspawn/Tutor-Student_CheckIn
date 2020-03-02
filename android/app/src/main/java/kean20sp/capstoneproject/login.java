@@ -51,9 +51,14 @@ public class login extends AppCompatActivity {
                 startActivity(it);
             }
         });
+        lin.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                login(v);
+            }
+        });
     }
 
-    protected void login(View view){
+    public void login(View view){
         String pswd_text = pswd.getText().toString();
         String email_text = usrusr.getText().toString();
 
@@ -71,10 +76,14 @@ public class login extends AppCompatActivity {
             //send post request
             LoginHandler h = new LoginHandler();
             String result = h.login(email_text, pswd_text);
+            String available_roles = h.available_roles();
             String session_id = h.session_id();
 
             if(result.equals(LoginHandler.LOGIN_SUCCESSFUL)) {
                 Intent it = new Intent(login.this, Student_Activity.class);
+                it.putExtra("session_id",session_id);
+                it.putExtra("available_roles",available_roles);
+                it.putExtra("email",email_text);
                 startActivity(it);
             } else {
                 Toast.makeText(this,result,Toast.LENGTH_LONG).show();

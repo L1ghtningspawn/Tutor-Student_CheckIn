@@ -1,44 +1,33 @@
 package kean20sp.capstoneproject.http;
 
-import android.net.Uri;
-
-import java.net.CookieManager;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Hashtable;
 import java.util.List;
 
 import cz.msebera.android.httpclient.NameValuePair;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
-public class LoginHandler extends HTTPConnectionHandler{
+public class ClockoutHandler extends HTTPConnectionHandler {
     private String host = null, filepath = null;
-    private String session_id = null;
-    private String available_roles = null;
+    private String clockout_date;
 
-    public LoginHandler(String host, String filepath){
+    public ClockoutHandler(String host, String filepath){
         this.host = host;
         this.filepath = filepath;
     }
-    public LoginHandler(){
+    public ClockoutHandler(){
         host = "seesselm-project-page.com";
-        filepath = "/Capstone/android/android_login.php";
-
+        filepath = "/Capstone/android/android_clockout.php";
     }
-
-    public String session_id(){
-        return session_id;
-    }
-    public String available_roles() { return available_roles; }
 
     private String response;
     private boolean response_done = false;
     private List<NameValuePair> pairs;
-    public String login(String email, String password){
+    public String clockout(String email, String session_id, String clockin_id){
         pairs = new ArrayList<NameValuePair>();
-        pairs.add(new BasicNameValuePair("login", "true"));
+        pairs.add(new BasicNameValuePair("clockout", "true"));
         pairs.add(new BasicNameValuePair("email", email));
-        pairs.add(new BasicNameValuePair("password", password));
+        pairs.add(new BasicNameValuePair("session_id", session_id));
+        pairs.add(new BasicNameValuePair("clockin_id", clockin_id));
 
 //        try {
 //            response = makeRequest(host, filepath, table);
@@ -62,6 +51,7 @@ public class LoginHandler extends HTTPConnectionHandler{
 
         t.start();
 
+
         long tlim = 1000*2;
         long start = System.currentTimeMillis();
         while(!response_done & (System.currentTimeMillis() - start) <= tlim){}
@@ -70,30 +60,28 @@ public class LoginHandler extends HTTPConnectionHandler{
         return process(response);
     }
 
+
     private String process(String response) {
-        if(response==null){
-            return "null";
-        }
         String[] response_split = response.split(";");
         String code = response_split[0];
-        if(code.equals("SL0")){
-            String available_roles = response_split[1];
-            String session_id = response.replace(response_split[0]+';'+response_split[1]+';',"");
-            this.session_id = session_id;
-            this.available_roles = available_roles;
-            return LOGIN_SUCCESSFUL;
-        } else if(code.equals("FL0")){
-            return EMAIL_NOT_FOUND;
-        } else if(code.equals("FL1")){
-            return PASSWORD_DOESNT_MATCH;
+        if(code.equals("SCl0")){
+            clockout_date = response_split[1];
+            return CLOCKOUT_SUCCESS;
+        } else if(code.equals("FCl0")){
+            return CLOCKOUT_FAILURE;
+        } else if(code.equals("SCl1")){
+            return UNKNOWN_FAILURE;
         } else {
-            return UNKNOWN_LOGIN_FAILURE;
+            return SESSION_EXPIRED;
         }
     }
 
-    public static final String LOGIN_SUCCESSFUL = "Login Successful";
-    public static final String EMAIL_NOT_FOUND = "Email Not Found";
-    public static final String PASSWORD_DOESNT_MATCH = "Password Does Not Match";
-    public static final String UNKNOWN_LOGIN_FAILURE = "Unknown Login Failure";
+    public String getClockoutDate(){
+        return clockout_date;
+    }
 
+    public static final String CLOCKOUT_SUCCESS = "Clockout Was Successful";
+    public static final String CLOCKOUT_FAILURE = "Clockout Failed";
+    public static final String UNKNOWN_FAILURE = "Unknown Failure";
+    public static final String SESSION_EXPIRED = "Session Expired";
 }

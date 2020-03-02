@@ -1,44 +1,34 @@
 package kean20sp.capstoneproject.http;
 
-import android.net.Uri;
-
-import java.net.CookieManager;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Hashtable;
 import java.util.List;
 
 import cz.msebera.android.httpclient.NameValuePair;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
-public class LoginHandler extends HTTPConnectionHandler{
+public class ClockinHandler extends HTTPConnectionHandler {
     private String host = null, filepath = null;
-    private String session_id = null;
-    private String available_roles = null;
+    private String clockin_date;
+    private String clockin_id;
 
-    public LoginHandler(String host, String filepath){
+    public ClockinHandler(String host, String filepath){
         this.host = host;
         this.filepath = filepath;
     }
-    public LoginHandler(){
+    public ClockinHandler(){
         host = "seesselm-project-page.com";
-        filepath = "/Capstone/android/android_login.php";
-
+        filepath = "/Capstone/android/android_clockin.php";
     }
-
-    public String session_id(){
-        return session_id;
-    }
-    public String available_roles() { return available_roles; }
 
     private String response;
     private boolean response_done = false;
     private List<NameValuePair> pairs;
-    public String login(String email, String password){
+    public String clockin(String email, String session_id, String user_role_id){
         pairs = new ArrayList<NameValuePair>();
-        pairs.add(new BasicNameValuePair("login", "true"));
+        pairs.add(new BasicNameValuePair("clock_in", "true"));
         pairs.add(new BasicNameValuePair("email", email));
-        pairs.add(new BasicNameValuePair("password", password));
+        pairs.add(new BasicNameValuePair("session_id", session_id));
+        pairs.add(new BasicNameValuePair("user_role_id", user_role_id));
 
 //        try {
 //            response = makeRequest(host, filepath, table);
@@ -62,6 +52,7 @@ public class LoginHandler extends HTTPConnectionHandler{
 
         t.start();
 
+
         long tlim = 1000*2;
         long start = System.currentTimeMillis();
         while(!response_done & (System.currentTimeMillis() - start) <= tlim){}
@@ -70,30 +61,32 @@ public class LoginHandler extends HTTPConnectionHandler{
         return process(response);
     }
 
+
     private String process(String response) {
-        if(response==null){
-            return "null";
-        }
         String[] response_split = response.split(";");
         String code = response_split[0];
-        if(code.equals("SL0")){
-            String available_roles = response_split[1];
-            String session_id = response.replace(response_split[0]+';'+response_split[1]+';',"");
-            this.session_id = session_id;
-            this.available_roles = available_roles;
-            return LOGIN_SUCCESSFUL;
-        } else if(code.equals("FL0")){
-            return EMAIL_NOT_FOUND;
-        } else if(code.equals("FL1")){
-            return PASSWORD_DOESNT_MATCH;
+        if(code.equals("SC0")){
+            clockin_id = response_split[1];
+            clockin_date = response_split[2];
+            return CLOCKIN_SUCCESS;
+        } else if(code.equals("FC0")){
+            return CLOCKIN_FAILURE;
+        } else if(code.equals("SC1")){
+            return UNKNOWN_FAILURE;
         } else {
-            return UNKNOWN_LOGIN_FAILURE;
+            return SESSION_EXPIRED;
         }
     }
 
-    public static final String LOGIN_SUCCESSFUL = "Login Successful";
-    public static final String EMAIL_NOT_FOUND = "Email Not Found";
-    public static final String PASSWORD_DOESNT_MATCH = "Password Does Not Match";
-    public static final String UNKNOWN_LOGIN_FAILURE = "Unknown Login Failure";
+    public String getClockinDate(){
+        return clockin_date;
+    }
+    public String getClockin_id(){
+        return clockin_id;
+    }
 
+    public static final String CLOCKIN_SUCCESS = "Clockin Was Successful";
+    public static final String CLOCKIN_FAILURE = "Clockin Failed";
+    public static final String UNKNOWN_FAILURE = "Unknown Failure";
+    public static final String SESSION_EXPIRED = "Session Expired";
 }
