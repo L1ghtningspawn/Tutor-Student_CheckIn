@@ -1,12 +1,21 @@
 <html>
 <style>
+	.webpage{
+		position:absolute;
+		top:60px;
+		height:100%;
+		width:100%;
+		text-align:center;
+	}
+
 	.login{
 		position:relative;
-		max-width:300px;
+		width:300px;
 		height:400px;
 		margin:auto;
 		text-align:center;
 		border:1px solid black;
+		top:60px;
 	}
 
 	.button{
@@ -30,22 +39,31 @@
 		margin:4px 2px;
 	}
 </style>
-	<head></head>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style/style.css">
+	</head>
 	<body>
-		<div class="login">
-			<form action="" method="post">
-				<input class="input" type="text" name="email" placeholder="Email Address">
-				<br><br>
-				<input class="input" type="text" name="fname" placeholder="First Name">
-				<br><br>
-				<input class="input" type="text" name="lname" placeholder="Last Name">
-				<br><br>
-				<input class="input" type="password" name="password" placeholder="Password">
-				<br><br>
-				<input class="input" type="password" name="password2" placeholder="Comfirm Password">
-				<br><br>
-				<input class="button" type="submit" value="Login">
-			</form>
+		<div class="header">
+			<img class="logo" src="images/logo.png">
+		</div>
+
+		<div class="webpage">
+			<div class="login">
+				<form action="" method="post">
+					<input class="input" type="text" name="email" placeholder="Email Address">
+					<br><br>
+					<input class="input" type="text" name="fname" placeholder="First Name">
+					<br><br>
+					<input class="input" type="text" name="lname" placeholder="Last Name">
+					<br><br>
+					<input class="input" type="password" name="password" placeholder="Password">
+					<br><br>
+					<input class="input" type="password" name="password2" placeholder="Comfirm Password">
+					<br><br>
+					<input class="button" type="submit" value="Submit">
+				</form>
+			</div>
 		</div>
 	</body>
 </html>
