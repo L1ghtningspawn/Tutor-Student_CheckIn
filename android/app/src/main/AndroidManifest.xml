@@ -3,6 +3,7 @@
     package="kean20sp.capstoneproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -26,6 +27,8 @@
             android:name=".signup"
             android:label="@string/title_activity_signup"
             android:theme="@style/AppTheme" />
+        <activity android:name=".qrcode.BarcodeCaptureActivity"
+            android:label="Read Barcode"/>
         <activity
             android:name=".signup2"
             android:label="@string/title_activity_signup2"

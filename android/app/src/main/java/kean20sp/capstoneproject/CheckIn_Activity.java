@@ -1,11 +1,13 @@
 package kean20sp.capstoneproject;
 
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import androidmads.library.qrgenearator.QRGContents;
+import androidmads.library.qrgenearator.QRGEncoder;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -20,6 +22,7 @@ import java.util.List;
 
 import kean20sp.capstoneproject.http.TutorCourseListHandler;
 import kean20sp.capstoneproject.util.AppState;
+import kean20sp.capstoneproject.util.QRUtil;
 
 public class CheckIn_Activity extends AppCompatActivity {
     TextView email_tv, checkin_tv, logout_tv, clockin_time_tv, clockin_duration_tv;
@@ -96,6 +99,17 @@ public class CheckIn_Activity extends AppCompatActivity {
         }
         List<String> list_courses = Arrays.asList(courses);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list_courses);
+
         //courselist_sp.setAdapter(adapter);
+        try{
+            String qrcode_value = QRUtil.genkey();
+            QRGEncoder qrgEncoder = new QRGEncoder(qrcode_value,null,QRGContents.Type.TEXT,2) ;
+            Bitmap bitmap = qrgEncoder.encodeAsBitmap();
+            ImageView img = (ImageView) findViewById(R.id.qrcode);
+            img.setImageBitmap(bitmap);
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+
     }
 }

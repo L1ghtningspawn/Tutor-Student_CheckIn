@@ -30,4 +30,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     api group: 'cz.msebera.android', name: 'httpclient', version: '4.5.3'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.annotation:annotation:1.1.0"
+    implementation 'com.google.android.gms:play-services-vision:9.4.0+'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
 }
