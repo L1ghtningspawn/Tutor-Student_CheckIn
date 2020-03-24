@@ -1,14 +1,22 @@
 package kean20sp.capstoneproject;
 
 import android.content.Intent;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.vision.barcode.Barcode;
+
 import kean20sp.capstoneproject.http.LogoutHandler;
+import kean20sp.capstoneproject.qrcode.BarcodeCaptureActivity;
+import kean20sp.capstoneproject.qrcode.BarcodeCaptureActivity2;
 import kean20sp.capstoneproject.util.AppState;
 
 public class Student_Activity extends AppCompatActivity {
@@ -16,6 +24,8 @@ public class Student_Activity extends AppCompatActivity {
     String session_id;
     String user_email;
     String user_roles;
+
+    public static final int RESULT_CODE_QR_CHECKIN = 314;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +68,33 @@ public class Student_Activity extends AppCompatActivity {
         Intent it = new Intent(Student_Activity.this, login.class);
 
         startActivity(it);
+    }
+
+    public void qr_check_in(View v){
+        Intent intent = new Intent(this, BarcodeCaptureActivity2.class);
+        startActivityForResult(intent, RESULT_CODE_QR_CHECKIN);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(requestCode == RESULT_CODE_QR_CHECKIN){
+            if(resultCode == CommonStatusCodes.SUCCESS){
+                if(data != null){
+                    Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
+                    Point[] points = barcode.cornerPoints;
+                    Toast.makeText(this,"A Session Is Being Started...",Toast.LENGTH_SHORT).show();
+
+                    String[] session_info = barcode.displayValue.split("#");
+                    AppState.TutorSession.student_id = AppState.UserInfo.user_role_id;
+                    AppState.TutorSession.tutor_id = session_info[0];
+                    AppState.TutorSession.qr_server_key = session_info[1];
+
+                    //goto course list
+                }
+            }
+        } else {
+            Log.e("Student_Activity.qrcode", CommonStatusCodes.getStatusCodeString(resultCode));
+        }
     }
 
     @Override

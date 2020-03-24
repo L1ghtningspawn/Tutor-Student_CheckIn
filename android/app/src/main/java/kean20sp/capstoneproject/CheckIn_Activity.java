@@ -103,7 +103,7 @@ public class CheckIn_Activity extends AppCompatActivity {
         //courselist_sp.setAdapter(adapter);
         try{
             String qrcode_value = QRUtil.genkey();
-            QRGEncoder qrgEncoder = new QRGEncoder(qrcode_value,null,QRGContents.Type.TEXT,2) ;
+            QRGEncoder qrgEncoder = new QRGEncoder(qrcode_value,null,QRGContents.Type.TEXT,150) ;
             Bitmap bitmap = qrgEncoder.encodeAsBitmap();
             ImageView img = (ImageView) findViewById(R.id.qrcode);
             img.setImageBitmap(bitmap);
