@@ -120,7 +120,7 @@ public class CheckIn_Activity extends AppCompatActivity {
                 CheckinHandler chandler = new CheckinHandler();
                 String result = chandler.checkin(email,email_tv.getText().toString());
                 if(result.equals(CheckinHandler.CHECKIN_SUCCESSFUL)) {
-                    Intent it = new Intent(CheckIn_Activity.this, Student_Checked_In_Activity.class);
+                    Intent it = new Intent(CheckIn_Activity.this, Tutor_Checked_In_Activity.class);
 //                    AppState.Session.id = session_id;
 //                    AppState.UserInfo.email = email;
                     startActivity(it);
