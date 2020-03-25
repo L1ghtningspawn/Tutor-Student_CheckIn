@@ -18,4 +18,14 @@ public class AppState {
         public static String out_datetime;
     }
 
+    public static class TutorSession {
+        public static String tutor_id;
+        public static String student_id;
+        public static String qr_server_key;
+        public static String student_email;
+        public static String in_datetime;
+        public static String out_datetime;
+        public static String course_id;
+    }
+
 }

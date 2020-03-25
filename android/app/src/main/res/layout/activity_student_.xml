@@ -26,6 +26,7 @@
             android:background="#000000"
             android:gravity="center"
             android:letterSpacing="0.2"
+            android:onClick="qr_check_in"
             android:padding="16dp"
             android:text="QR Check-In"
             android:textColor="#FFFFFF"
