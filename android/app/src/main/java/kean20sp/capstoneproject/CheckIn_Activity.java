@@ -101,17 +101,17 @@ public class CheckIn_Activity extends AppCompatActivity {
         }
 //        List<String> list_courses = Arrays.asList(courses);
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list_courses);
-//
-//        //courselist_sp.setAdapter(adapter);
-//        try{
-//            String qrcode_value = QRUtil.genkey();
-//            QRGEncoder qrgEncoder = new QRGEncoder(qrcode_value,null,QRGContents.Type.TEXT,2) ;
-//            Bitmap bitmap = qrgEncoder.encodeAsBitmap();
-//            ImageView img = (ImageView) findViewById(R.id.qrcode);
-//            img.setImageBitmap(bitmap);
-//        } catch(Exception e){
-//            e.printStackTrace();
-//        }
+
+        //courselist_sp.setAdapter(adapter);
+        try{
+            String qrcode_value = QRUtil.genkey();
+            QRGEncoder qrgEncoder = new QRGEncoder(qrcode_value,null,QRGContents.Type.TEXT,2) ;
+            Bitmap bitmap = qrgEncoder.encodeAsBitmap();
+            ImageView img = (ImageView) findViewById(R.id.qrcode);
+            img.setImageBitmap(bitmap);
+        } catch(Exception e){
+            e.printStackTrace();
+        }
 
         checkin_tv.setOnClickListener(new View.OnClickListener(){
             @Override
