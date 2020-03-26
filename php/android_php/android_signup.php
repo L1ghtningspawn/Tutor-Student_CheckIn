@@ -37,7 +37,7 @@
       $stmt->close();
 
       $query =
-      ' insert into registration (login_id, fname, lname, year)
+      ' insert into USER_INFO (login_id, fname, lname, year_at_organization)
         values ((select login_id from LOGIN where email=?),?,?,?);
       ';
       $stmt = $con->prepare($query);
@@ -45,6 +45,16 @@
       $stmt->execute();
       $affected_rows = $affected_rows + $stmt->affected_rows;
       $stmt->close();
+
+      $query_user_roles =
+      ' insert into USER_ROLES (u_id, r_id)
+        values ((select login_id from LOGIN where email=?), (select r_id from ROLES where role_name="STUDENT"));
+      ';
+      $stmt_user_roles = $con->prepare($query_user_roles);
+      $stmt_user_roles->bind_param('s',$email);
+      $stmt_user_roles->execute();
+      $affected_rows += $stmt_user_roles->affected_rows;
+      $stmt_user_roles->close();
 
       if($affected_rows > 0){
         $session_id = $pwd_hash.(date("Y-m-d H:s:v"));
@@ -59,7 +69,29 @@
         $stmt->execute();
         $stmt->close();
 
-        echo "SS0-$session_id";
+        $query_available_roles =
+        'select distinct A.role_name
+         from ROLES A, USER_ROLES B, LOGIN C
+         where A.r_id=B.r_id
+         and B.u_id=C.login_id
+         and C.email=?;
+        ';
+        $stmt_available_roles = $con->prepare($query_available_roles);
+        $stmt_available_roles->bind_param('s',$email);
+        $stmt_available_roles->bind_result($available_role);
+        $stmt_available_roles->execute();
+        $stmt_available_roles->store_result();
+
+        $roles_string = '';
+        while($stmt_available_roles->fetch()){
+          $available_role;
+          if($available_role=='TUTOR'){ $roles_string .= 'Tu'; }
+          if($available_role=='STUDENT'){ $roles_string .= 'St'; }
+          if($available_role=='SUPERVISOR'){ $roles_string .= 'Su'; }
+        }
+        $stmt_available_roles->close();
+
+        echo "SS0;$roles_string;$session_id";
       } else {
         echo 'FS1';
       }
