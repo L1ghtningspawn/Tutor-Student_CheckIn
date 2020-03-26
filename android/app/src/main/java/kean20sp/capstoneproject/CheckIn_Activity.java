@@ -24,6 +24,7 @@ import java.util.List;
 import kean20sp.capstoneproject.http.CheckinHandler;
 import kean20sp.capstoneproject.http.TutorCourseListHandler;
 import kean20sp.capstoneproject.util.AppState;
+import kean20sp.capstoneproject.util.CheckUserInput;
 import kean20sp.capstoneproject.util.QRUtil;
 
 public class CheckIn_Activity extends AppCompatActivity {
@@ -117,19 +118,25 @@ public class CheckIn_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                CheckinHandler chandler = new CheckinHandler();
-                String result = chandler.checkin(email,email_tv.getText().toString());
-                if(result.equals(CheckinHandler.CHECKIN_SUCCESSFUL)) {
-                    Intent it = new Intent(CheckIn_Activity.this, Tutor_Checked_In_Activity.class);
-//                    AppState.Session.id = session_id;
-//                    AppState.UserInfo.email = email;
-                    startActivity(it);
-                } else if(result.equals(CheckinHandler.INVALID_SESSION)){
-                    Toast.makeText(CheckIn_Activity.this,result,Toast.LENGTH_LONG).show();
-                } else if(result.equals(CheckinHandler.TUTOR_SESSION_EXISTS)){
-                    Toast.makeText(CheckIn_Activity.this,result,Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(CheckIn_Activity.this,result,Toast.LENGTH_LONG).show();
+                boolean isGoodInput = true;
+                if(!CheckUserInput.isValidEmail(email_tv.getText().toString())){
+                    Toast.makeText(v.getContext(),"That Email is Not Valid",Toast.LENGTH_SHORT).show();
+                    isGoodInput = false;
+                }
+                if(isGoodInput) {
+                    CheckinHandler chandler = new CheckinHandler();
+                    String result = chandler.checkin(email,email_tv.getText().toString());
+                    if(result.equals(CheckinHandler.CHECKIN_SUCCESSFUL)) {
+                        Intent it = new Intent(CheckIn_Activity.this, Tutor_Checked_In_Activity.class);
+                        // Send over the student's email
+                        startActivity(it);
+                    } else if(result.equals(CheckinHandler.INVALID_SESSION)){
+                        Toast.makeText(CheckIn_Activity.this,result,Toast.LENGTH_LONG).show();
+                    } else if(result.equals(CheckinHandler.TUTOR_SESSION_EXISTS)){
+                        Toast.makeText(CheckIn_Activity.this,result,Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(CheckIn_Activity.this,result,Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
