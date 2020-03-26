@@ -17,7 +17,7 @@
     $num_rows = $stmt->num_rows;
     $stmt->close();
     if($num_rows == 0){
-      echo "FL0 ";
+      echo "FL0";
     } elseif(password_verify($password,$pwd)) {
       //is there an existing session?
       $query =
@@ -33,7 +33,29 @@
       $stmt->close();
 
       if(isset($session_id)){
-        echo "SL0-$session_id";
+        $query_available_roles =
+        'select distinct A.role_name
+         from ROLES A, USER_ROLES B, LOGIN C
+         where A.r_id=B.r_id
+         and B.u_id=C.login_id
+         and C.email=?;
+        ';
+        $stmt_available_roles = $con->prepare($query_available_roles);
+        $stmt_available_roles->bind_param('s',$email);
+        $stmt_available_roles->bind_result($available_role);
+        $stmt_available_roles->execute();
+        $stmt_available_roles->store_result();
+
+        $roles_string = '';
+        while($stmt_available_roles->fetch()){
+          $available_role;
+          if($available_role=='TUTOR'){ $roles_string .= 'Tu'; }
+          if($available_role=='STUDENT'){ $roles_string .= 'St'; }
+          if($available_role=='SUPERVISOR'){ $roles_string .= 'Su'; }
+        }
+        $stmt_available_roles->close();
+
+        echo "SL0;$roles_string;$session_id";
       } else {
         $session_id = $pwd.(date("Y-m-d H:s:v"));
         $session_id = password_hash($session_id,PASSWORD_BCRYPT);
@@ -46,10 +68,33 @@
         $stmt->bind_param("ss",$email,$session_id);
         $stmt->execute();
         $stmt->close();
-        echo "SL0-$session_id";
+
+        $query_available_roles =
+        'select distinct A.role_name
+         from ROLES A, USER_ROLES B, LOGIN C
+         where A.r_id=B.r_id
+         and B.u_id=C.login_id
+         and C.email=?;
+        ';
+        $stmt_available_roles = $con->prepare($query_available_roles);
+        $stmt_available_roles->bind_param('s',$email);
+        $stmt_available_roles->bind_result($available_role);
+        $stmt_available_roles->execute();
+        $stmt_available_roles->store_result();
+
+        $roles_string = '';
+        while($stmt_available_roles->fetch()){
+          $available_role;
+          if($available_role=='TUTOR'){ $roles_string .= 'Tu'; }
+          if($available_role=='STUDENT'){ $roles_string .= 'St'; }
+          if($available_role=='SUPERVISOR'){ $roles_string .= 'Su'; }
+        }
+        $stmt_available_roles->close();
+
+        echo "SL0;$roles_string;$session_id";
       }
     } else {
-      echo "FL1 ";
+      echo "FL1";
     }
   }
 ?>
