@@ -2,19 +2,35 @@
 session_start();
 
 
-function checkSupervisor($login_id)
+function checkRoles($login_id)
 {
     include ('roles.php');
-    $query="Select ur_id from $server_database.USER_ROLES where u_id=$login_id";
-    
+    include ('../php/android_php/dbconfig.php');
+    $_SESSION['Supervisor']=false;
+    $_SESSION['Tutor']=false;
+    $_SESSION['Student']=false;
+    $query="Select ur_id,r_id from $server_database.USER_ROLES where u_id=$login_id";
+    #echo $query;
+    $results=mysqli_query($con,$query);
+    while($row=mysqli_fetch_assoc($results))
+    {
+        if($row['r_id']==$supervisor)
+        {    
+            $_SESSION['Supervisor']=true;
+            $_SESSION['Supervisor_id']=$row['ur_id'];
+        }
+        if($row['r_id']==$tutor)
+        {
+            $_SESSION['Tutor']=true;
+            $_SESSION['Tutor_id']=$row['ur_id'];
+        }
+        if($row['r_id']==$student)
+        {
+            $_SESSION['Student']=true;
+            $_SESSION['Student_id']=$row['ur_id'];
+        }
+    }
 }
-
-/*function checkTutor()
-
-function checkStudent()
-
-function checkPassword()*/
-
 
 
 
@@ -43,16 +59,20 @@ else
     #echo $login_id;
     if(password_verify($password, $hash))
     {
+        #echo "In password";
         $_SESSION['login_id']=$login_id;
         $_SESSION['email']=$login;
-        if(checkSupervisor($login_id))
-        {
-
-        }
+        checkRoles($login_id);
+        if($_SESSION['Supervisor'])
+            header("Location: supervisor.html");
+        if($_SESSION['Tutor'])
+            header("Location: tutor.html");
+        if($_SESSION['Student'])
+            header("Location: student.html");
     }
     else
     {
-        echo "No match";
+        echo "Email/password mismatch";
     }
 }
 
