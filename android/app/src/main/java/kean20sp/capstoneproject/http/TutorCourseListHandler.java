@@ -54,10 +54,9 @@ public class TutorCourseListHandler extends HTTPConnectionHandler {
                     response = makeRequest(host,filepath,pairs);
                 }catch(Exception e){
                     System.out.println(e);
-                }finally {
-                    response_done = true;
-                    System.out.println(response);
                 }
+                response_done = true;
+                System.out.println("response: "+response);
             }
         });
 
@@ -82,6 +81,7 @@ public class TutorCourseListHandler extends HTTPConnectionHandler {
         if(code.equals("STc0")){
             course_ids = response_split[1].split("\\^");
             courses = response_split[2].split("\\^");
+            System.out.println(response);
             return (SUCCESSFUL);
         } else if(code.equals("STc1")){
             return (SESSION_EXPIRED);

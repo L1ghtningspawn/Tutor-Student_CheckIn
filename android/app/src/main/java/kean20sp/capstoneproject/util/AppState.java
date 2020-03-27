@@ -28,4 +28,9 @@ public class AppState {
         public static String course_id;
     }
 
+    public static class TutorProfile {
+        public static String[] courses;
+        public static String[] course_ids;
+    }
+
 }

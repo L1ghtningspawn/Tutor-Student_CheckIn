@@ -90,6 +90,8 @@ public class Student_Activity extends AppCompatActivity {
                     AppState.TutorSession.qr_server_key = session_info[1];
 
                     //goto course list
+                    Intent intent = new Intent(Student_Activity.this, Student_Select_Course_Activity.class);
+                    startActivity(intent);
                 }
             }
         } else {
