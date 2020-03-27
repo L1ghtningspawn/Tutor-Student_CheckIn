@@ -1,26 +1,17 @@
 package kean20sp.capstoneproject;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import kean20sp.capstoneproject.course.CourseTextView;
+import kean20sp.capstoneproject.views.CourseTextView;
 import kean20sp.capstoneproject.http.TutorCourseListHandler;
 import kean20sp.capstoneproject.util.AppState;
 import kean20sp.capstoneproject.util.ViewOptionsUtility;
 
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
-import android.view.ViewGroup.LayoutParams;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 public class Student_Select_Course_Activity extends AppCompatActivity {
     LinearLayout course_list;

@@ -1,4 +1,4 @@
-package kean20sp.capstoneproject.course;
+package kean20sp.capstoneproject.views;
 
 import android.content.Context;
 import android.widget.TextView;

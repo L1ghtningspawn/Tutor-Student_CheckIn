@@ -9,11 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="60dp"
-        android:paddingTop="25px"
-        android:paddingRight="60dp"
-        android:paddingBottom="25px">
+        android:layout_margin="15dp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -86,42 +83,36 @@
             android:layout_height="250dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/rectangle_border">
+            android:background="@drawable/rectangle_border"
+            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            android:scrollbarAlwaysDrawVerticalTrack="false"
+            android:scrollbars="horizontal|vertical">
 
-            <TableLayout
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                <TableLayout
+                    android:id="@+id/session_table"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </TableLayout>
+                </TableLayout>
+            </HorizontalScrollView>
         </ScrollView>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="50dp"
             android:background="#000000"
             android:gravity="center"
             android:letterSpacing="0.2"
-            android:padding="16dp"
+            android:padding="15dp"
             android:text="Share"
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
     </LinearLayout>
+
 </RelativeLayout>

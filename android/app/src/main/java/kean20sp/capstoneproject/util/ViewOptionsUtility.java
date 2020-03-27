@@ -1,14 +1,14 @@
 package kean20sp.capstoneproject.util;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.widget.LinearLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import kean20sp.capstoneproject.R;
-import kean20sp.capstoneproject.course.CourseTextView;
+import kean20sp.capstoneproject.views.CourseTextView;
 
 public class ViewOptionsUtility {
 
@@ -44,6 +44,26 @@ public class ViewOptionsUtility {
         course_list.addView(layout);
 
         return tv;
+    }
+
+    public static TableRow newRow(Context context, String[] columns, boolean isHeader ){
+        TableRow row = new TableRow(context);
+
+        int dps = ViewOptionsUtility.DPUnits(context,10);
+
+        for(String string : columns){
+            TextView view1 = new TextView(context);
+            view1.setText(string);
+            view1.setPadding(dps,dps,dps,dps);
+            row.addView(view1);
+        }
+
+        row.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
+        if(isHeader){
+            row.setBackgroundResource(R.drawable.rectangle_border);
+        }
+
+        return row;
     }
 
 }
