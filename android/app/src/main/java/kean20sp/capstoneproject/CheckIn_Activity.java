@@ -91,15 +91,15 @@ public class CheckIn_Activity extends AppCompatActivity {
             }
         }.start();
 
-        TutorCourseListHandler tclhandler = new TutorCourseListHandler();
-        String result = tclhandler.getTutorCourseList(email,session_id,user_role_id);
-        if(result.equals(TutorCourseListHandler.SUCCESSFUL)){
-            Toast.makeText(this,result, Toast.LENGTH_SHORT).show();
-            courses = tclhandler.courses;
-            courseIDs = tclhandler.course_ids;
-        } else {
-            Toast.makeText(this,result, Toast.LENGTH_SHORT).show();
-        }
+//        TutorCourseListHandler tclhandler = new TutorCourseListHandler();
+//        String result = tclhandler.getTutorCourseList(email,session_id,user_role_id);
+//        if(result.equals(TutorCourseListHandler.SUCCESSFUL)){
+//            Toast.makeText(this,result, Toast.LENGTH_SHORT).show();
+//            courses = tclhandler.courses;
+//            courseIDs = tclhandler.course_ids;
+//        } else {
+//            Toast.makeText(this,result, Toast.LENGTH_SHORT).show();
+//        }
 //        List<String> list_courses = Arrays.asList(courses);
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list_courses);
 

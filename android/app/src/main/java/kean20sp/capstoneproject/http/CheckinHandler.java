@@ -16,11 +16,11 @@ public class CheckinHandler extends HTTPConnectionHandler {
         host = "seesselm-project-page.com";
         filepath = "/Capstone/android/android_student_checkin.php";
     }
-    public CheckinHandler(String host, String filepath){
-        this.host = host;
-        this.filepath = filepath;
-        this.session_id = session_id();
-    }
+//    public CheckinHandler(String host, String filepath){
+//        this.host = host;
+//        this.filepath = filepath;
+//        this.session_id = session_id();
+//    }
 
     public String session_id(){
         return session_id;
@@ -66,20 +66,21 @@ public class CheckinHandler extends HTTPConnectionHandler {
         }
         String[] response_split = response.split(";");
         String code = response_split[0];
-        if(code.equals("SC0")){
-            return CHECKIN_SUCCESSFUL;
-        } else if(code.equals("FCO")){
-            return INVALID_SESSION;
-        } else if(code.equals("FC1")){
-            return TUTOR_SESSION_EXISTS;
-        } else {
-            return CHECKIN_FAILED;
+        switch (code) {
+            case "SC0":
+                return CHECKIN_SUCCESSFUL;
+            case "FCO":
+                return INVALID_SESSION;
+            case "FC1":
+                return TUTOR_SESSION_EXISTS;
+            default:
+                return CHECKIN_FAILED;
         }
     }
 
     public static final String INVALID_SESSION = "Login Session is invalid. Login Again.";
     public static final String TUTOR_SESSION_EXISTS = "Student already in an active session.";
-    public static final String CHECKIN_FAILED = "Failed to check-in. Try again.";
+    private static final String CHECKIN_FAILED = "Failed to check-in. Try again.";
     public static final String CHECKIN_SUCCESSFUL = "Check-in was successful.";
 
 }

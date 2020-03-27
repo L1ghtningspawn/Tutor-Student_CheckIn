@@ -43,7 +43,7 @@
 		$stmt->close();
 		//echo "STUDENT_ID: {$sid}\n";
 
-		//check to make sure t_ur_id and s_ur_id don't have active sessions (time_out=00:00:00)
+		//check to make sure student don't have active sessions (time_out=00:00:00)
 		//make initial insert with c_id of 4 for DUMMY course
 		$query3 =
 		'select count(ts_id)
@@ -77,20 +77,20 @@
 	} else{
 		echo "STUDENT_MODE!\n";
 		// checkin mode is student entry
+		$checkin_type = $_POST['checkin_type'];
 		$student_email = $_POST['email'];
+		$checkin_time = $_POST['checkin_time'];
+		//$course_id = $_POST['course_id'] //get this from the list of courses the student selects
 		echo "STUDENT_EMAIL: {$student_email}\n";
+		echo "TIME_TO_CHECKIN: {$checkin_time}\n";
+		//echo "COURSE_SELECTED: {$course_id}\n";
 
-		if(isset($_POST['checkin_type'])){
-			$checkin_type = $_POST['checkin_type'];
-		}
 		if ($checkin_type == 'qrcode'){
 		//TODO
 		//check if qrcode doesn't already exist, if it does: return failure code "old_qrcode"
 		//otherwise return success code
 		} else{
-			if (isset($_POST['checkin_time'])){
-				$checkin_time = $_POST['checkin_time'];
-			}
+
 			$s_query =
 			'select ur.ur_id from USER_ROLES as ur
 			join ROLES as r on r.r_id = ur.r_id
