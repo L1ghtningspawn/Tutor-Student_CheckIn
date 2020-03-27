@@ -56,13 +56,18 @@ else
     $row=mysqli_fetch_array($result);
     $login_id=$row['login_id'];
     $hash=$row['password'];
+    $query = "Select u_id from $server_database.USER_INFO where login_id=$login_id";
+    $result=mysqli_query($con,$query);
+    $row=mysqli_fetch_array($result);
+    $u_id=$row['u_id'];
     #echo $login_id;
     if(password_verify($password, $hash))
     {
         #echo "In password";
         $_SESSION['login_id']=$login_id;
+        $_SESSION['u_id']=$u_id;
         $_SESSION['email']=$login;
-        checkRoles($login_id);
+        checkRoles($u_id);
         if($_SESSION['Supervisor'])
             header("Location: supervisor.html");
         if($_SESSION['Tutor'])
