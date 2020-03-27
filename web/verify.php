@@ -4,8 +4,7 @@ session_start();
 
 function checkRoles($login_id)
 {
-    include ('roles.php');
-    include ('../php/android_php/dbconfig.php');
+    include ('include.php');
     $_SESSION['Supervisor']=false;
     $_SESSION['Tutor']=false;
     $_SESSION['Student']=false;
