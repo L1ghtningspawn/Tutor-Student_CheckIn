@@ -78,28 +78,27 @@
 
         </LinearLayout>
 
-        <ScrollView
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/rectangle_border"
-            android:scrollbarAlwaysDrawHorizontalTrack="false"
-            android:scrollbarAlwaysDrawVerticalTrack="false"
-            android:scrollbars="horizontal|vertical">
+            android:layout_margin="15dp"
+            android:background="@drawable/rectangle_border">
 
-            <HorizontalScrollView
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:scrollbarAlwaysDrawHorizontalTrack="false"
+                android:scrollbarAlwaysDrawVerticalTrack="false"
+                android:scrollbars="vertical">
 
                 <TableLayout
                     android:id="@+id/session_table"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                 </TableLayout>
-            </HorizontalScrollView>
-        </ScrollView>
+            </ScrollView>
+        </HorizontalScrollView>
 
         <TextView
             android:layout_width="match_parent"
