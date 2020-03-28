@@ -20,6 +20,8 @@ public class Student_Select_Course_Activity extends AppCompatActivity {
     String course_id = null;
 
 
+    String[] courses, courseIDs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
