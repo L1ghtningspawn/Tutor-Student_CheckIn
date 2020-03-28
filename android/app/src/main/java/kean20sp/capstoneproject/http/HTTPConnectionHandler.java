@@ -53,7 +53,7 @@ public class HTTPConnectionHandler {
 //    }
 
 
-    public String makeRequest(String host, String path, List<NameValuePair> pairs){
+    public static String makeRequest(String host, String path, List<NameValuePair> pairs){
         try{
             URIBuilder uribuilder = new URIBuilder()
                     .setScheme("http")

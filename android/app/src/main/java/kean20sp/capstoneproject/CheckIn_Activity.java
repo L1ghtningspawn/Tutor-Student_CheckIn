@@ -1,5 +1,6 @@
 package kean20sp.capstoneproject;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -20,8 +21,10 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import kean20sp.capstoneproject.http.CheckinHandler;
 import kean20sp.capstoneproject.http.TutorCourseListHandler;
 import kean20sp.capstoneproject.util.AppState;
+import kean20sp.capstoneproject.util.CheckUserInput;
 import kean20sp.capstoneproject.util.QRUtil;
 
 public class CheckIn_Activity extends AppCompatActivity {
@@ -109,6 +112,33 @@ public class CheckIn_Activity extends AppCompatActivity {
         } catch(Exception e){
             e.printStackTrace();
         }
+
+        checkin_tv.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                boolean isGoodInput = true;
+                if(!CheckUserInput.isValidEmail(email_tv.getText().toString())){
+                    Toast.makeText(v.getContext(),"That Email is Not Valid",Toast.LENGTH_SHORT).show();
+                    isGoodInput = false;
+                }
+                if(isGoodInput) {
+                    CheckinHandler chandler = new CheckinHandler();
+                    String result = chandler.checkin_email(email,email_tv.getText().toString(),"tutor");
+                    if(result.equals(CheckinHandler.CHECKIN_SUCCESSFUL)) {
+                        Intent it = new Intent(CheckIn_Activity.this, Tutor_Checked_In_Activity.class);
+                        // Send over the student's email
+                        startActivity(it);
+                    } else if(result.equals(CheckinHandler.INVALID_SESSION)){
+                        Toast.makeText(CheckIn_Activity.this,result,Toast.LENGTH_LONG).show();
+                    } else if(result.equals(CheckinHandler.TUTOR_SESSION_EXISTS)){
+                        Toast.makeText(CheckIn_Activity.this,result,Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(CheckIn_Activity.this,result,Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        });
 
     }
 }
