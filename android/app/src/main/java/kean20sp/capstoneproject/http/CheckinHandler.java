@@ -28,13 +28,13 @@ public class CheckinHandler extends HTTPConnectionHandler {
 
     private String response;
     private boolean response_done = false;
-    public String checkin(String tutor_email, String student_email){
+    public String checkin(String tutor_email, String student_email, String checkin_type){
         //TODO: MAKE SURE THIS PASSES CORRECT EMAILS DEPENDING WHAT MODE WE IN
         pairs = new ArrayList<NameValuePair>();
         pairs.add(new BasicNameValuePair("tutor_email",tutor_email));
         pairs.add(new BasicNameValuePair("student_email",student_email));
         pairs.add(new BasicNameValuePair("session_id",this.session_id));
-        pairs.add(new BasicNameValuePair("checkin_type","email"));
+        pairs.add(new BasicNameValuePair("checkin_type",checkin_type));
         pairs.add(new BasicNameValuePair("checkin_mode","tutor"));
 
         Thread t = new Thread(new Runnable(){

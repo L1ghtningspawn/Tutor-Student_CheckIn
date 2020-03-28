@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -61,6 +62,8 @@ public class ViewOptionsUtility {
         row.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
         if(isHeader){
             row.setBackgroundResource(R.drawable.rectangle_border);
+            TableLayout.LayoutParams lp = new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, 0, 0.25f);
+            row.setLayoutParams(lp);
         }
 
         return row;

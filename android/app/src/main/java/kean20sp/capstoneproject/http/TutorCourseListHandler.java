@@ -34,19 +34,15 @@ public class TutorCourseListHandler extends HTTPConnectionHandler {
     private String response;
     private boolean response_done = false;
     private List<NameValuePair> pairs;
-    public String getTutorCourseList(String email, String session_id, String user_role_id){
+    public String getTutorCourseList(String tutor_role_id){
         pairs = new ArrayList<NameValuePair>();
-        pairs.add(new BasicNameValuePair("tutorcourselist", "true"));
-        pairs.add(new BasicNameValuePair("email", email));
-        pairs.add(new BasicNameValuePair("session_id", session_id));
-        pairs.add(new BasicNameValuePair("user_role_id",user_role_id));
+        pairs.add(new BasicNameValuePair("t_ur_id",tutor_role_id));
 
 //        try {
 //            response = makeRequest(host, filepath, table);
 //        } catch (Exception e) {
 //            System.out.println(e);
 //        }
-
 
         Thread t = new Thread(new Runnable(){
             public void run(){
