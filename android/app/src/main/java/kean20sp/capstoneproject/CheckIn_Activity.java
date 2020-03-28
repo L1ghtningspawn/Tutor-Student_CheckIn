@@ -124,7 +124,7 @@ public class CheckIn_Activity extends AppCompatActivity {
                 }
                 if(isGoodInput) {
                     CheckinHandler chandler = new CheckinHandler();
-                    String result = chandler.checkin(email,email_tv.getText().toString());
+                    String result = chandler.checkin_email(email,email_tv.getText().toString(),"tutor");
                     if(result.equals(CheckinHandler.CHECKIN_SUCCESSFUL)) {
                         Intent it = new Intent(CheckIn_Activity.this, Tutor_Checked_In_Activity.class);
                         // Send over the student's email

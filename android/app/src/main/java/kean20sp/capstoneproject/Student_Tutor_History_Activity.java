@@ -30,8 +30,9 @@ public class Student_Tutor_History_Activity extends AppCompatActivity {
         session_table = (TableLayout) findViewById(R.id.session_table);
         session_table.addView(ViewOptionsUtility.newRow(this,new String[]{"tutor", "time in", "time out"}, true));
 
+
         StudSessHandler ssh = new StudSessHandler();
-        String status = ssh.getStudentSessionHistory(AppState.UserInfo.email);
+        String status = ssh.getStudentSessionHistory(AppState.UserInfo.user_role_id);
         if(status.equals(StudSessHandler.SUCCESS)){
             session_data = ssh.student_sessions;
         }

@@ -84,6 +84,7 @@ public class login extends AppCompatActivity {
                 AppState.Session.id = session_id;
                 AppState.UserInfo.roles  = available_roles;
                 AppState.UserInfo.email = email_text;
+
                 startActivity(it);
             } else {
                 Toast.makeText(this,result,Toast.LENGTH_LONG).show();

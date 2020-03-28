@@ -10,9 +10,11 @@ import kean20sp.capstoneproject.http.TutorCourseListHandler;
 import kean20sp.capstoneproject.util.AppState;
 import kean20sp.capstoneproject.util.ViewOptionsUtility;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Student_Select_Course_Activity extends AppCompatActivity {
     LinearLayout course_list;
@@ -60,9 +62,31 @@ public class Student_Select_Course_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AppState.TutorSession.course_id = course_id;
+                String status = "";
 
-                Intent intent = new Intent(Student_Select_Course_Activity.this, Student_Checked_In_Activity.class);
-                startActivity(intent);
+                if(AppState.TutorSession.qr_server_key != null) {
+                    CheckinHandler ch = new CheckinHandler();
+                    status = ch.checkin_qr(
+                            AppState.TutorSession.tutor_id,
+                            AppState.TutorSession.student_id,
+                            AppState.TutorSession.qr_server_key,
+                            AppState.TutorSession.course_id
+                    );
+
+                    Log.d("status",status);
+                } else {
+                    CheckinHandler ch = new CheckinHandler();
+                    status = ch.checkin_email(AppState.TutorSession.tutor_email,
+                                                AppState.TutorSession.student_email,
+                                                "student");
+                }
+
+                if(status.equals(CheckinHandler.CHECKIN_SUCCESSFUL)){
+                    Intent intent = new Intent(Student_Select_Course_Activity.this, Student_Checked_In_Activity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(Student_Select_Course_Activity.this,"Check-In Failed.",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

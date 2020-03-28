@@ -27,6 +27,7 @@ public class AppState {
         public static String student_id;
         public static String qr_server_key;
         public static String student_email;
+        public static String tutor_email;
         public static String in_datetime;
         public static String out_datetime;
         public static String course_id;
@@ -59,6 +60,7 @@ public class AppState {
             Log.d("AppState.TutorSession","student_id = "+TutorSession.student_id);
             Log.d("AppState.TutorSession","qr_server_key = "+TutorSession.qr_server_key);
             Log.d("AppState.TutorSession","student_email = "+TutorSession.student_email);
+            Log.d("AppState.TutorSession","tutor_email = "+TutorSession.tutor_email);
             Log.d("AppState.TutorSession","in_datetime = "+TutorSession.in_datetime);
             Log.d("AppState.TutorSession","out_datetime = "+TutorSession.out_datetime);
             Log.d("AppState.TutorSession","course_id = "+TutorSession.course_id);
