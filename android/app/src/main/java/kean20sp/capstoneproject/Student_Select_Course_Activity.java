@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import kean20sp.capstoneproject.http.CheckinHandler;
 import kean20sp.capstoneproject.views.CourseTextView;
 import kean20sp.capstoneproject.http.TutorCourseListHandler;
 import kean20sp.capstoneproject.util.AppState;
@@ -30,8 +31,7 @@ public class Student_Select_Course_Activity extends AppCompatActivity {
         course_list = findViewById(R.id.course_list);
 
         tclh = new TutorCourseListHandler();
-        tclh.getTutorCourseList(AppState.UserInfo.email,AppState.Session.id,AppState.UserInfo.user_role_id);
-
+        tclh.getTutorCourseList(AppState.TutorSession.tutor_id);
 
         for(int x=0; x< tclh.size(); x++){
         //for(int x = 0; x<10;x++){
@@ -60,7 +60,7 @@ public class Student_Select_Course_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AppState.TutorSession.course_id = course_id;
-                //checkin handler
+
                 Intent intent = new Intent(Student_Select_Course_Activity.this, Student_Checked_In_Activity.class);
                 startActivity(intent);
             }

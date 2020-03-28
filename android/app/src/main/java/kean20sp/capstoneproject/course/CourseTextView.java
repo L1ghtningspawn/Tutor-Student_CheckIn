@@ -1,9 +1,10 @@
 package kean20sp.capstoneproject.course;
 
 import android.content.Context;
-import android.widget.TextView;
+import androidx.appcompat.widget.AppCompatTextView;
 
-public class CourseTextView extends TextView {
+
+public class CourseTextView extends AppCompatTextView {
 
     public CourseTextView(Context context){
         super(context);

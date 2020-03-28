@@ -92,7 +92,7 @@ public class CheckIn_Activity extends AppCompatActivity {
         }.start();
 
 //        TutorCourseListHandler tclhandler = new TutorCourseListHandler();
-//        String result = tclhandler.getTutorCourseList(email,session_id,user_role_id);
+//        String result = tclhandler.getTutorCourseList(user_role_id);
 //        if(result.equals(TutorCourseListHandler.SUCCESSFUL)){
 //            Toast.makeText(this,result, Toast.LENGTH_SHORT).show();
 //            courses = tclhandler.courses;
@@ -102,8 +102,7 @@ public class CheckIn_Activity extends AppCompatActivity {
 //        }
 //        List<String> list_courses = Arrays.asList(courses);
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list_courses);
-
-        //courselist_sp.setAdapter(adapter);
+//        //courselist_sp.setAdapter(adapter);
         try{
             String qrcode_value = QRUtil.genkey();
             QRGEncoder qrgEncoder = new QRGEncoder(qrcode_value,null,QRGContents.Type.TEXT,150) ;
