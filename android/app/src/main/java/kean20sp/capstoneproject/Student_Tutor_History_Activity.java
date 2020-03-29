@@ -59,7 +59,7 @@ public class Student_Tutor_History_Activity extends AppCompatActivity {
 
                             }, false);
 
-                    if(record.getString("time_out") == null){
+                    if(record.isNull("time_out")){
                         row.setBackgroundColor(Color.YELLOW);
                         row.setOnClickListener(new View.OnClickListener() {
                             @Override
