@@ -1,187 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/grdnt"
     >
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="50dp"
-        android:gravity='center'
-        android:text="Tutor Mode"
-        android:textColor="@android:color/black"
-        android:textSize='25dp' />
+        android:layout_height="85dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="-1dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/black"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity='center'
+            android:text="Tutor Mode"
+            android:textColor="@android:color/black"
+            android:textSize='25dp' />
+
+        <TextView
+            android:id="@+id/clockin_time_duration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="10:00am -- 1:30:25"
+            android:textColor="@android:color/black"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@android:color/black"
+            android:orientation="vertical"></LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="483dp"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/rectangle_border"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="84dp"
         android:gravity="bottom"
         android:orientation="vertical"
         android:paddingLeft="60dp"
         android:paddingRight="60dp">
 
-
         <TextView
+            android:id="@+id/student_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:gravity='center'
-            android:text="Student Name"
+            android:text="Stud. Mc StudentFace"
             android:textColor="@android:color/black"
             android:textSize='25dp' />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity='center'
-            android:text="Program Name"
-            android:textColor="@android:color/black"
-            android:textSize="15dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
-            android:gravity='center'
-            android:text="Course Name"
-            android:textColor="@android:color/black"
-            android:textSize="15dp" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="bottom"
+            android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:id="@+id/email"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center"
+                android:layout_weight="1"
                 android:src="@drawable/message" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity='center'
-                android:text="student@university.edu"
-                android:textColor="@android:color/black"
-                android:textSize="15dp" />
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/phonemo" />
+
+            <ImageView
+                android:layout_width="65px"
+                android:layout_height="65px"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/linkedin" />
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/facebook" />
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/student_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="student@kean.edu"
+            android:textColor="@android:color/black"
+            android:textSize="18dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="10px"
-            android:background="#4a5a71"></LinearLayout>
+            android:layout_height="172dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/checked_in_at"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity='center'
+                    android:text="Checked In At"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/checkin_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity='center'
+                    android:text="10:00 am"
+                    android:textColor="@android:color/black"
+                    android:textSize='25dp' />
+
+                <TextView
+                    android:id="@+id/checkin_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity='center'
+                    android:text="1:30:25"
+                    android:textColor="@android:color/black"
+                    android:textSize='25dp' />
+            </LinearLayout>
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/sup"
+            android:id="@+id/check_out"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="75dp"
+            android:layout_marginBottom="10dp"
             android:background="#000000"
             android:gravity="center"
             android:letterSpacing="0.2"
             android:padding="16dp"
-            android:text="Check Out"
+            android:text="End Session"
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/lin"
+            android:id="@+id/session_history"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="50dp"
+            android:background="#000000"
             android:gravity="center"
-
-            android:letterSpacing="0.1"
-            android:text="Logout"
-            android:textColor="#000000" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="316dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginBottom="250dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="157dp"
-            android:layout_height="327dp"
-            android:layout_marginBottom="10dp"
-            android:gravity='center'
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity='center'
-                android:text="Clocked In At"
-                android:textColor="@android:color/black"
-                android:textSize="15dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity='center'
-                android:text="10:00 am"
-                android:textColor="@android:color/black"
-                android:textSize='25dp' />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:gravity='center'
-                android:text="1:30:25"
-                android:textColor="@android:color/black"
-                android:textSize='25dp' />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="170dp"
-            android:layout_height="327dp"
-            android:layout_marginBottom="10dp"
-            android:gravity='center'
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity='center'
-                android:text="Checked In At"
-                android:textColor="@android:color/black"
-                android:textSize="15dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity='center'
-                android:text="10:00 am"
-                android:textColor="@android:color/black"
-                android:textSize='25dp' />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:gravity='center'
-                android:text="1:30:25"
-                android:textColor="@android:color/black"
-                android:textSize='25dp' />
-
-        </LinearLayout>
+            android:letterSpacing="0.2"
+            android:padding="16dp"
+            android:text="Session History"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </RelativeLayout>
