@@ -76,9 +76,12 @@ public class Student_Select_Course_Activity extends AppCompatActivity {
                     Log.d("status",status);
                 } else {
                     CheckinHandler ch = new CheckinHandler();
-                    status = ch.checkin_email(AppState.TutorSession.tutor_email,
-                                                AppState.TutorSession.student_email,
-                                                "student");
+                    status = ch.checkin_email(
+                            AppState.TutorSession.tutor_id,
+                            AppState.UserInfo.user_role_id,
+                            AppState.TutorSession.course_id
+                    );
+                    Log.d("status",status);
                 }
 
                 if(status.equals(CheckinHandler.CHECKIN_SUCCESSFUL)){

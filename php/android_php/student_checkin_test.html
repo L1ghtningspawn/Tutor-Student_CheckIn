@@ -4,12 +4,13 @@ This page tests student mode check-in script<br><br>
 
 <form action="android_student_checkin.php" method="post">
 Student_email: <input type="text" name="email"><br>
-Checkin_time [00:00:00]: <input type="text" name="checkin_time"><br>
+<br>
+Tutor_Role_ID: <input type="text" name="tutor_role_id"><br>
+Student_Role_ID: <input type="text" name="student_role_id"><br>
+Checkin_mode: <input type="text" name="checkin_mode"><br>
 
 <input type="hidden" name="login" value="True">
 <input type="hidden" name="checkin_type" value="email">
-<input type="hidden" name="checkin_mode" value="student">
-<input type="hidden" name="session_id" value="$2y$10$.dMkoPhJWQ3tijC1M7PJneGRTBKM7ST1zrfc0wGZzPdhZRnpfS.va">
 <input type="submit">
 </form>
 

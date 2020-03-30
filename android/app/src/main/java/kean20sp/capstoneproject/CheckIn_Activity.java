@@ -91,18 +91,6 @@ public class CheckIn_Activity extends AppCompatActivity {
             }
         }.start();
 
-//        TutorCourseListHandler tclhandler = new TutorCourseListHandler();
-//        String result = tclhandler.getTutorCourseList(user_role_id);
-//        if(result.equals(TutorCourseListHandler.SUCCESSFUL)){
-//            Toast.makeText(this,result, Toast.LENGTH_SHORT).show();
-//            courses = tclhandler.courses;
-//            courseIDs = tclhandler.course_ids;
-//        } else {
-//            Toast.makeText(this,result, Toast.LENGTH_SHORT).show();
-//        }
-//        List<String> list_courses = Arrays.asList(courses);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list_courses);
-//        //courselist_sp.setAdapter(adapter);
         try{
             String qrcode_value = QRUtil.genkey();
             QRGEncoder qrgEncoder = new QRGEncoder(qrcode_value,null,QRGContents.Type.TEXT,150) ;
@@ -124,7 +112,7 @@ public class CheckIn_Activity extends AppCompatActivity {
                 }
                 if(isGoodInput) {
                     CheckinHandler chandler = new CheckinHandler();
-                    String result = chandler.checkin_email(email,email_tv.getText().toString(),"tutor");
+                    String result = chandler.checkin_email(AppState.TutorSession.tutor_id,email_tv.getText().toString(),"tutor");
                     if(result.equals(CheckinHandler.CHECKIN_SUCCESSFUL)) {
                         Intent it = new Intent(CheckIn_Activity.this, Tutor_Checked_In_Activity.class);
                         // Send over the student's email
