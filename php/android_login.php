@@ -56,9 +56,10 @@
         $stmt_available_roles->close();
 
         $query =
-        'select login_id
-        from LOGIN
-        where email=?';
+        'select a.ur_id
+         from USER_ROLES a, LOGIN b, ROLES c
+         where a.u_id = b.login_id
+		 and a.r_id = c.r_id and b.email = ?';
         $stmt = $con->prepare($query);
         $stmt->bind_param("s",$email);
         $stmt->bind_result($login_id);
@@ -104,13 +105,9 @@
 
         $query =
         'select a.ur_id
-         from USER_ROLES a,
-					    LOGIN b,
-              ROLES c
-         where a.u_id = b.login_id and
-					     a.r_id = c.r_id and
-					     b.email = ? and
-               c.role_name = "TUTOR";';
+         from USER_ROLES a, LOGIN b, ROLES c
+         where a.u_id = b.login_id
+		 and a.r_id = c.r_id and b.email = ?;';
         $stmt = $con->prepare($query);
         $stmt->bind_param("s",$email);
         $stmt->bind_result($login_id);
