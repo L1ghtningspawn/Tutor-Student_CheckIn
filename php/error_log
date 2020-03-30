@@ -1,0 +1,168 @@
+[26-Feb-2020 14:39:36 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_signup.php on line 44
+[26-Feb-2020 14:49:39 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_signup.php on line 44
+[29-Feb-2020 07:18:11 America/Chicago] PHP Parse error:  syntax error, unexpected '$stmt_available_roles' (T_VARIABLE) in /home1/seesselm/public_html/Capstone/android/android_login.php on line 59
+[29-Feb-2020 07:18:27 America/Chicago] PHP Parse error:  syntax error, unexpected '$stmt_available_roles' (T_VARIABLE) in /home1/seesselm/public_html/Capstone/android/android_login.php on line 59
+[29-Feb-2020 07:25:13 America/Chicago] PHP Parse error:  syntax error, unexpected '$stmt_available_roles' (T_VARIABLE) in /home1/seesselm/public_html/Capstone/android/android_login.php on line 59
+[29-Feb-2020 08:20:49 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_signup.php on line 54
+[29-Feb-2020 08:23:11 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_signup.php on line 54
+[29-Feb-2020 12:08:07 America/Chicago] PHP Warning:  mysqli_stmt::bind_param(): Undefined fieldtype S (parameter 3) in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 15
+[29-Feb-2020 12:08:07 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 16
+[29-Feb-2020 18:33:01 America/Chicago] PHP Warning:  mysqli_stmt::bind_param(): Undefined fieldtype S (parameter 3) in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 15
+[29-Feb-2020 18:33:01 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 16
+[29-Feb-2020 18:33:08 America/Chicago] PHP Warning:  mysqli_stmt::bind_param(): Undefined fieldtype S (parameter 3) in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 15
+[29-Feb-2020 18:33:08 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 16
+[29-Feb-2020 18:34:03 America/Chicago] PHP Warning:  mysqli_stmt::bind_param(): Undefined fieldtype S (parameter 3) in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 15
+[29-Feb-2020 18:34:03 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 16
+[29-Feb-2020 18:34:10 America/Chicago] PHP Warning:  mysqli_stmt::bind_param(): Undefined fieldtype S (parameter 3) in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 15
+[29-Feb-2020 18:34:10 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 16
+[29-Feb-2020 18:34:51 America/Chicago] PHP Warning:  mysqli_stmt::bind_param(): Undefined fieldtype S (parameter 3) in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 15
+[29-Feb-2020 18:34:51 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 16
+[29-Feb-2020 21:43:32 America/Chicago] PHP Warning:  mysqli_stmt::bind_param(): Undefined fieldtype S (parameter 3) in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 15
+[29-Feb-2020 21:43:32 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 16
+[29-Feb-2020 21:45:46 America/Chicago] PHP Warning:  mysqli_stmt::bind_param(): Undefined fieldtype S (parameter 3) in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 15
+[29-Feb-2020 21:45:46 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 16
+[29-Feb-2020 21:46:02 America/Chicago] PHP Warning:  mysqli_stmt::bind_param(): Undefined fieldtype S (parameter 3) in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 15
+[29-Feb-2020 21:46:02 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 16
+[29-Feb-2020 21:49:03 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 16
+[29-Feb-2020 21:49:14 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 16
+[01-Mar-2020 02:57:40 America/Chicago] PHP Warning:  main(): Couldn't fetch mysqli_stmt in /home1/seesselm/public_html/Capstone/android/android_tutordeptlist.php on line 50
+[01-Mar-2020 07:26:49 America/Chicago] PHP Fatal error:  Call to a member function close() on null in /home1/seesselm/public_html/Capstone/android/android_clockout.php on line 41
+[23-Mar-2020 08:45:05 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 38
+[23-Mar-2020 08:46:00 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 38
+[23-Mar-2020 08:47:25 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 38
+[23-Mar-2020 08:56:07 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 38
+[23-Mar-2020 21:54:46 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 38
+[23-Mar-2020 23:38:51 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 52
+[23-Mar-2020 23:39:09 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 52
+[23-Mar-2020 23:42:30 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 52
+[23-Mar-2020 23:43:46 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 52
+[23-Mar-2020 23:44:39 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 52
+[23-Mar-2020 23:49:09 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 52
+[23-Mar-2020 23:58:03 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 52
+[23-Mar-2020 23:59:25 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 51
+[24-Mar-2020 00:00:56 America/Chicago] PHP Parse error:  syntax error, unexpected 'TUTOR' (T_STRING) in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 36
+[24-Mar-2020 00:01:37 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 51
+[24-Mar-2020 00:04:25 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 51
+[24-Mar-2020 00:13:23 America/Chicago] PHP Fatal error:  Call to a member function error() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 55
+[24-Mar-2020 00:15:55 America/Chicago] PHP Fatal error:  Call to a member function execute() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 55
+[24-Mar-2020 00:19:13 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 59
+[24-Mar-2020 00:24:23 America/Chicago] PHP Warning:  mysqli_stmt::bind_param(): Number of variables doesn't match number of parameters in prepared statement in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 58
+[24-Mar-2020 00:24:23 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 62
+[24-Mar-2020 00:26:37 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 62
+[24-Mar-2020 00:27:54 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 62
+[24-Mar-2020 00:43:25 America/Chicago] PHP Parse error:  syntax error, unexpected '@' in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 29
+[24-Mar-2020 00:43:31 America/Chicago] PHP Parse error:  syntax error, unexpected '@' in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 29
+[24-Mar-2020 00:47:58 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 48
+[24-Mar-2020 00:48:49 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 48
+[24-Mar-2020 00:50:17 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 48
+[24-Mar-2020 00:51:28 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 48
+[24-Mar-2020 00:51:59 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 48
+[24-Mar-2020 00:55:09 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 48
+[24-Mar-2020 01:13:32 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 54
+[24-Mar-2020 01:14:24 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 53
+[24-Mar-2020 01:14:50 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 53
+[24-Mar-2020 01:18:04 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 53
+[24-Mar-2020 01:18:36 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 53
+[24-Mar-2020 01:23:15 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 48
+[24-Mar-2020 01:26:07 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 50
+[24-Mar-2020 02:17:25 America/Chicago] PHP Parse error:  syntax error, unexpected '$query2' (T_VARIABLE), expecting ',' or ';' in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 42
+[24-Mar-2020 14:53:32 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 87
+[24-Mar-2020 14:54:54 America/Chicago] PHP Parse error:  syntax error, unexpected '$stmt' (T_VARIABLE) in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 86
+[24-Mar-2020 14:55:21 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 87
+[24-Mar-2020 14:58:04 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 87
+[24-Mar-2020 14:58:31 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 87
+[24-Mar-2020 15:05:07 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 76
+[24-Mar-2020 15:06:29 America/Chicago] PHP Fatal error:  Call to undefined method mysqli_stmt::query() in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 88
+[24-Mar-2020 15:08:27 America/Chicago] PHP Fatal error:  Call to undefined method mysqli_stmt::query() in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 86
+[24-Mar-2020 15:11:03 America/Chicago] PHP Fatal error:  Call to a member function execute() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 86
+[24-Mar-2020 15:12:15 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 85
+[24-Mar-2020 15:21:06 America/Chicago] PHP Warning:  mysqli_stmt::bind_param(): Number of variables doesn't match number of parameters in prepared statement in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 82
+[24-Mar-2020 15:21:06 America/Chicago] PHP Warning:  mysqli_stmt::execute() expects exactly 0 parameters, 1 given in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 94
+[24-Mar-2020 15:21:54 America/Chicago] PHP Warning:  mysqli_stmt::execute() expects exactly 0 parameters, 1 given in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 94
+[24-Mar-2020 15:23:27 America/Chicago] PHP Warning:  mysqli_stmt::execute() expects exactly 0 parameters, 1 given in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 94
+[24-Mar-2020 15:27:01 America/Chicago] PHP Warning:  mysqli_stmt::execute() expects exactly 0 parameters, 1 given in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 97
+[24-Mar-2020 15:29:03 America/Chicago] PHP Warning:  mysqli_stmt::execute() expects exactly 0 parameters, 1 given in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 95
+[24-Mar-2020 15:30:24 America/Chicago] PHP Warning:  mysqli_stmt::execute() expects exactly 0 parameters, 1 given in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 96
+[24-Mar-2020 21:13:09 America/Chicago] PHP Parse error:  syntax error, unexpected 'isset' (T_ISSET), expecting '(' in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 6
+[24-Mar-2020 21:17:57 America/Chicago] PHP Parse error:  syntax error, unexpected 'isset' (T_ISSET), expecting '(' in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 6
+[25-Mar-2020 19:06:58 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 167
+[25-Mar-2020 19:08:09 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 166
+[25-Mar-2020 19:20:02 America/Chicago] PHP Parse error:  syntax error, unexpected end of file in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 168
+[25-Mar-2020 20:13:19 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 73
+[25-Mar-2020 20:13:36 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/android_student_checkin.php on line 73
+[26-Mar-2020 02:53:58 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home1/seesselm/public_html/Capstone/android/test.php on line 12
+[26-Mar-2020 02:54:51 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home1/seesselm/public_html/Capstone/android/test.php on line 12
+[26-Mar-2020 02:55:10 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home1/seesselm/public_html/Capstone/android/test.php on line 13
+[26-Mar-2020 02:55:38 America/Chicago] PHP Parse error:  syntax error, unexpected '=' in /home1/seesselm/public_html/Capstone/android/test.php on line 15
+[26-Mar-2020 02:55:40 America/Chicago] PHP Parse error:  syntax error, unexpected '=' in /home1/seesselm/public_html/Capstone/android/test.php on line 15
+[26-Mar-2020 02:57:02 America/Chicago] PHP Parse error:  syntax error, unexpected '=' in /home1/seesselm/public_html/Capstone/android/test.php on line 12
+[26-Mar-2020 02:57:04 America/Chicago] PHP Parse error:  syntax error, unexpected '=' in /home1/seesselm/public_html/Capstone/android/test.php on line 12
+[26-Mar-2020 02:57:33 America/Chicago] PHP Parse error:  syntax error, unexpected '=' in /home1/seesselm/public_html/Capstone/android/test.php on line 12
+[26-Mar-2020 02:57:43 America/Chicago] PHP Parse error:  syntax error, unexpected '=' in /home1/seesselm/public_html/Capstone/android/test.php on line 12
+[26-Mar-2020 02:57:44 America/Chicago] PHP Parse error:  syntax error, unexpected '=' in /home1/seesselm/public_html/Capstone/android/test.php on line 12
+[26-Mar-2020 02:57:45 America/Chicago] PHP Parse error:  syntax error, unexpected '=' in /home1/seesselm/public_html/Capstone/android/test.php on line 12
+[26-Mar-2020 02:58:01 America/Chicago] PHP Parse error:  syntax error, unexpected '=' in /home1/seesselm/public_html/Capstone/android/test.php on line 12
+[26-Mar-2020 02:58:49 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home1/seesselm/public_html/Capstone/android/test.php on line 12
+[26-Mar-2020 02:59:07 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home1/seesselm/public_html/Capstone/android/test.php on line 12
+[26-Mar-2020 02:59:08 America/Chicago] PHP Parse error:  syntax error, unexpected '{' in /home1/seesselm/public_html/Capstone/android/test.php on line 12
+[26-Mar-2020 02:59:48 America/Chicago] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home1/seesselm/public_html/Capstone/android/test.php on line 14
+[26-Mar-2020 03:00:06 America/Chicago] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home1/seesselm/public_html/Capstone/android/test.php on line 14
+[26-Mar-2020 11:49:08 America/Chicago] PHP Warning:  mysqli_stmt::bind_param(): Number of variables doesn't match number of parameters in prepared statement in /home1/seesselm/public_html/Capstone/android/test.php on line 20
+[26-Mar-2020 11:51:15 America/Chicago] PHP Warning:  mysqli_stmt::bind_param(): Number of variables doesn't match number of parameters in prepared statement in /home1/seesselm/public_html/Capstone/android/test.php on line 20
+[27-Mar-2020 01:14:06 America/Chicago] PHP Warning:  mysqli_stmt::fetch(): Couldn't fetch mysqli_stmt in /home1/seesselm/public_html/Capstone/android/test.php on line 27
+[27-Mar-2020 01:17:38 America/Chicago] PHP Warning:  mysqli_stmt::bind_result(): Number of bind variables doesn't match number of fields in prepared statement in /home1/seesselm/public_html/Capstone/android/test.php on line 21
+[27-Mar-2020 01:17:38 America/Chicago] PHP Warning:  mysqli_stmt::fetch(): Couldn't fetch mysqli_stmt in /home1/seesselm/public_html/Capstone/android/test.php on line 27
+[27-Mar-2020 13:04:15 America/Chicago] PHP Parse error:  syntax error, unexpected '$stmt' (T_VARIABLE) in /home1/seesselm/public_html/Capstone/android/test.php on line 25
+[27-Mar-2020 13:04:55 America/Chicago] PHP Parse error:  syntax error, unexpected '$stmt' (T_VARIABLE) in /home1/seesselm/public_html/Capstone/android/test.php on line 26
+[27-Mar-2020 13:09:24 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/test.php on line 33
+[27-Mar-2020 13:16:29 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/test.php on line 33
+[27-Mar-2020 13:19:18 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/test.php on line 33
+[27-Mar-2020 13:23:34 America/Chicago] PHP Parse error:  syntax error, unexpected '$ur_id' (T_VARIABLE) in /home1/seesselm/public_html/Capstone/android/test.php on line 27
+[27-Mar-2020 13:26:35 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/test.php on line 33
+[27-Mar-2020 13:26:59 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/test.php on line 34
+[27-Mar-2020 13:27:22 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/test.php on line 33
+[27-Mar-2020 13:39:04 America/Chicago] PHP Warning:  mysql_fetch_row() expects parameter 1 to be resource, object given in /home1/seesselm/public_html/Capstone/android/test.php on line 36
+[28-Mar-2020 11:05:34 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 25
+[28-Mar-2020 11:05:43 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 25
+[28-Mar-2020 11:05:59 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 25
+[28-Mar-2020 11:07:07 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 25
+[28-Mar-2020 11:07:36 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 25
+[28-Mar-2020 11:10:01 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 25
+[28-Mar-2020 11:11:43 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 25
+[28-Mar-2020 11:12:55 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 25
+[28-Mar-2020 11:14:59 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 25
+[28-Mar-2020 11:15:05 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 25
+[28-Mar-2020 11:15:41 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 25
+[28-Mar-2020 11:16:58 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 37
+[28-Mar-2020 11:19:38 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 37
+[28-Mar-2020 11:20:35 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 38
+[28-Mar-2020 11:23:10 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 38
+[28-Mar-2020 11:25:31 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 38
+[28-Mar-2020 11:25:48 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 38
+[28-Mar-2020 11:30:15 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 38
+[28-Mar-2020 11:34:17 America/Chicago] PHP Parse error:  syntax error, unexpected 'for' (T_FOR) in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 14
+[28-Mar-2020 11:34:20 America/Chicago] PHP Parse error:  syntax error, unexpected 'for' (T_FOR) in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 14
+[28-Mar-2020 11:34:59 America/Chicago] PHP Parse error:  syntax error, unexpected 'for' (T_FOR) in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 14
+[28-Mar-2020 11:38:48 America/Chicago] PHP Parse error:  syntax error, unexpected 'for' (T_FOR) in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 14
+[28-Mar-2020 11:38:55 America/Chicago] PHP Parse error:  syntax error, unexpected 'for' (T_FOR) in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 14
+[28-Mar-2020 22:20:20 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 36
+[29-Mar-2020 09:27:05 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 36
+[29-Mar-2020 09:27:16 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 36
+[29-Mar-2020 09:27:59 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 36
+[29-Mar-2020 09:30:34 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 36
+[29-Mar-2020 09:30:41 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 36
+[29-Mar-2020 10:17:56 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 37
+[29-Mar-2020 10:18:00 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 37
+[29-Mar-2020 10:18:11 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 37
+[29-Mar-2020 10:18:18 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 37
+[29-Mar-2020 10:37:27 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 37
+[29-Mar-2020 10:37:31 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 37
+[29-Mar-2020 11:01:14 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 37
+[29-Mar-2020 11:01:19 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 37
+[29-Mar-2020 20:15:59 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 37
+[29-Mar-2020 20:16:07 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 37
+[29-Mar-2020 20:39:02 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 37
+[29-Mar-2020 20:39:24 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 37
+[29-Mar-2020 20:40:10 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 37
+[29-Mar-2020 20:40:17 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 37
+[29-Mar-2020 20:40:29 America/Chicago] PHP Fatal error:  Call to a member function bind_result() on boolean in /home1/seesselm/public_html/Capstone/android/Student_Session_history.php on line 37

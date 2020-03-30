@@ -1,0 +1,9 @@
+[29-Feb-2020 00:01:46 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/temporary_files/create_supervisor_department.php on line 51
+[29-Feb-2020 00:12:50 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/temporary_files/create_supervisor_department.php on line 51
+[29-Feb-2020 05:57:42 America/Chicago] PHP Fatal error:  Call to a member function affected_rows() on null in /home1/seesselm/public_html/Capstone/android/temporary_files/create_supervisor_department.php on line 23
+[29-Feb-2020 06:00:15 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/temporary_files/create_supervisor_department.php on line 52
+[29-Feb-2020 06:01:39 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/temporary_files/create_supervisor_department.php on line 51
+[29-Feb-2020 06:04:43 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/temporary_files/create_supervisor_department.php on line 52
+[29-Feb-2020 06:06:27 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/temporary_files/create_supervisor_department.php on line 52
+[29-Feb-2020 06:20:27 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/temporary_files/create_supervisor_department.php on line 52
+[29-Feb-2020 06:24:59 America/Chicago] PHP Fatal error:  Call to a member function bind_param() on boolean in /home1/seesselm/public_html/Capstone/android/temporary_files/create_supervisor_department.php on line 67
