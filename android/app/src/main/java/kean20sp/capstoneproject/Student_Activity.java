@@ -112,4 +112,10 @@ public class Student_Activity extends AppCompatActivity {
         return;
     }
 
+    @Override
+    public void onResume(){
+        AppState.UserInfo.user_role_id = AppState.UserInfo.student_role_id;
+        super.onResume();
+    }
+
 }

@@ -72,6 +72,8 @@ public class LoginHandler extends HTTPConnectionHandler{
         return process(response);
     }
 
+    public String user_role_id = null;
+
     private String process(String response) {
         Log.d("loginhandler response","response = "+response);
         if(response==null){
@@ -80,7 +82,7 @@ public class LoginHandler extends HTTPConnectionHandler{
         String[] response_split = response.split(";");
         String code = response_split[0];
         if(code.equals("SL0")){
-            AppState.UserInfo.user_role_id = response_split[1]; //move later
+            user_role_id = response_split[1]; //move later
             String available_roles = response_split[2];
             String session_id = response.replace(response_split[0]+';'+response_split[1]+';'+response_split[2]+';',"");
             this.session_id = session_id;

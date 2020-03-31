@@ -84,6 +84,8 @@ public class login extends AppCompatActivity {
                 AppState.Session.id = session_id;
                 AppState.UserInfo.roles  = available_roles;
                 AppState.UserInfo.email = email_text.trim();
+                AppState.UserInfo.user_role_id = h.user_role_id;
+                AppState.UserInfo.student_role_id = h.user_role_id;
 
                 startActivity(it);
             } else {
