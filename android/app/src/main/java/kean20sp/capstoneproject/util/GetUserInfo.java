@@ -30,6 +30,15 @@ public class GetUserInfo extends HTTPConnectionHandler {
         return process(pairs);
     }
 
+    public static String get_student_id(String student_email) {
+
+        ArrayList<NameValuePair> pairs = new ArrayList<>();
+        pairs.add(new BasicNameValuePair("get_type", "student_role_id"));
+        pairs.add(new BasicNameValuePair("email", student_email));
+
+        return process(pairs);
+    }
+
         private static String process(final ArrayList<NameValuePair> pairs){
 
             Thread t = new Thread(new Runnable() {
@@ -62,11 +71,14 @@ public class GetUserInfo extends HTTPConnectionHandler {
             switch (code) {
                 case "SGE0":
                 case "SGN0":
+                case "SGID0":
                     return response_split[1];
                 case "FGE0":
                     return EMAIL_RETRIEVAL_FAILED;
                 case "FGN0":
                     return NAME_RETRIEVAL_FAILED;
+                case "FGID0":
+                    return UR_ID_RETRIEVAL_FAILED;
                 default:
                     return UNKNOWN_ERROR;
             }
@@ -74,5 +86,6 @@ public class GetUserInfo extends HTTPConnectionHandler {
 
         private static final String EMAIL_RETRIEVAL_FAILED = "Email retrieval was unsuccessful.";
         private static final String NAME_RETRIEVAL_FAILED = "Name retrieval was unsuccessful.";
+        private static final String UR_ID_RETRIEVAL_FAILED= "User role id retrieval was unsuccessful.";
         private static final String UNKNOWN_ERROR = "Unknown Error. Try again.";
 }

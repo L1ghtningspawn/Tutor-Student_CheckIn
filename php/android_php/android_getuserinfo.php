@@ -33,6 +33,7 @@
 			echo "FGN0";
 		}		
 	} elseif($get_type == 'email'){
+
 		//SGN0 - return name
 		//FGN0 - failed to get name
 
@@ -56,6 +57,33 @@
 		}
 		else{
 			echo "FGE0";
+		}
+	} elseif($get_type == 'student_role_id'){
+		$email = $_POST['email'];
+
+		$query_ur_id = 
+		'select ur.ur_id
+		from USER_ROLES ur
+		join USER_INFO ui on ui.u_id = ur.u_id
+		join LOGIN l on l.login_id = ui.login_id
+		where ur.r_id = (select r_id
+					from ROLES
+					where role_name = \'STUDENT\')
+		and l.email =?;';
+		
+		$stmt = $con->prepare($query_ur_id);
+		$stmt->bind_param('s', $email);
+		$stmt->bind_result($user_role_id);
+		$stmt->execute();
+		$stmt->fetch();
+		$stmt->store_result();
+		$stmt->close();		
+
+		if($user_role_id){
+			echo "SGID0;{$user_role_id}";
+		}
+		else{
+			echo "FGID0";
 		}
 	}
 	
