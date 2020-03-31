@@ -33,7 +33,7 @@ public class Tutor_Active_Session_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutor__active__session_);
 
-        AppState.Debug.log_TutorSession();
+        AppState.Debug.log_All();
 
         session_table = (TableLayout) findViewById(R.id.session_table);
         session_table.addView(ViewOptionsUtility.newRow(this,new String[]{"student", "time in", "time out"}, true));

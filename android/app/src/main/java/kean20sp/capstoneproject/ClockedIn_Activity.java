@@ -25,6 +25,8 @@ public class ClockedIn_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clocked_in_);
 
+        AppState.Debug.log_All();
+
         checkin = (TextView) findViewById(R.id.checkin);
         clockout = (TextView) findViewById(R.id.clockout);
         logout = (TextView) findViewById(R.id.logout);
