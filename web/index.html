@@ -1,97 +1,13 @@
-<style>
-	.header{
-		height:60px;
-		width:100%;
-		top:0;
-		left:0;
-		position:fixed;
-		background-color:black;<!--#003366;->
-	}
-	.logo{
-		height:55px;
-		width:55px;
-	}
-	.head-btn{
-		color:white;
-		background-color:black;
-		border:none;
-		cursor:pointer;
-		font-family:Arial;
-		font-size:16px;
-		font-weight:bold;
-		padding:15px 20px;
-		height:100%;
-		width:100px;
-	}
-	.head-btn:hover{
-		background-color: grey;
-	}
-	#login{
-		position:absolute;
-		right:0;
-	}
-	#sign-up{
-		position:absolute;
-		right:100px;
-	}
-
-	.side-bar{
-		height:100%;
-		width:250px;
-		position:fixed;
-		top:60px;
-		bottom:0;
-		left:0;
-		background-color:black;
-		color:white;
-	}
-	.container{
-		text-align:center;
-	}
-	.side-button{
-		color:white;
-		background-color:black;
-		border:none;
-		cursor:pointer;
-		font-family:Arial;
-		font-size:16px;
-		font-weight:bold;
-		padding:10px 90px;
-		width:100%;
-		height:75px;
-	}
-	.side-button:hover{
-		background-color:grey;
-	}
-
-	.help{
-		color:black;
-		background-color:#aaff80;
-		border:none;
-		cursor:pointer;
-		font-family:Arial;
-		font-size:16px;
-		font-weight:bold;
-		width:75%;
-		padding:10px 20px;
-		border-radius:8px;
-	}
-
-</style>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style/style.css">
+</head>
 <body>
 	<div class="header">
-		<img class="logo" src="logo.png">
-		<button class="head-btn" id="Login">Login</button>
-		<button class="head-btn" id="sign-up">Sign-up</button>
+		<img class="logo" src="images/logo.png">
+		<button class="head-btn" id="Login" onclick="window.location.href='login.html'">Login</button>
+		<button class="head-btn" id="sign-up" onclick="window.location.href='signup.html'">Sign-up</button>
 	</div>
-
-	<div class="side-bar">
-		<div class="container">
-			<button class="side-button">Account Settings</button>
-			<button class="side-button">Check-in</button>
-			<button class="side-button">View Activity</button>
-			<button class="help">Need help getting started?</button>
-		</div>
-	</div>
-
 </body>
+</html>
