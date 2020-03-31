@@ -27,10 +27,11 @@ import kean20sp.capstoneproject.http.CheckinHandler;
 import kean20sp.capstoneproject.http.TutorCourseListHandler;
 import kean20sp.capstoneproject.util.AppState;
 import kean20sp.capstoneproject.util.CheckUserInput;
+import kean20sp.capstoneproject.util.GetUserInfo;
 import kean20sp.capstoneproject.util.QRUtil;
 
 public class CheckIn_Activity extends AppCompatActivity {
-    TextView email_tv, checkin_tv, logout_tv, clockin_time_tv, clockin_duration_tv;
+    TextView email_tv, checkin_tv, logout_tv, clockin_time_tv, clockin_duration_tv, session_history_tv;
     ImageView qrcode;
 
     String session_id, email, user_roles, str_clockin_time, clockin_id, user_role_id;
@@ -48,6 +49,7 @@ public class CheckIn_Activity extends AppCompatActivity {
         logout_tv = (TextView) findViewById(R.id.logout);
         clockin_time_tv = (TextView) findViewById(R.id.clockin_time);
         clockin_duration_tv = (TextView) findViewById(R.id.clockin_duration);
+        session_history_tv = (TextView) findViewById(R.id.session_history);
         qrcode = (ImageView) findViewById(R.id.qrcode);
 
         Typeface light_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
@@ -55,7 +57,7 @@ public class CheckIn_Activity extends AppCompatActivity {
         email_tv.setTypeface(regular_font);
         checkin_tv.setTypeface(regular_font);
         clockin_time_tv.setTypeface(regular_font);
-//        clockin_duration_tv.setTypeface(regular_font);
+        clockin_duration_tv.setTypeface(regular_font);
         logout_tv.setTypeface(light_font);
 
         session_id = AppState.Session.id;
@@ -115,8 +117,10 @@ public class CheckIn_Activity extends AppCompatActivity {
                 }
                 if(isGoodInput) {
                     CheckinHandler chandler = new CheckinHandler();
-                    String result = chandler.checkin_email(AppState.TutorSession.tutor_id,email_tv.getText().toString(),"tutor");
+                    String result = chandler.checkin_email(AppState.UserInfo.user_role_id,email_tv.getText().toString(),"tutor");
                     if(result.equals(CheckinHandler.CHECKIN_SUCCESSFUL)) {
+                        AppState.TutorSession.student_id = GetUserInfo.get_student_id(email_tv.getText().toString());
+                        AppState.TutorSession.student_email = email_tv.getText().toString();
                         Intent it = new Intent(CheckIn_Activity.this, Tutor_Checked_In_Activity.class);
                         // Send over the student's email
                         GregorianCalendar cal = new GregorianCalendar();
@@ -138,6 +142,14 @@ public class CheckIn_Activity extends AppCompatActivity {
                         Toast.makeText(CheckIn_Activity.this,result,Toast.LENGTH_LONG).show();
                     }
                 }
+            }
+        });
+
+        session_history_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CheckIn_Activity.this, Tutor_Active_Session_Activity.class);
+                startActivity(intent);
             }
         });
 
