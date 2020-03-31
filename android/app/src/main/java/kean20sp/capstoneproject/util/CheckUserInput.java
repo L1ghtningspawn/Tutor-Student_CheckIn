@@ -6,8 +6,8 @@ public class CheckUserInput {
 
     public static boolean isValidEmail(String email)
     {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
-                "[a-zA-Z0-9_+&*-]+)*@kean.edu";
+        String emailRegex = "^ *[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@kean.edu *";
 
         Pattern pat = Pattern.compile(emailRegex);
         if (email == null)

@@ -103,18 +103,6 @@
             </TableLayout>
             -->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="10dp"
-                android:background="#000000"
-                android:gravity="center"
-                android:letterSpacing="0.2"
-                android:padding="16dp"
-                android:text="End All Sessions"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>

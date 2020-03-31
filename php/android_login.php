@@ -4,7 +4,7 @@
   include "password.php";
 
   if(isset($_POST['login'])){
-    $email = $_POST['email'];
+    $email = trim($_POST['email']);
     $password = $_POST['password'];
 
     $query = "select email, password from LOGIN where email=?";
@@ -56,9 +56,12 @@
         $stmt_available_roles->close();
 
         $query =
-        'select a.ur_id
-         from USER_ROLES a, LOGIN b, ROLES c
-         where a.u_id = b.login_id
+        'select a.ur_id
+
+         from USER_ROLES a, LOGIN b, ROLES c
+
+         where a.u_id = b.login_id
+
 		 and a.r_id = c.r_id and b.email = ?';
         $stmt = $con->prepare($query);
         $stmt->bind_param("s",$email);
@@ -106,7 +109,8 @@
         $query =
         'select a.ur_id
          from USER_ROLES a, LOGIN b, ROLES c
-         where a.u_id = b.login_id
+         where a.u_id = b.login_id
+
 		 and a.r_id = c.r_id and b.email = ?;';
         $stmt = $con->prepare($query);
         $stmt->bind_param("s",$email);

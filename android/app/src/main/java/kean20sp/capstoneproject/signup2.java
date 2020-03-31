@@ -62,7 +62,7 @@ public class signup2 extends AppCompatActivity {
                     Intent it = new Intent(signup2.this, Student_Activity.class);
                     AppState.Session.id = session_id;
                     AppState.UserInfo.roles  = available_roles;
-                    AppState.UserInfo.email = email;
+                    AppState.UserInfo.email = email.trim();
                     startActivity(it);
                 } else {
                     Toast.makeText(signup2.this,result,Toast.LENGTH_LONG).show();

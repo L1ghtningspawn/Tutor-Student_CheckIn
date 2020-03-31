@@ -83,7 +83,7 @@ public class login extends AppCompatActivity {
                 Intent it = new Intent(login.this, Student_Activity.class);
                 AppState.Session.id = session_id;
                 AppState.UserInfo.roles  = available_roles;
-                AppState.UserInfo.email = email_text;
+                AppState.UserInfo.email = email_text.trim();
 
                 startActivity(it);
             } else {

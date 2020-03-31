@@ -9,6 +9,8 @@ import android.os.Bundle;
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -65,8 +67,13 @@ public class CheckIn_Activity extends AppCompatActivity {
         long long_clockin_time = Long.parseLong(str_clockin_time) * 1000;
         GregorianCalendar cal = new GregorianCalendar();
         cal.setTimeInMillis(long_clockin_time);
-        clockin_time_tv.setText(cal.get(Calendar.HOUR_OF_DAY)+":"+cal.get(Calendar.MINUTE)+" "+(cal.get(Calendar.AM_PM) == 0 ? "am" : "pm"));
+        int ct_hour = cal.get(Calendar.HOUR_OF_DAY);
+        int ct_minute = cal.get(Calendar.MINUTE);
+        String ct_ampm = (cal.get(Calendar.AM_PM) == 0 ? "am" : "pm");
+        String ct_time = (ct_hour < 10 ? "0"+ct_hour: ct_hour) + ":" +
+                (ct_minute < 10 ? "0" + ct_minute : ct_minute) + " " + ct_ampm;
 
+        clockin_time_tv.setText(ct_time);
         new Thread() {
             @Override
             public void run(){
@@ -80,11 +87,9 @@ public class CheckIn_Activity extends AppCompatActivity {
                     String duration = (hours < 10 ? "0" : "")+hours+":"+
                             (minutes < 10 ? "0" : "")+minutes+":"+
                             (seconds < 10 ? "0" : "")+seconds;
-                    if (clockin_duration_tv.getText().equals(duration)) {
-                        continue;
-                    } else {
-                        clockin_duration_tv.setText(duration);
-                    }
+                    Log.d("mailman", "duration = "+duration);
+                    Log.d("mailman", "textview = "+(clockin_duration_tv == null));
+                    clockin_duration_tv.setText(duration);
                 }
             }
         }.start();

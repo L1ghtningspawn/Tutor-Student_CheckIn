@@ -10,8 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,11 +17,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import kean20sp.capstoneproject.http.TutorCourseListHandler;
 import kean20sp.capstoneproject.util.AppState;
 import kean20sp.capstoneproject.util.GetUserInfo;
-import kean20sp.capstoneproject.util.ViewOptionsUtility;
-import kean20sp.capstoneproject.views.CourseTextView;
 
 public class Tutor_Checked_In_Activity extends AppCompatActivity {
     TextView student_name_tv, student_email_tv, checkin_time_tv, checkin_duration_tv, session_history, end_session_tv;
@@ -48,7 +43,7 @@ public class Tutor_Checked_In_Activity extends AppCompatActivity {
         student_email_tv.setText(student_email);
         checkin_time_tv = (TextView) findViewById(R.id.checkin_time);
         checkin_time_tv.setText(checkin_time);
-        checkin_duration_tv = (TextView) findViewById(R.id.checkin_duration);
+        checkin_duration_tv = (TextView) findViewById(R.id.clockin_duration);
         session_history = (TextView) findViewById(R.id.session_history);
         end_session_tv = (TextView) findViewById(R.id.check_out);
 
