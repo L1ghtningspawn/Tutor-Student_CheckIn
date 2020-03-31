@@ -133,7 +133,7 @@ public class Tutor_Activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-       if(getIntent().getStringExtra("just_clocked_out") != null){
+       if(AppState.Clock.out_datetime != null){
            return;
        } else {
            super.onBackPressed();

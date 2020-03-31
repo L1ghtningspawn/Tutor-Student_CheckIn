@@ -123,9 +123,7 @@ public class ClockedIn_Activity extends AppCompatActivity {
         chandler.clockout(email,session_id,clockin_id);
 
         Intent it = new Intent(ClockedIn_Activity.this,Tutor_Activity.class);
-        AppState.Session.id = session_id;
-        AppState.UserInfo.email = email;
-        AppState.UserInfo.roles = user_roles;
+        AppState.Clock.out_datetime = Long.toString(System.currentTimeMillis()/1000);
         startActivity(it);
     }
 

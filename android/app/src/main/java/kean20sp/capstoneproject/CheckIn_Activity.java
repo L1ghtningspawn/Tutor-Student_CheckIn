@@ -52,6 +52,14 @@ public class CheckIn_Activity extends AppCompatActivity {
         session_history_tv = (TextView) findViewById(R.id.session_history);
         qrcode = (ImageView) findViewById(R.id.qrcode);
 
+//        Log.d("checkin_activity","email_tv --> "+(email_tv == null));
+//        Log.d("checkin_activity","checkin_tv --> "+(checkin_tv == null));
+//        Log.d("checkin_activity","logout_tv --> "+(logout_tv == null));
+//        Log.d("checkin_activity","clockin_time_tv --> "+(clockin_time_tv == null));
+//        Log.d("checkin_activity","clockin_duration_tv --> "+(clockin_duration_tv == null));
+//        Log.d("checkin_activity","session_history_tv --> "+(session_history_tv == null));
+//        Log.d("checkin_activity","qrcode --> "+(qrcode == null));
+
         Typeface light_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
         Typeface regular_font = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
         email_tv.setTypeface(regular_font);
