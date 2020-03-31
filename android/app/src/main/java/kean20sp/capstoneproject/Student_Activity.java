@@ -54,6 +54,7 @@ public class Student_Activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //AppState.Debug.log_All();
     }
 
     public void on_click_tutor_mode(View v){

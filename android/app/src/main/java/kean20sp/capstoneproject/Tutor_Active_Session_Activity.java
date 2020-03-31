@@ -90,6 +90,8 @@ public class Tutor_Active_Session_Activity extends AppCompatActivity {
                 }
             }
         }
+
+        //AppState.Debug.log_All();
     }
 
 }

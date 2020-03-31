@@ -127,7 +127,8 @@ public class CheckIn_Activity extends AppCompatActivity {
                         String ct_time = (ct_hour < 10 ? "0"+ct_hour: ct_hour) + ":" +
                                 (ct_minute < 10 ? "0" + ct_minute : ct_minute) + " " + ct_ampm;
 
-                        AppState.TutorSession.in_datetime = ct_time;
+                        AppState.TutorSession.in_datetime = Long.toString(cal.getTimeInMillis()/1000);
+                        Log.d("checkin_time", AppState.TutorSession.in_datetime);
                         startActivity(it);
                     } else if(result.equals(CheckinHandler.INVALID_SESSION)){
                         Toast.makeText(CheckIn_Activity.this,result,Toast.LENGTH_LONG).show();

@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -89,7 +91,7 @@ public class Tutor_Activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+    //AppState.Debug.log_All();
     }
 
     public void on_click_logout(View v){
@@ -116,6 +118,7 @@ public class Tutor_Activity extends AppCompatActivity {
 
             Intent it = new Intent(Tutor_Activity.this, ClockedIn_Activity.class);
             AppState.Clock.in_datetime = clockin_date;
+            Log.d("clockin_date",clockin_date);
             AppState.Clock.id = clockin_id;
             AppState.UserInfo.user_role_id = user_role_id;
             startActivity(it);

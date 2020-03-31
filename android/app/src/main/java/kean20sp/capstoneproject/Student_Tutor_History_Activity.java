@@ -88,6 +88,7 @@ public class Student_Tutor_History_Activity extends AppCompatActivity {
                 }
             }
         }
+        //AppState.Debug.log_All();
     }
     @Override
     public void onBackPressed() {
