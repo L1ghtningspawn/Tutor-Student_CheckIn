@@ -89,8 +89,8 @@ public class CheckIn_Activity extends AppCompatActivity {
                     String duration = (hours < 10 ? "0" : "")+hours+":"+
                             (minutes < 10 ? "0" : "")+minutes+":"+
                             (seconds < 10 ? "0" : "")+seconds;
-                    Log.d("mailman", "duration = "+duration);
-                    Log.d("mailman", "textview = "+(clockin_duration_tv == null));
+                    //Log.d("mailman", "duration = "+duration);
+                    //Log.d("mailman", "textview = "+(clockin_duration_tv == null));
                     clockin_duration_tv.setText(duration);
                 }
             }
@@ -123,6 +123,15 @@ public class CheckIn_Activity extends AppCompatActivity {
                         AppState.TutorSession.student_email = email_tv.getText().toString();
                         Intent it = new Intent(CheckIn_Activity.this, Tutor_Checked_In_Activity.class);
                         // Send over the student's email
+                        GregorianCalendar cal = new GregorianCalendar();
+                        cal.setTimeInMillis(System.currentTimeMillis());
+                        int ct_hour = cal.get(Calendar.HOUR_OF_DAY);
+                        int ct_minute = cal.get(Calendar.MINUTE);
+                        String ct_ampm = (cal.get(Calendar.AM_PM) == 0 ? "am" : "pm");
+                        String ct_time = (ct_hour < 10 ? "0"+ct_hour: ct_hour) + ":" +
+                                (ct_minute < 10 ? "0" + ct_minute : ct_minute) + " " + ct_ampm;
+
+                        AppState.TutorSession.in_datetime = ct_time;
                         startActivity(it);
                     } else if(result.equals(CheckinHandler.INVALID_SESSION)){
                         Toast.makeText(CheckIn_Activity.this,result,Toast.LENGTH_LONG).show();

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,12 +32,19 @@ public class Tutor_Checked_In_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutor__checked__in_);
 
-
         final String student_name = GetUserInfo.get_name(AppState.TutorSession.student_id);
         final String student_email = GetUserInfo.get_email(AppState.TutorSession.student_id);
         final String tutor_name = GetUserInfo.get_name(AppState.UserInfo.user_role_id);
         final String tutor_email = GetUserInfo.get_email(AppState.UserInfo.user_role_id);
         final String checkin_time = AppState.TutorSession.in_datetime;
+
+        AppState.Debug.log_TutorSession();
+        AppState.Debug.log_UserInfo();
+        Log.d("mailman", "student_name = "+student_name);
+        Log.d("mailman","student_email = "+student_email);
+        Log.d("mailman", "tutor_name = "+tutor_name);
+        Log.d("mailman", "tutor_email = "+tutor_email);
+        Log.d("mailman", "checkin_time = "+checkin_time);
 
         student_name_tv = (TextView) findViewById(R.id.student_name);
         student_name_tv.setText(student_name);
@@ -58,6 +67,7 @@ public class Tutor_Checked_In_Activity extends AppCompatActivity {
         DateFormat date_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         try {
+            //Log.d("mailman","checkin_time == null --> "+(checkin_time==null));
             date = date_format.parse(checkin_time);
         } catch (ParseException e) {
             e.printStackTrace();
