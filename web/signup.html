@@ -31,33 +31,39 @@
 		margin:4px 2px;
 	}
 </style>
-	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="style/style.css">
-	</head>
-	<body>
-		<div class="header">
-			<img class="logo" src="images/logo.png">
-			<button class="head-btn" id="Login" onclick="window.location.href='login.html'">Login</button>
-			<button class="head-btn" id="sign-up" onclick="window.location.href='signup.html'">Sign-up</button>
-		</div>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style/style.css">
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		$.ajax({
+			url:'session_destroy.php'
+		});
+	</script>
+</head>
+<body>
+	<div class="header">
+		<img class="logo" src="images/logo.png">
+		<button class="head-btn" id="Login" onclick="window.location.href='login.html'">Login</button>
+		<button class="head-btn" id="sign-up" onclick="window.location.href='signup.html'">Sign-up</button>
+	</div>
 
-		<div class="webpage1">
-			<div class="login">
-				<form action="signup.php" method="post">
-					<input class="input" type="text" name="email" placeholder="Email Address">
-					<br><br>
-					<input class="input" type="text" name="fname" placeholder="First Name">
-					<br><br>
-					<input class="input" type="text" name="lname" placeholder="Last Name">
-					<br><br>
-					<input class="input" type="password" name="password" placeholder="Password">
-					<br><br>
-					<input class="input" type="password" name="password2" placeholder="Comfirm Password">
-					<br><br>
-					<input class="button" type="submit" value="Submit">
-				</form>
-			</div>
+	<div class="webpage1">
+		<div class="login">
+			<form action="signup.php" method="post">
+				<input class="input" type="text" name="email" placeholder="Email Address">
+				<br><br>
+				<input class="input" type="text" name="fname" placeholder="First Name">
+				<br><br>
+				<input class="input" type="text" name="lname" placeholder="Last Name">
+				<br><br>
+				<input class="input" type="password" name="password" placeholder="Password">
+				<br><br>
+				<input class="input" type="password" name="password2" placeholder="Comfirm Password">
+				<br><br>
+				<input class="button" type="submit" value="Submit">
+			</form>
 		</div>
-	</body>
+	</div>
+</body>
 </html>
