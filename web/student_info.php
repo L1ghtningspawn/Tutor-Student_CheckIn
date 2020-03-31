@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include ("include.php");
 $u_id=$_SESSION['u_id'];
