@@ -70,9 +70,9 @@ else
         if($_SESSION['Supervisor'])
             header("Location: supervisor.html");
         if($_SESSION['Tutor'])
-            header("Location: tutor.html");
+            header("Location: tutor_info.php");
         if($_SESSION['Student'])
-            header("Location: student.html");
+            header("Location: student_info.php");
     }
     else
     {
