@@ -63,6 +63,7 @@
         android:paddingRight="60dp">
 
         <TextView
+            android:id="@+id/tutor_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"

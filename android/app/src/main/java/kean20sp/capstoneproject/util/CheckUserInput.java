@@ -7,14 +7,12 @@ public class CheckUserInput {
     public static boolean isValidEmail(String email)
     {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
-                "[a-zA-Z0-9_+&*-]+)*@" +
-                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
-                "A-Z]{2,7}$";
+                "[a-zA-Z0-9_+&*-]+)*@kean.edu";
 
         Pattern pat = Pattern.compile(emailRegex);
         if (email == null)
             return false;
-        return pat.matcher(email).matches();
+        return pat.matcher(email.toLowerCase()).matches();
     }
 
     public static boolean isValidPassword(String password){
