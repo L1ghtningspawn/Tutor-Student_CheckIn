@@ -29,19 +29,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:gravity='center'
             android:text="Tutor Mode"
             android:textColor="@android:color/black"
             android:textSize='25dp' />
-
-        <TextView
-            android:id="@+id/clockin_time_duration"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="10:00am -- 1:30:25"
-            android:textColor="@android:color/black"
-            android:textSize="18dp" />
 
         <LinearLayout
             android:layout_width="match_parent"

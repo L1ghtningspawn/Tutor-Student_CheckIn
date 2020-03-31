@@ -20,7 +20,7 @@ import kean20sp.capstoneproject.qrcode.BarcodeCaptureActivity2;
 import kean20sp.capstoneproject.util.AppState;
 
 public class Student_Activity extends AppCompatActivity {
-    TextView qr_check_in, email_check_in, tutor_mode, logout;
+    TextView qr_check_in, tutor_mode, logout;
     String session_id;
     String user_email;
     String user_roles;
@@ -33,7 +33,6 @@ public class Student_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_student_);
 
         qr_check_in = (TextView) findViewById(R.id.qr_check_in);
-        email_check_in = (TextView) findViewById(R.id.email_check_in);
         tutor_mode = (TextView) findViewById(R.id.tutor_mode);
         logout = (TextView) findViewById(R.id.logout);
 
@@ -41,7 +40,6 @@ public class Student_Activity extends AppCompatActivity {
         Typeface regular_font = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
         logout.setTypeface(light_font);
         qr_check_in.setTypeface(regular_font);
-        email_check_in.setTypeface(regular_font);
         tutor_mode.setTypeface(regular_font);
 
         session_id = AppState.Session.id;
