@@ -1,6 +1,7 @@
 package kean20sp.capstoneproject.http;
 
 import android.net.Uri;
+import android.util.Log;
 
 import java.net.CookieManager;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.NameValuePair;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
+import kean20sp.capstoneproject.util.AppState;
 
 public class LoginHandler extends HTTPConnectionHandler{
     private String host = null, filepath = null;
@@ -71,14 +73,16 @@ public class LoginHandler extends HTTPConnectionHandler{
     }
 
     private String process(String response) {
+        Log.d("loginhandler response","response = "+response);
         if(response==null){
             return "null";
         }
         String[] response_split = response.split(";");
         String code = response_split[0];
         if(code.equals("SL0")){
-            String available_roles = response_split[1];
-            String session_id = response.replace(response_split[0]+';'+response_split[1]+';',"");
+            AppState.UserInfo.user_role_id = response_split[1]; //move later
+            String available_roles = response_split[2];
+            String session_id = response.replace(response_split[0]+';'+response_split[1]+';'+response_split[2]+';',"");
             this.session_id = session_id;
             this.available_roles = available_roles;
             return LOGIN_SUCCESSFUL;

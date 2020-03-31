@@ -34,12 +34,9 @@ public class TutorCourseListHandler extends HTTPConnectionHandler {
     private String response;
     private boolean response_done = false;
     private List<NameValuePair> pairs;
-    public String getTutorCourseList(String email, String session_id, String user_role_id){
+    public String getTutorCourseList(String tutor_role_id){
         pairs = new ArrayList<NameValuePair>();
-        pairs.add(new BasicNameValuePair("tutorcourselist", "true"));
-        pairs.add(new BasicNameValuePair("email", email));
-        pairs.add(new BasicNameValuePair("session_id", session_id));
-        pairs.add(new BasicNameValuePair("user_role_id",user_role_id));
+        pairs.add(new BasicNameValuePair("t_ur_id",tutor_role_id));
 
 //        try {
 //            response = makeRequest(host, filepath, table);
@@ -47,17 +44,15 @@ public class TutorCourseListHandler extends HTTPConnectionHandler {
 //            System.out.println(e);
 //        }
 
-
         Thread t = new Thread(new Runnable(){
             public void run(){
                 try{
                     response = makeRequest(host,filepath,pairs);
                 }catch(Exception e){
                     System.out.println(e);
-                }finally {
-                    response_done = true;
-                    System.out.println(response);
                 }
+                response_done = true;
+                System.out.println("response: "+response);
             }
         });
 
@@ -82,6 +77,7 @@ public class TutorCourseListHandler extends HTTPConnectionHandler {
         if(code.equals("STc0")){
             course_ids = response_split[1].split("\\^");
             courses = response_split[2].split("\\^");
+            System.out.println(response);
             return (SUCCESSFUL);
         } else if(code.equals("STc1")){
             return (SESSION_EXPIRED);

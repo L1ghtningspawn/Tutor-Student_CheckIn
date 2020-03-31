@@ -47,6 +47,15 @@ public class Student_Activity extends AppCompatActivity {
         session_id = AppState.Session.id;
         user_email = AppState.UserInfo.email;
         user_roles = AppState.UserInfo.roles;
+
+        TextView session_table = (TextView) findViewById(R.id.session_history);
+        session_table.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Student_Activity.this, Student_Tutor_History_Activity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void on_click_tutor_mode(View v){
@@ -90,6 +99,8 @@ public class Student_Activity extends AppCompatActivity {
                     AppState.TutorSession.qr_server_key = session_info[1];
 
                     //goto course list
+                    Intent intent = new Intent(Student_Activity.this, Student_Select_Course_Activity.class);
+                    startActivity(intent);
                 }
             }
         } else {

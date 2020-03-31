@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Student_Select_Course_Activity">
+    tools:context=".Student_Select_Course_Activity"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="225dp"
-        android:layout_marginTop="8dp"
+        android:layout_margin="5dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="match_parent"
@@ -41,52 +39,30 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_margin="15dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="10dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:background="@drawable/rectangle_border">
+        android:background="@drawable/rectangle_border">
 
-        <TableLayout
+        <LinearLayout
+            android:id="@+id/course_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="247dp">
+            android:orientation="vertical">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </TableLayout>
+        </LinearLayout>
     </ScrollView>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="368dp"
+        android:layout_width="match_parent"
         android:layout_height="114dp"
+        android:layout_margin="15dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:orientation="vertical">
 
         <TextView
+            android:id="@+id/select_course_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
@@ -102,7 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:letterSpacing="0.1"
             android:onClick="on_click_logout"
@@ -110,4 +86,4 @@
             android:textColor="#000000" />
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

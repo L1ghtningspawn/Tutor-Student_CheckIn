@@ -84,22 +84,26 @@
             <ImageView
                 android:id="@+id/email"
                 android:layout_height="25dp"
+                android:layout_width="25dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:src="@drawable/message" />
 
             <ImageView
                 android:layout_height="35dp"
+                android:layout_width="35dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/phonemo" />
 
             <ImageView
                 android:layout_height="65px"
+                android:layout_width="65px"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/linkedin" />
 
             <ImageView
                 android:layout_height="35dp"
+                android:layout_width="35dp"
                 android:layout_weight="1"
                 app:srcCompat="@drawable/facebook" />
 

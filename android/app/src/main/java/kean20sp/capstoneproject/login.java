@@ -79,12 +79,12 @@ public class login extends AppCompatActivity {
             String result = h.login(email_text, pswd_text);
             String available_roles = h.available_roles();
             String session_id = h.session_id();
-
             if(result.equals(LoginHandler.LOGIN_SUCCESSFUL)) {
                 Intent it = new Intent(login.this, Student_Activity.class);
                 AppState.Session.id = session_id;
                 AppState.UserInfo.roles  = available_roles;
                 AppState.UserInfo.email = email_text;
+
                 startActivity(it);
             } else {
                 Toast.makeText(this,result,Toast.LENGTH_LONG).show();

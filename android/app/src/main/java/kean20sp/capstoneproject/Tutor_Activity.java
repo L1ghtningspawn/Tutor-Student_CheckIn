@@ -23,7 +23,7 @@ import kean20sp.capstoneproject.util.AppState;
 public class Tutor_Activity extends AppCompatActivity {
     String user_email, session_id, user_roles, clockin_date, clockin_id;
     Spinner select_program;
-    TextView clock_in, student_mode, logout;
+    TextView clock_in, student_mode, logout, session_history;
     String[] str_user_roles, departments;
 
     @Override
@@ -35,6 +35,7 @@ public class Tutor_Activity extends AppCompatActivity {
         clock_in = (TextView) findViewById(R.id.sup);
         student_mode = (TextView) findViewById(R.id.sup2);
         logout = (TextView) findViewById(R.id.lin);
+        session_history = (TextView) findViewById(R.id.session_history);
 
         Typeface light_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
         Typeface regular_font = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
@@ -76,6 +77,14 @@ public class Tutor_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 clockin(v);
+            }
+        });
+
+        session_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Tutor_Activity.this, Tutor_Active_Session_Activity.class);
+                startActivity(intent);
             }
         });
 
