@@ -17,6 +17,11 @@ import android.widget.TableRow;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+
 public class Tutor_Active_Session_Activity extends AppCompatActivity {
     TableLayout session_table;
     JSONArray session_data = null;
@@ -71,7 +76,11 @@ public class Tutor_Active_Session_Activity extends AppCompatActivity {
                             public void onClick(View v) {
                                 //store tutor info
                                 try {
-                                    AppState.TutorSession.in_datetime = record.getString("time_in");
+                                    SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                    Date date = date_format.parse(record.getString("time_in"));
+                                    String unix_time = String.valueOf(date.getTime() / 1000);
+
+                                    AppState.TutorSession.in_datetime = unix_time;
                                     AppState.TutorSession.student_id = record.getString("s_ur_id");
                                 } catch(Exception e){
                                     e.printStackTrace();
