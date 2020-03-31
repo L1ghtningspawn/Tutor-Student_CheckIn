@@ -1,6 +1,7 @@
 package kean20sp.capstoneproject.http;
 
 import android.net.Uri;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -64,11 +65,12 @@ public class StudSessHandler extends HTTPConnectionHandler{
 
     private String process(String response) {
         try {
-            System.out.println("asdfasdf: "+response);
             student_sessions = new JSONArray(response);
+            Log.d("studsesshandler","success: "+response);
             return SUCCESS;
         }catch(Exception e){
             e.printStackTrace();
+            Log.d("studsesshandler","failure: "+response);
             return FAILURE;
         }
     }

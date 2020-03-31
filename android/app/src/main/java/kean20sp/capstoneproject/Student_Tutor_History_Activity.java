@@ -54,6 +54,7 @@ public class Student_Tutor_History_Activity extends AppCompatActivity {
 
                     if (record.isNull("time_out")){
                         time_out = "";
+                        AppState.TutorSession.course_id = record.getString("course_id");
                     } else{
                         time_out = record.getString("time_out");
                     };
@@ -78,7 +79,7 @@ public class Student_Tutor_History_Activity extends AppCompatActivity {
                                 }
 
                                 //go to select-course if no course exists otherwise to checked-in
-                                Log.d("issue #24", "course_id = "+AppState.TutorSession.course_id);
+                                Log.d("issue24", "course_id = "+AppState.TutorSession.course_id);
                                 if(AppState.TutorSession.course_id == null || AppState.TutorSession.course_id.equals("4")) {
                                     Intent intent = new Intent(Student_Tutor_History_Activity.this, Student_Select_Course_Activity.class);
                                     startActivity(intent);
