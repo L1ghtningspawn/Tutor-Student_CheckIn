@@ -83,6 +83,8 @@ public class Tutor_Activity extends AppCompatActivity {
         session_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int selected_dept = select_program.getSelectedItemPosition();
+                AppState.UserInfo.user_role_id = str_user_roles[selected_dept];
                 Intent intent = new Intent(Tutor_Activity.this, Tutor_Active_Session_Activity.class);
                 startActivity(intent);
             }

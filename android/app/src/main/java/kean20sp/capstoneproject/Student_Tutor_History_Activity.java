@@ -7,14 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import kean20sp.capstoneproject.http.StudSessHandler;
 import kean20sp.capstoneproject.util.AppState;
 import kean20sp.capstoneproject.util.ViewOptionsUtility;
-
-import android.view.Gravity;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -51,15 +46,23 @@ public class Student_Tutor_History_Activity extends AppCompatActivity {
             for(int x = 0; x < session_data.length(); x++){
                 try{
                     final JSONObject record = session_data.getJSONObject(x);
+                    String name = record.getString("fname") + " " + record.getString("lname");
+                    String time_in = record.getString("time_in");
+                    String time_out;
+
+                    if (record.isNull("time_out")){
+                        time_out = "";
+                    } else{
+                        time_out = record.getString("time_out");
+                    };
+
                     TableRow row = ViewOptionsUtility.newRow(this,
                             new String[]{
-                                    record.getString("fname")+" "+record.getString("lname"),
-                                    record.getString("time_in"),
-                                    record.getString("time_out")
-
+                                    name, time_in, time_out
                             }, false);
 
                     if(record.isNull("time_out")){
+                        record.put("time_out","");
                         row.setBackgroundColor(Color.YELLOW);
                         row.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -86,5 +89,9 @@ public class Student_Tutor_History_Activity extends AppCompatActivity {
             }
         }
     }
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Student_Tutor_History_Activity.this, Student_Activity.class);
+        startActivity(intent);
+    }
 }

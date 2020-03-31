@@ -5,23 +5,30 @@ import java.util.ArrayList;
 import cz.msebera.android.httpclient.NameValuePair;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
-public class GetTutorInfo extends HTTPConnectionHandler {
+public class GetUserInfo extends HTTPConnectionHandler {
     private static String response;
     private static boolean response_done = false;
 
     private static String host = "seesselm-project-page.com";
     private static String filepath = "/Capstone/android/android_getuserinfo.php";
 
-    public static String get_email(String email) {
+    public static String get_email(String user_role_id) {
 
         ArrayList<NameValuePair> pairs = new ArrayList<>();
-        pairs.add(new BasicNameValuePair("get_type", "tutor_email"));
-        pairs.add(new BasicNameValuePair("email", email));
+        pairs.add(new BasicNameValuePair("get_type", "email"));
+        pairs.add(new BasicNameValuePair("user_role_id", user_role_id));
 
         return process(pairs);
     }
 
-    //TODO: Add more functions here for whatever retrieval is needed.. i hardcoded tutor_email above but could be dynamic if we need student_email as well.
+    public static String get_name(String user_role_id) {
+
+        ArrayList<NameValuePair> pairs = new ArrayList<>();
+        pairs.add(new BasicNameValuePair("get_type", "name"));
+        pairs.add(new BasicNameValuePair("user_role_id", user_role_id));
+
+        return process(pairs);
+    }
 
         private static String process(final ArrayList<NameValuePair> pairs){
 
@@ -52,19 +59,20 @@ public class GetTutorInfo extends HTTPConnectionHandler {
             String[] response_split = response.split(";");
             String code = response_split[0];
 
-            if(code.equals("SGE0")) {
-                String tutor_email = response_split[1];
-                return tutor_email;
-            }
-            else if(code.equals("FGE0")) {
-                return NO_ACTIVE_SESSION;
-            }
-            else{
-                return UNKNOWN_ERROR;
+            switch (code) {
+                case "SGE0":
+                case "SGN0":
+                    return response_split[1];
+                case "FGE0":
+                    return EMAIL_RETRIEVAL_FAILED;
+                case "FGN0":
+                    return NAME_RETRIEVAL_FAILED;
+                default:
+                    return UNKNOWN_ERROR;
             }
         }
 
-        private static final String RETRIEVAL_SUCCESSFUL = "Info retrieval was successful.";
-        private static final String NO_ACTIVE_SESSION = "No active session for info retrieval.";
+        private static final String EMAIL_RETRIEVAL_FAILED = "Email retrieval was unsuccessful.";
+        private static final String NAME_RETRIEVAL_FAILED = "Name retrieval was unsuccessful.";
         private static final String UNKNOWN_ERROR = "Unknown Error. Try again.";
 }
