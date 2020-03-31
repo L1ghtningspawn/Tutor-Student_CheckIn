@@ -8,12 +8,55 @@
 	}
 
 	if ($checkin_type == 'qrcode'){
-		//TODO
-		//check if qrcode doesn't already exist, if it does: return failure code "old_qrcode"
+		$tutor_role_id = $_POST['tutor_role_id'];
+		$student_role_id = $_POST['student_role_id'];
+		$qr_server_key = $_POST['qr_server_key'];
+
+		//TODO check if qrcode doesn't already exist, if it does: return failure code "old_qrcode"
+		$query_testQRCode =
+		"select qr_key
+		from SERVER_QR_KEYS
+		where qr_key=?";
+
+		$query_insertQRCode =
+		"insert into SERVER_QR_KEYS
+		(qr_key, date_created)
+		VALUES (?,now());";
+
+		$stmt = $con->prepare($query_testQRCode);
+		$stmt->bind_param("s", $qr_server_key);
+		$stmt->bind_result($qr_key);
+		$stmt->execute();
+		if($stmt->fetch()){
+			echo "FQR1";
+		} else {
+			$stmt->close();
+			$stmt = $con->prepare($query_insertQRCode);
+			$stmt->bind_param("s",$qr_server_key);
+			$stmt->execute();
+			$stmt->close();
+			echo "sc0";
+		}
 		//otherwise return success code
+
 	} else{
 		$tutor_email = $_POST['tutor_email'];
 		$student_email = $_POST['student_email'];
+
+		//is there an existing session?
+		$query =
+		'select session_id
+		from MOBILE_SESSION_DATA
+		where login_id=(select login_id from LOGIN where email=?);';
+		$stmt = $con->prepare($query);
+		$stmt->bind_param("s",$tutor_email);
+		$stmt->bind_result($session_id);
+		$stmt->execute();
+		$stmt->fetch();
+		$stmt->store_result();
+		$stmt->close();
+
+		//echo "{$tutor_email}\n{$student_email}\n{$session_id}\n";
 
 		// here use tutor and student email and check in student to session
 		$query1 =
@@ -52,7 +95,7 @@
 		//make initial insert with c_id of 4 for DUMMY course
 		$query3 =
 		'select count(ts_id)
-		from TUTOR_SESSION 
+		from TUTOR_SESSION
 		where t_ur_id = ?
 		and s_ur_id = ?
 		and time_out = \'00:00:00\';';

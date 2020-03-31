@@ -6,23 +6,6 @@ if(isset($_POST['tutorcourselist'])){
   $email = $_POST['email'];
   $session_id = $_POST['session_id'];
 
-  $query =
-  'select B.SESSION_ID
-   from LOGIN A, MOBILE_SESSION_DATA B
-   where A.login_id=B.login_id and
-     A.email=? and B.session_id=? and B.session_end>now();
-  ';
-  $stmt = $con->prepare($query);
-  $stmt->bind_param('ss',$email,$session_id);
-  $stmt->bind_result($session_id_from_server);
-  $stmt->execute();
-  $stmt->store_result();
-  $session_id_exists = false;
-  while($stmt->fetch()){
-    $session_id_exists = true;
-  }
-  $stmt->close();
-
   if($session_id_exists){
       $query =
       ' select B.c_id, B.course_name
@@ -51,10 +34,7 @@ if(isset($_POST['tutorcourselist'])){
       } else {
         echo "FTc0";
       }
-
-  } else {
-    echo "STc1";
-  }
+    }
 }
 
 ?>
