@@ -29,7 +29,6 @@ import kean20sp.capstoneproject.util.QRUtil;
 
 public class CheckIn_Activity extends AppCompatActivity {
     TextView email_tv, checkin_tv, logout_tv, clockin_time_tv, clockin_duration_tv;
-    //Spinner courselist_sp;
     ImageView qrcode;
 
     String session_id, email, user_roles, str_clockin_time, clockin_id, user_role_id;
@@ -47,7 +46,6 @@ public class CheckIn_Activity extends AppCompatActivity {
         logout_tv = (TextView) findViewById(R.id.logout);
         clockin_time_tv = (TextView) findViewById(R.id.clockin_time);
         clockin_duration_tv = (TextView) findViewById(R.id.clockin_duration);
-        //courselist_sp = (Spinner) findViewById(R.id.courselist);
         qrcode = (ImageView) findViewById(R.id.qrcode);
 
         Typeface light_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
@@ -55,7 +53,7 @@ public class CheckIn_Activity extends AppCompatActivity {
         email_tv.setTypeface(regular_font);
         checkin_tv.setTypeface(regular_font);
         clockin_time_tv.setTypeface(regular_font);
-        clockin_duration_tv.setTypeface(regular_font);
+//        clockin_duration_tv.setTypeface(regular_font);
         logout_tv.setTypeface(light_font);
 
         session_id = AppState.Session.id;

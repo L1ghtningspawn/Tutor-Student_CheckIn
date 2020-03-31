@@ -7,18 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import kean20sp.capstoneproject.http.StudSessHandler;
 import kean20sp.capstoneproject.util.AppState;
 import kean20sp.capstoneproject.util.ViewOptionsUtility;
-
-import android.view.Gravity;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.util.Optional;
 
 public class Student_Tutor_History_Activity extends AppCompatActivity {
     TableLayout session_table;
@@ -96,5 +89,9 @@ public class Student_Tutor_History_Activity extends AppCompatActivity {
             }
         }
     }
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Student_Tutor_History_Activity.this, Student_Activity.class);
+        startActivity(intent);
+    }
 }

@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="60dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -52,8 +52,28 @@
                     android:textSize='25dp' />
 
             </LinearLayout>
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="383dp"
+                android:layout_margin="15dp"
+                android:background="@drawable/rectangle_border">
 
-            <TableLayout
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbarAlwaysDrawHorizontalTrack="false"
+                    android:scrollbarAlwaysDrawVerticalTrack="false"
+                    android:scrollbars="vertical">
+
+                    <TableLayout
+                        android:id="@+id/session_table"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TableLayout>
+                </ScrollView>
+            </HorizontalScrollView>
+            <!--<TableLayout
                 android:id="@+id/session_table"
                 android:layout_width="match_parent"
                 android:layout_height="383dp"
@@ -81,6 +101,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </TableLayout>
+            -->
 
             <TextView
                 android:layout_width="match_parent"
