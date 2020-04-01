@@ -131,6 +131,9 @@ public class ClockedIn_Activity extends AppCompatActivity {
         ClockoutHandler chandler = new ClockoutHandler();
         chandler.clockout(email,session_id,clockin_id);
 
+        //end all active sessions
+        
+
         Intent it = new Intent(ClockedIn_Activity.this,Tutor_Activity.class);
         AppState.Clock.out_datetime = Long.toString(System.currentTimeMillis()/1000);
         startActivity(it);
