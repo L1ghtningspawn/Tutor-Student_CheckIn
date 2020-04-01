@@ -12,11 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 import kean20sp.capstoneproject.util.AppState;
@@ -98,42 +94,6 @@ public class Tutor_Checked_In_Activity extends AppCompatActivity {
             }
         }.start();
 
-//        DateFormat date_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        Date date = new Date();
-//        try {
-//            //Log.d("mailman","checkin_time == null --> "+(checkin_time==null));
-//            date = date_format.parse(checkin_time);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        final long long_unix_time = (date.getTime() / 1000) ;
-//
-//        GregorianCalendar cal = new GregorianCalendar();
-//        cal.setTimeInMillis(long_unix_time);
-//        checkin_time_tv.setText(cal.get(Calendar.HOUR_OF_DAY)+":"+cal.get(Calendar.MINUTE)+" "+(cal.get(Calendar.AM_PM) == 0 ? "am" : "pm"));
-//
-//         new Thread() {
-//            @Override
-//            public void run(){
-//                while(recalculate_checkin_duration){
-//                    long long_checkin_time = Long.parseLong(String.valueOf(long_unix_time)) * 1000;
-//                    Long long_checkin_duration = System.currentTimeMillis() - long_checkin_time;
-//                    long hours = long_checkin_duration / 1000 / 60 / 60;
-//                    long minutes = ((long_checkin_duration) - (hours * 1000 * 60 * 60)) / 1000 / 60;
-//                    long seconds = ((long_checkin_duration) - (hours * 1000 * 60 * 60) - (minutes*1000*60)) / 1000;
-//
-//                    String duration = (hours < 10 ? "0" : "")+hours+":"+
-//                            (minutes < 10 ? "0" : "")+minutes+":"+
-//                            (seconds < 10 ? "0" : "")+seconds;
-//                    if (checkin_duration_tv.getText().equals(duration)) {
-//                        continue;
-//                    } else {
-//                        checkin_duration_tv.setText(duration);
-//                    }
-//                }
-//            }
-//        }.start();
-
         session_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -159,6 +119,4 @@ public class Tutor_Checked_In_Activity extends AppCompatActivity {
         });
 
     }
-
-
 }
