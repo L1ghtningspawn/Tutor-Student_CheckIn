@@ -19,6 +19,33 @@ while($row=mysqli_fetch_array($result))
     array_push($array,$temp);
 }
 
+for($i=0;$i<count($array);$i++)
+{
+    for($j=0;$j<count($array[$i]);$j++)
+    {
+        if($j==1 || $j==2)
+        {
+            $var=$array[$i][$j];
+            $query="Select ui.fname as fname, ui.lname as lname from USER_INFO ui, USER_ROLES ur where ur.u_id=ui.u_id and ur.ur_id=$var";
+            $result=mysqli_query($con,$query);
+            while($row=mysqli_fetch_array($result))
+            {
+                $array[$i][$j]=$row['fname']." ".$row['lname'];
+            }
+        }
+        if($j==5)
+        {
+            $var=$array[$i][$j];
+            $query="Select course_name from COURSE where c_id=$var";
+            $result=mysqli_query($con,$query);
+            while($row=mysqli_fetch_array($result))
+            {
+                $array[$i][$j]=$row['course_name'];
+            }
+        }
+    }
+}
+
 echo json_encode($array);
 
 ?>
