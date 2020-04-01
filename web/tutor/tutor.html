@@ -4,6 +4,14 @@
 	#home{
 		background-color:grey;
 	}
+
+	#qr{
+		height:200px;
+		width:200px;
+		border:1px solid black;
+		margin:auto;
+		text-align:center;
+	}
 </style>
 <head>
 	<meta charset="UTF-8">
@@ -23,6 +31,22 @@
 			<button class="side-button" id="check-in" onclick="window.location.href='tutor_check_in.html'">Check-in</button>
 			<button class="side-button" id="activity" onclick="window.location.href='tutor_activity.html'">View Activity</button>
 			<button id="help" onclick="">Need help getting started?</button>
+		</div>
+	</div>
+
+	<div class="webpage">
+		<br>
+		<p>Welcome Tutor</p>
+		<br>
+		<div id="qr">
+		</div><br>
+
+		<div class="check-in">
+			<form action="" method="post">
+				Check-In:
+				<input type="text" name="email">
+				<input type="submit" value="Submit">
+			</form>
 		</div>
 	</div>
 
