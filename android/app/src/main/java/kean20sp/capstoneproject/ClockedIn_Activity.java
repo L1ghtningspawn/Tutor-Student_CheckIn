@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import kean20sp.capstoneproject.http.ClockoutHandler;
@@ -73,17 +75,22 @@ public class ClockedIn_Activity extends AppCompatActivity {
             }
         });
 
-        long long_clockin_time = Long.parseLong(str_clockin_time) * 1000;
-        GregorianCalendar cal = new GregorianCalendar();
-        cal.setTimeInMillis(long_clockin_time);
+//        long long_clockin_time = Long.parseLong(str_clockin_time) * 1000;
+//        GregorianCalendar cal = new GregorianCalendar();
+//        cal.setTimeInMillis(long_clockin_time);
+//
+//        int ct_hour = cal.get(Calendar.HOUR_OF_DAY);
+//        int ct_minute = cal.get(Calendar.MINUTE);
+//        String ct_ampm = (cal.get(Calendar.AM_PM) == 0 ? "am" : "pm");
+//        String ct_time = (ct_hour < 10 ? "0"+ct_hour: ct_hour) + ":" +
+//                (ct_minute < 10 ? "0" + ct_minute : ct_minute) + " " + ct_ampm;
+//
+//        clockin_time.setText(ct_time);
 
-        int ct_hour = cal.get(Calendar.HOUR_OF_DAY);
-        int ct_minute = cal.get(Calendar.MINUTE);
-        String ct_ampm = (cal.get(Calendar.AM_PM) == 0 ? "am" : "pm");
-        String ct_time = (ct_hour < 10 ? "0"+ct_hour: ct_hour) + ":" +
-                (ct_minute < 10 ? "0" + ct_minute : ct_minute) + " " + ct_ampm;
-
-        clockin_time.setText(ct_time);
+        Date date_time = new Date(Long.parseLong(str_clockin_time)*1000);
+        SimpleDateFormat time_format = new SimpleDateFormat("hh:mm a");
+        String formatted_time = time_format.format(date_time);
+        clockin_time.setText(formatted_time);
 
         new Thread() {
             @Override
