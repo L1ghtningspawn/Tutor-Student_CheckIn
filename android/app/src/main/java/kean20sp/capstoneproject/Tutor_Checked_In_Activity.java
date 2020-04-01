@@ -12,7 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import kean20sp.capstoneproject.util.AppState;
@@ -60,17 +63,20 @@ public class Tutor_Checked_In_Activity extends AppCompatActivity {
         session_history.setTypeface(regular_font);
         end_session_tv.setTypeface(regular_font);
 
-        long long_checkin_time = Long.parseLong(str_checkin_time) * 1000;
-        GregorianCalendar cal = new GregorianCalendar();
-        cal.setTimeInMillis(long_checkin_time);
+//        long long_checkin_time = Long.parseLong(str_checkin_time) * 1000;
+//        GregorianCalendar cal = new GregorianCalendar();
+//        cal.setTimeInMillis(long_checkin_time);
+//
+//        int ct_hour = cal.get(Calendar.HOUR_OF_DAY);
+//        int ct_minute = cal.get(Calendar.MINUTE);
+//        String ct_ampm = (cal.get(Calendar.AM_PM) == 0 ? "am" : "pm");
+//        String ct_time = (ct_hour < 10 ? "0"+ct_hour: ct_hour) + ":" +
+//                (ct_minute < 10 ? "0" + ct_minute : ct_minute) + " " + ct_ampm;
 
-        int ct_hour = cal.get(Calendar.HOUR_OF_DAY);
-        int ct_minute = cal.get(Calendar.MINUTE);
-        String ct_ampm = (cal.get(Calendar.AM_PM) == 0 ? "am" : "pm");
-        String ct_time = (ct_hour < 10 ? "0"+ct_hour: ct_hour) + ":" +
-                (ct_minute < 10 ? "0" + ct_minute : ct_minute) + " " + ct_ampm;
-
-        checkin_time_tv.setText(ct_time);
+        Date date_time = new Date(Long.parseLong(str_checkin_time)*1000);
+        SimpleDateFormat time_format = new SimpleDateFormat("hh:mm a");
+        String formatted_time = time_format.format(date_time);
+        checkin_time_tv.setText(formatted_time);
 
         new Thread() {
             @Override
