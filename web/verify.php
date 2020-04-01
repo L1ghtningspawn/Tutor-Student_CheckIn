@@ -68,10 +68,10 @@ else
         $_SESSION['email']=$login;
         checkRoles($u_id);
         if($_SESSION['Supervisor'])
-            header("Location: supervisor.html");
-        if($_SESSION['Tutor'])
+            header("Location: supervisor_info.php");
+        elseif($_SESSION['Tutor'])
             header("Location: tutor_info.php");
-        if($_SESSION['Student'])
+        elseif($_SESSION['Student'])
             header("Location: student_info.php");
     }
     else

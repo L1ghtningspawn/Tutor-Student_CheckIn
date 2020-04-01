@@ -14,6 +14,6 @@ $_SESSION['fname']=$fname;
 $_SESSION['lname']=$lname;
 $_SESSION['year_at_organization']=$year_at_organization;
 }
-header("Location: student.html");
+header("Location: ./student/student.html");
 
 ?>
