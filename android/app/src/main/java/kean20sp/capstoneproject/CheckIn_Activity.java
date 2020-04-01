@@ -37,9 +37,20 @@ public class CheckIn_Activity extends AppCompatActivity {
     ImageView qrcode;
 
     String session_id, email, user_roles, str_clockin_time, clockin_id, user_role_id;
-    boolean recalculate_clockin_duration = true;
+    //volatile boolean recalculate_clockin_duration = true;
+    //Thread asshole;
 
     String[] courses, courseIDs;
+
+
+    public void stop_asshole(){
+        //recalculate_clockin_duration = false;
+        try{
+            //asshole.join();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +65,8 @@ public class CheckIn_Activity extends AppCompatActivity {
         clockin_duration_tv = (TextView) findViewById(R.id.clockin_duration);
         session_history_tv = (TextView) findViewById(R.id.session_history);
         qrcode = (ImageView) findViewById(R.id.qrcode);
+
+        clockin_duration_tv.setText("");
 
 //        Log.d("mailman","email_tv --> "+(email_tv == null));
 //        Log.d("mailman","checkin_tv --> "+(checkin_tv == null));
@@ -82,25 +95,26 @@ public class CheckIn_Activity extends AppCompatActivity {
         String formatted_time = time_format.format(date_time);
         clockin_time_tv.setText(formatted_time);
 
-        new Thread() {
-            @Override
-            public void run(){
-                while(recalculate_clockin_duration){
-                    long long_clockin_time = Long.parseLong(str_clockin_time) * 1000;
-                    Long long_clockin_duration = System.currentTimeMillis() - long_clockin_time;
-                    long hours = long_clockin_duration / 1000 / 60 / 60;
-                    long minutes = ((long_clockin_duration) - (hours * 1000 * 60 * 60)) / 1000 / 60;
-                    long seconds = ((long_clockin_duration) - (hours * 1000 * 60 * 60) - (minutes*1000*60)) / 1000;
-
-                    String duration = (hours < 10 ? "0" : "")+hours+":"+
-                            (minutes < 10 ? "0" : "")+minutes+":"+
-                            (seconds < 10 ? "0" : "")+seconds;
-                    //Log.d("mailman", "duration = "+duration);
-                    //Log.d("mailman", "textview = "+(clockin_duration_tv == null));
-                    clockin_duration_tv.setText(duration);
-                }
-            }
-        }.start();
+//        asshole = new Thread() {
+//            @Override
+//            public void run(){
+//                while(recalculate_clockin_duration){
+//                    long long_clockin_time = Long.parseLong(str_clockin_time) * 1000;
+//                    Long long_clockin_duration = System.currentTimeMillis() - long_clockin_time;
+//                    long hours = long_clockin_duration / 1000 / 60 / 60;
+//                    long minutes = ((long_clockin_duration) - (hours * 1000 * 60 * 60)) / 1000 / 60;
+//                    long seconds = ((long_clockin_duration) - (hours * 1000 * 60 * 60) - (minutes*1000*60)) / 1000;
+//
+//                    String duration = (hours < 10 ? "0" : "")+hours+":"+
+//                            (minutes < 10 ? "0" : "")+minutes+":"+
+//                            (seconds < 10 ? "0" : "")+seconds;
+//                    //Log.d("mailman", "duration = "+duration);
+//                    //Log.d("mailman", "textview = "+(clockin_duration_tv == null));
+//                    clockin_duration_tv.setText(duration);
+//                }
+//            }
+//        };
+//        asshole.start();
 
         try{
             String qrcode_value = QRUtil.genkey();
@@ -127,6 +141,8 @@ public class CheckIn_Activity extends AppCompatActivity {
                     if(result.equals(CheckinHandler.CHECKIN_SUCCESSFUL)) {
                         AppState.TutorSession.student_id = GetUserInfo.get_student_id(email_tv.getText().toString());
                         AppState.TutorSession.student_email = email_tv.getText().toString();
+
+                        stop_asshole();
                         Intent it = new Intent(CheckIn_Activity.this, Tutor_Checked_In_Activity.class);
                         // Send over the student's email
                         GregorianCalendar cal = new GregorianCalendar();
@@ -154,10 +170,30 @@ public class CheckIn_Activity extends AppCompatActivity {
         session_history_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                stop_asshole();
                 Intent intent = new Intent(CheckIn_Activity.this, Tutor_Active_Session_Activity.class);
                 startActivity(intent);
             }
         });
 
+    }
+
+    public void start_asshole(){
+        //recalculate_clockin_duration = true;
+        //asshole.start();
+    }
+
+    @Override
+    public void onResume(){
+        //assume asshole was already stopped
+        //startup asshole again...
+        start_asshole();
+        super.onResume();
+    }
+
+    @Override
+    public void onBackPressed(){
+        stop_asshole();
+        super.onBackPressed();
     }
 }
