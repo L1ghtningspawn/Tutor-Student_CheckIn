@@ -15,5 +15,6 @@ $_SESSION['lname']=$lname;
 $_SESSION['year_at_organization']=$year_at_organization;
 }
 header("Location: ./student/student.html");
+#header("Location: ./student/check_if_valid.php")
 
 ?>

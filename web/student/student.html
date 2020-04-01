@@ -13,7 +13,7 @@
 		$.ajax({
 			url:'check_if_valid.php',
 			success:function(result){
-				if(result = 'false'){
+				if(result == 'False'){
 					window.location.href="../login.php";
 				} else {
 					console.log('cool');
@@ -21,8 +21,10 @@
 			}
 		})
 	</script>
+	
 </head>
 <body>
+	
 	<div class="header">
 		<img class="logo" src="../images/logo.png">
 		<button class="head-btn" id="Logout">Logout</button>
