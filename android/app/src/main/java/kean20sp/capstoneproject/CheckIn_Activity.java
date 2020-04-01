@@ -44,7 +44,7 @@ public class CheckIn_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_in_);
 
-        AppState.Debug.log_All();
+        //AppState.Debug.log_All();
 
         email_tv = (TextView) findViewById(R.id.email);
         checkin_tv = (TextView) findViewById(R.id.checkin);
@@ -142,7 +142,7 @@ public class CheckIn_Activity extends AppCompatActivity {
                                 (ct_minute < 10 ? "0" + ct_minute : ct_minute) + " " + ct_ampm;
 
                         AppState.TutorSession.in_datetime = Long.toString(cal.getTimeInMillis()/1000);
-                        Log.d("checkin_time", AppState.TutorSession.in_datetime);
+                        //Log.d("checkin_time", AppState.TutorSession.in_datetime);
                         startActivity(it);
                     } else if(result.equals(CheckinHandler.INVALID_SESSION)){
                         Toast.makeText(CheckIn_Activity.this,result,Toast.LENGTH_LONG).show();

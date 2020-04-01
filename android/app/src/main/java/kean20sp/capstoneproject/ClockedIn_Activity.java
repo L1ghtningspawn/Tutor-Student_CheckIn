@@ -24,10 +24,10 @@ public class ClockedIn_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clocked_in_);
 
-        AppState.Debug.log_All();
+        //AppState.Debug.log_All();
 
         checkin = (TextView) findViewById(R.id.checkin);
         clockout = (TextView) findViewById(R.id.clockout);
