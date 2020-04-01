@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import kean20sp.capstoneproject.http.TutorEndSessionHandler;
 import kean20sp.capstoneproject.util.AppState;
 import kean20sp.capstoneproject.util.GetUserInfo;
 
@@ -35,13 +36,13 @@ public class Tutor_Checked_In_Activity extends AppCompatActivity {
         final String tutor_email = GetUserInfo.get_email(AppState.UserInfo.user_role_id);
         str_checkin_time = AppState.TutorSession.in_datetime;
 
-        AppState.Debug.log_TutorSession();
-        AppState.Debug.log_UserInfo();
-        Log.d("mailman", "student_name = "+student_name);
-        Log.d("mailman","student_email = "+student_email);
-        Log.d("mailman", "tutor_name = "+tutor_name);
-        Log.d("mailman", "tutor_email = "+tutor_email);
-        Log.d("mailman", "checkin_time = "+str_checkin_time);
+//        AppState.Debug.log_TutorSession();
+//        AppState.Debug.log_UserInfo();
+//        Log.d("mailman", "student_name = "+student_name);
+//        Log.d("mailman","student_email = "+student_email);
+//        Log.d("mailman", "tutor_name = "+tutor_name);
+//        Log.d("mailman", "tutor_email = "+tutor_email);
+//        Log.d("mailman", "checkin_time = "+str_checkin_time);
 
         student_name_tv = (TextView) findViewById(R.id.student_name);
         student_name_tv.setText(student_name);
@@ -99,6 +100,31 @@ public class Tutor_Checked_In_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Tutor_Checked_In_Activity.this, Tutor_Active_Session_Activity.class);
                 startActivity(intent);
+            }
+        });
+
+        end_session_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    TutorEndSessionHandler tesh = new TutorEndSessionHandler();
+                    String student_id = AppState.TutorSession.student_id;
+                    String tutor_id = AppState.UserInfo.user_role_id;
+                    String result = tesh.Individual_Session_End(student_id, tutor_id);
+                    if (result.equals(TutorEndSessionHandler.SESSION_END_SUCCESS)) {
+                        Intent it = new Intent(Tutor_Checked_In_Activity.this, Tutor_Active_Session_Activity.class);
+                        startActivity(it);
+                    } else {
+                        Toast.makeText(Tutor_Checked_In_Activity.this,
+                                result,
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }catch(Exception e){
+                    e.printStackTrace();
+                    Toast.makeText(Tutor_Checked_In_Activity.this,
+                            "Something Unexpected Happened",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
