@@ -20,7 +20,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 
@@ -44,15 +43,11 @@ public class Tutor_Active_Session_Activity extends AppCompatActivity {
             session_data = ssh.tutor_sessions;
         }
 
-        if(session_data == null){
+        final JSONObject session_record;
+        if (session_data.isNull(0)){
             session_table.addView(ViewOptionsUtility.newRow(this,
                     new String[]{
-                        "Oops! Something is borken. Restart the app and try again."
-                    }, false));
-        } else if(session_data.length() == 0){
-            session_table.addView(ViewOptionsUtility.newRow(this,
-                    new String[]{
-                            "No Sessions Exist."
+                            "No Session History Exists."
                     }, false));
         } else {
             for(int x = 0; x < session_data.length(); x++){
@@ -113,7 +108,6 @@ public class Tutor_Active_Session_Activity extends AppCompatActivity {
                 }
             }
         }
-
         //AppState.Debug.log_All();
     }
 
