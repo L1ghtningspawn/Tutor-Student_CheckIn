@@ -15,6 +15,8 @@ import java.util.GregorianCalendar;
 
 import kean20sp.capstoneproject.http.ClockoutHandler;
 import kean20sp.capstoneproject.http.LogoutHandler;
+import kean20sp.capstoneproject.http.TutorEndAllSessions;
+import kean20sp.capstoneproject.http.TutorEndSessionHandler;
 import kean20sp.capstoneproject.util.AppState;
 
 public class ClockedIn_Activity extends AppCompatActivity {
@@ -132,7 +134,13 @@ public class ClockedIn_Activity extends AppCompatActivity {
         chandler.clockout(email,session_id,clockin_id);
 
         //end all active sessions
-        
+        TutorEndAllSessions gameover_bitch = new TutorEndAllSessions();
+        String result = gameover_bitch.All_Session_End(AppState.UserInfo.user_role_id);
+        if (result.equals(TutorEndAllSessions.SESSION_END_SUCCESS)) {
+            Toast.makeText(this,"All Active Sessions Were Ended", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this,result,Toast.LENGTH_SHORT).show();
+        }
 
         Intent it = new Intent(ClockedIn_Activity.this,Tutor_Activity.class);
         AppState.Clock.out_datetime = Long.toString(System.currentTimeMillis()/1000);

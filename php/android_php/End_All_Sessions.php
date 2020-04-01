@@ -18,7 +18,7 @@ and t_ur_id={$t_ur_id};";
 
 $null_checkout_stmt = $con->prepare($time_out_query);
 $null_checkout_stmt->execute();
-$row_count = $stmt->affected_rows;
+$row_count = $con->affected_rows;
 $null_checkout_stmt->close();
 if($row_count>0){
     echo "S01";
