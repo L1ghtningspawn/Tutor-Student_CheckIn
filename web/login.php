@@ -114,7 +114,7 @@ session_destroy();
 
 				<br><br>
 
-				<input class="input" type="password" name="password" placeholder="Password">
+				<input class="input" type="password" minlength="4" name="password" placeholder="Password">
 
 				<br><br>
 
