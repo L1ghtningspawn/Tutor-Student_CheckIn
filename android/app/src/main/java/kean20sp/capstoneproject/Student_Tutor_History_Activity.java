@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import kean20sp.capstoneproject.http.StudSessHandler;
 import kean20sp.capstoneproject.util.AppState;
 import kean20sp.capstoneproject.util.ViewOptionsUtility;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -52,6 +54,7 @@ public class Student_Tutor_History_Activity extends AppCompatActivity {
 
                     if (record.isNull("time_out")){
                         time_out = "";
+                        AppState.TutorSession.course_id = record.getString("course_id");
                     } else{
                         time_out = record.getString("time_out");
                     };
@@ -76,8 +79,14 @@ public class Student_Tutor_History_Activity extends AppCompatActivity {
                                 }
 
                                 //go to select-course if no course exists otherwise to checked-in
-                                Intent intent = new Intent(Student_Tutor_History_Activity.this, Student_Select_Course_Activity.class);
-                                startActivity(intent);
+                                Log.d("issue24", "course_id = "+AppState.TutorSession.course_id);
+                                if(AppState.TutorSession.course_id == null || AppState.TutorSession.course_id.equals("4")) {
+                                    Intent intent = new Intent(Student_Tutor_History_Activity.this, Student_Select_Course_Activity.class);
+                                    startActivity(intent);
+                                } else {
+                                    Intent intent = new Intent(Student_Tutor_History_Activity.this, Student_Checked_In_Activity.class);
+                                    startActivity(intent);
+                                }
                             }
                         });
                     }

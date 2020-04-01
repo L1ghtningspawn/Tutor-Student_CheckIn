@@ -55,7 +55,19 @@
         }
         $stmt_available_roles->close();
 
-        echo "SL0;$roles_string;$session_id";
+        $query =
+        'select a.ur_id
+         from USER_ROLES a, LOGIN b, ROLES c
+         where a.u_id = b.login_id
+		 and a.r_id = c.r_id and b.email = ?';
+        $stmt = $con->prepare($query);
+        $stmt->bind_param("s",$email);
+        $stmt->bind_result($login_id);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->fetch();
+
+        echo "SL0;$login_id;$roles_string;$session_id";
       } else {
         $session_id = $pwd.(date("Y-m-d H:s:v"));
         $session_id = password_hash($session_id,PASSWORD_BCRYPT);
@@ -91,7 +103,20 @@
         }
         $stmt_available_roles->close();
 
-        echo "SL0;$roles_string;$session_id";
+        $query =
+        'select a.ur_id
+         from USER_ROLES a, LOGIN b, ROLES c
+         where a.u_id = b.login_id
+		 and a.r_id = c.r_id and b.email = ?;';
+        $stmt = $con->prepare($query);
+        $stmt->bind_param("s",$email);
+        $stmt->bind_result($login_id);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->fetch();
+
+        echo "SL0;$login_id;$roles_string;$session_id";
+        $stmt->close();
       }
     } else {
       echo "FL1";

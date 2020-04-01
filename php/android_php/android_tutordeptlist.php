@@ -39,12 +39,11 @@ if(isset($_POST['tutordeptlist'])){
     $stmt->execute();
     $stmt->store_result();
 
-    $stmt->fetch();
-    $user_roles = ";".$user_role_id;
-    $depts = ";".$dept_name;
+    $user_roles = "";
+    $depts = "";
     while($stmt->fetch()){
-      $user_roles .= "^".$user_role_id;
-      $depts .= "^".$dept_name;
+      $user_roles .= ";".$user_role_id;
+      $depts .= ";".$dept_name;
     }
     $rows = $stmt->num_rows;
     $stmt->close();

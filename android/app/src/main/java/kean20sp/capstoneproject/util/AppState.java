@@ -14,6 +14,7 @@ public class AppState {
         public static String email;
         public static String roles;
         public static String user_role_id;
+        public static String student_role_id;
     }
 
     public static class Clock {

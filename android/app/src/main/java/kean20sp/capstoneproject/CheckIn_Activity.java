@@ -44,6 +44,8 @@ public class CheckIn_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_in_);
 
+        AppState.Debug.log_All();
+
         email_tv = (TextView) findViewById(R.id.email);
         checkin_tv = (TextView) findViewById(R.id.checkin);
         logout_tv = (TextView) findViewById(R.id.logout);
@@ -51,6 +53,14 @@ public class CheckIn_Activity extends AppCompatActivity {
         clockin_duration_tv = (TextView) findViewById(R.id.clockin_duration);
         session_history_tv = (TextView) findViewById(R.id.session_history);
         qrcode = (ImageView) findViewById(R.id.qrcode);
+
+//        Log.d("mailman","email_tv --> "+(email_tv == null));
+//        Log.d("mailman","checkin_tv --> "+(checkin_tv == null));
+//        Log.d("mailman","logout_tv --> "+(logout_tv == null));
+//        Log.d("mailman","clockin_time_tv --> "+(clockin_time_tv == null));
+//        Log.d("mailman","clockin_duration_tv --> "+(clockin_duration_tv == null));
+//        Log.d("mailman","session_history_tv --> "+(session_history_tv == null));
+//        Log.d("mailman","qrcode --> "+(qrcode == null));
 
         Typeface light_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
         Typeface regular_font = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
