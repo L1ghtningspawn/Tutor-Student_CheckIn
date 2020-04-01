@@ -33,9 +33,11 @@ public class LoginHandler extends HTTPConnectionHandler{
     }
     public String available_roles() { return available_roles; }
 
-    private String response;
+    private String response; //echo from php script
     private boolean response_done = false;
     private List<NameValuePair> pairs;
+
+    //passing into php
     public String login(String email, String password){
         pairs = new ArrayList<NameValuePair>();
         pairs.add(new BasicNameValuePair("login", "true"));
@@ -77,7 +79,7 @@ public class LoginHandler extends HTTPConnectionHandler{
         if(response==null){
             return "null";
         }
-        String[] response_split = response.split(";");
+        String[] response_split = response.split(";");//easy way to pass between php to java
         String code = response_split[0];
         if(code.equals("SL0")){
             AppState.UserInfo.user_role_id = response_split[1]; //move later
