@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +24,8 @@ import kean20sp.capstoneproject.util.AppState;
 public class ClockedIn_Activity extends AppCompatActivity {
     TextView checkin, clockout, logout, tutor_mode, clocked_in_at, clockin_time, clockin_duration;
     String session_id, email, user_roles, str_clockin_time, clockin_id, user_role_id;
-    volatile boolean recalculate_clockin_duration = true;
+    //volatile boolean recalculate_clockin_duration = true;
+    //Thread update_duration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class ClockedIn_Activity extends AppCompatActivity {
         clocked_in_at = (TextView) findViewById(R.id.clocked_in_at);
         clockin_time = (TextView) findViewById(R.id.clockin_time);
         clockin_duration = (TextView) findViewById(R.id.clockin_duration);
+        clockin_duration.setText("");
 
         session_id = AppState.Session.id;
         email = AppState.UserInfo.email;
@@ -94,42 +98,50 @@ public class ClockedIn_Activity extends AppCompatActivity {
         String formatted_time = time_format.format(date_time);
         clockin_time.setText(formatted_time);
 
-        new Thread() {
-            @Override
-            public void run(){
-                while(recalculate_clockin_duration){
-                    long long_clockin_time = Long.parseLong(str_clockin_time) * 1000;
-                    Long long_clockin_duration = System.currentTimeMillis() - long_clockin_time;
-                    long hours = long_clockin_duration / 1000 / 60 / 60;
-                    long minutes = ((long_clockin_duration) - (hours * 1000 * 60 * 60)) / 1000 / 60;
-                    long seconds = ((long_clockin_duration) - (hours * 1000 * 60 * 60) - (minutes*1000*60)) / 1000;
-
-                    String duration = (hours < 10 ? "0" : "")+hours+":"+
-                            (minutes < 10 ? "0" : "")+minutes+":"+
-                            (seconds < 10 ? "0" : "")+seconds;
-                    if (clockin_duration.getText().equals(duration)) {
-                        continue;
-                    } else {
-                        clockin_duration.setText(duration);
-                    }
-                }
-            }
-        }.start();
+//        update_duration = new Thread() {
+//            @Override
+//            public void run(){
+//                while(recalculate_clockin_duration){
+//                    long long_clockin_time = Long.parseLong(str_clockin_time) * 1000;
+//                    Long long_clockin_duration = System.currentTimeMillis() - long_clockin_time;
+//                    long hours = long_clockin_duration / 1000 / 60 / 60;
+//                    long minutes = ((long_clockin_duration) - (hours * 1000 * 60 * 60)) / 1000 / 60;
+//                    long seconds = ((long_clockin_duration) - (hours * 1000 * 60 * 60) - (minutes*1000*60)) / 1000;
+//
+//                    String duration = (hours < 10 ? "0" : "")+hours+":"+
+//                            (minutes < 10 ? "0" : "")+minutes+":"+
+//                            (seconds < 10 ? "0" : "")+seconds;
+//                    clockin_duration.setText(duration);
+//                }
+//            }
+//        };
+//
+//        update_duration.start();
 
     }
 
     public void on_click_logout(View v){
-        recalculate_clockin_duration = false;
+        //recalculate_clockin_duration = false;
         LogoutHandler logouthandler = new LogoutHandler();
         String response = logouthandler.logout(email,session_id);
 
         Intent it = new Intent(ClockedIn_Activity.this, login.class);
 
+        stop_update_duration_thread();
         startActivity(it);
     }
 
+    public void stop_update_duration_thread(){
+        //recalculate_clockin_duration = false;
+        try{
+            //update_duration.join();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public void on_click_clockout(View v){
-        recalculate_clockin_duration = false;
+        //recalculate_clockin_duration = false;
         ClockoutHandler chandler = new ClockoutHandler();
         chandler.clockout(email,session_id,clockin_id);
 
@@ -144,16 +156,35 @@ public class ClockedIn_Activity extends AppCompatActivity {
 
         Intent it = new Intent(ClockedIn_Activity.this,Tutor_Activity.class);
         AppState.Clock.out_datetime = Long.toString(System.currentTimeMillis()/1000);
+
+        stop_update_duration_thread();
         startActivity(it);
     }
 
-    @Override
-    public void onBackPressed() {
-        return;
-        }
-
     public void on_click_checkin(View v){
         Intent it = new Intent(ClockedIn_Activity.this, CheckIn_Activity.class);
+        stop_update_duration_thread();
+        //Log.d("asshole", "thread is running: "+update_duration.isAlive());
         startActivity(it);
+    }
+
+    public void start_asshole(){
+        //recalculate_clockin_duration = true;
+        //update_duration.start();
+    }
+
+    @Override
+    public void onResume(){
+        //assume asshole was already stopped
+        //startup asshole again...
+        start_asshole();
+        super.onResume();
+    }
+
+    @Override
+    public void onBackPressed(){
+//        stop_asshole();
+//        super.onBackPressed();
+        return;
     }
 }
