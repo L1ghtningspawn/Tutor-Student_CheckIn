@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import kean20sp.capstoneproject.http.StudSessHandler;
 import kean20sp.capstoneproject.http.TuSessHandler;
+import kean20sp.capstoneproject.http.TutorEndSessionHandler;
 import kean20sp.capstoneproject.util.AppState;
 import kean20sp.capstoneproject.util.ViewOptionsUtility;
 
@@ -20,7 +21,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 
@@ -33,6 +33,8 @@ public class Tutor_Active_Session_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutor__active__session_);
 
+        //AppState.Debug.log_All();
+
         session_table = (TableLayout) findViewById(R.id.session_table);
         session_table.addView(ViewOptionsUtility.newRow(this,new String[]{"student", "time in", "time out"}, true));
 
@@ -42,18 +44,15 @@ public class Tutor_Active_Session_Activity extends AppCompatActivity {
             session_data = ssh.tutor_sessions;
         }
 
-        if(session_data == null){
+        final JSONObject session_record;
+        if (session_data.isNull(0)){
             session_table.addView(ViewOptionsUtility.newRow(this,
                     new String[]{
-                        "Oops! Something is borken. Restart the app and try again."
-                    }, false));
-        } else if(session_data.length() == 0){
-            session_table.addView(ViewOptionsUtility.newRow(this,
-                    new String[]{
-                            "No Sessions Exist."
+                            "No Session History Exists."
                     }, false));
         } else {
             for(int x = 0; x < session_data.length(); x++){
+
                 try{
                     final JSONObject record = session_data.getJSONObject(x);
 
@@ -79,8 +78,24 @@ public class Tutor_Active_Session_Activity extends AppCompatActivity {
                         row.getChildAt(2).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Toast.makeText(Tutor_Active_Session_Activity.this, "it worked", Toast.LENGTH_LONG).show();
-                                //TODO: Checkout session
+                                try {
+                                    TutorEndSessionHandler tesh = new TutorEndSessionHandler();
+                                    String student_id = record.getString("s_ur_id");
+                                    String tutor_id = AppState.UserInfo.user_role_id;
+                                    String result = tesh.Individual_Session_End(student_id,tutor_id);
+                                    if(result.equals(TutorEndSessionHandler.SESSION_END_SUCCESS)){
+                                        Intent it = new Intent(Tutor_Active_Session_Activity.this, Tutor_Active_Session_Activity.class);
+                                        startActivity(it);
+                                        overridePendingTransition(0,0);
+                                    } else {
+                                        Toast.makeText(Tutor_Active_Session_Activity.this,
+                                                        result,
+                                                        Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch(Exception e){
+                                    e.printStackTrace();
+                                    Toast.makeText(Tutor_Active_Session_Activity.this,"Something Unexpected Happened!",Toast.LENGTH_SHORT).show();
+                                }
                             }
                         });
                         row.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +126,6 @@ public class Tutor_Active_Session_Activity extends AppCompatActivity {
                 }
             }
         }
-
         //AppState.Debug.log_All();
     }
 

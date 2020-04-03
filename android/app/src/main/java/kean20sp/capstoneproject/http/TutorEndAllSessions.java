@@ -21,7 +21,7 @@ public class TutorEndAllSessions  extends HTTPConnectionHandler{
     private String response;
     private boolean response_done = false;
     private List<NameValuePair> pairs;
-    public String Individual_Session_End(String StudentID, String TutorID) { //why string?
+    public String All_Session_End(String TutorID) { //why string?
         pairs = new ArrayList<NameValuePair>();
         pairs.add(new BasicNameValuePair("user_role_id", TutorID));
 

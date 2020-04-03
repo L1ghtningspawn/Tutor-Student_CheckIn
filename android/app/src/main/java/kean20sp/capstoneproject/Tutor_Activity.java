@@ -33,6 +33,8 @@ public class Tutor_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutor_);
 
+        //AppState.Debug.log_All();
+
         select_program = (Spinner) findViewById(R.id.spinner);
         clock_in = (TextView) findViewById(R.id.sup);
         student_mode = (TextView) findViewById(R.id.sup2);
@@ -118,7 +120,7 @@ public class Tutor_Activity extends AppCompatActivity {
 
             Intent it = new Intent(Tutor_Activity.this, ClockedIn_Activity.class);
             AppState.Clock.in_datetime = clockin_date;
-            Log.d("clockin_date",clockin_date);
+            //Log.d("clockin_date",clockin_date);
             AppState.Clock.id = clockin_id;
             AppState.UserInfo.user_role_id = user_role_id;
             startActivity(it);
@@ -133,7 +135,7 @@ public class Tutor_Activity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-       if(getIntent().getStringExtra("just_clocked_out") != null){
+       if(AppState.Clock.out_datetime != null){
            return;
        } else {
            super.onBackPressed();

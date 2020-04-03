@@ -27,24 +27,18 @@ public class Student_Tutor_History_Activity extends AppCompatActivity {
         session_table = (TableLayout) findViewById(R.id.session_table);
         session_table.addView(ViewOptionsUtility.newRow(this,new String[]{"tutor", "time in", "time out"}, true));
 
-
         StudSessHandler ssh = new StudSessHandler();
         String status = ssh.getStudentSessionHistory(AppState.UserInfo.user_role_id);
         if(status.equals(StudSessHandler.SUCCESS)){
             session_data = ssh.student_sessions;
         }
 
-        if(session_data == null){
+        if (session_data.isNull(0)){
             session_table.addView(ViewOptionsUtility.newRow(this,
                     new String[]{
-                            "Oops! Something is borken. Restart the app and try again."
+                            "No Session History Exists."
                     }, false));
-        } else if(session_data.length() == 0){
-            session_table.addView(ViewOptionsUtility.newRow(this,
-                    new String[]{
-                             "No Sessions Exist."
-                    }, false));
-        } else {
+        } else{
             for(int x = 0; x < session_data.length(); x++){
                 try{
                     final JSONObject record = session_data.getJSONObject(x);
@@ -90,7 +84,6 @@ public class Student_Tutor_History_Activity extends AppCompatActivity {
                             }
                         });
                     }
-
                     session_table.addView(row);
                 }catch(Exception e){
                     e.printStackTrace();
