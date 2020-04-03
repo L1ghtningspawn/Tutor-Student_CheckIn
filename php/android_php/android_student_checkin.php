@@ -74,38 +74,41 @@
 		$stmt->fetch();
 		$stmt->store_result();
 		$stmt->close();
-		//echo "STUDENT_ID: {$student_id}\n";
 
-		//check to make sure t_ur_id and s_ur_id don't have active sessions (time_out is null)
-		//make initial insert with c_id of 4 for DUMMY course
-		$query3 =
-		'select count(ts_id)
-		from TUTOR_SESSION
-		where s_ur_id = ?
-		and time_out is null;';
-		$stmt = $con->prepare($query3);
-		$stmt->bind_param('i', $student_role_id);
-		$stmt->bind_result($ts_count);
-		$stmt->execute();
-		$stmt->fetch();
-		$stmt->store_result();
-		$stmt->close();
-
-		if($ts_count == 0){
-			$query4 = 'insert into TUTOR_SESSION (t_ur_id, s_ur_id, time_in, c_id) values (?,?,now(),4);';
-			$stmt = $con->prepare($query4);
-			$stmt->bind_param('ii', $tutor_role_id,$student_role_id);
+		if($student_role_id){
+			//check to make sure t_ur_id and s_ur_id don't have active sessions (time_out is null)
+			//make initial insert with c_id of 4 for DUMMY course
+			$query3 =
+			'select count(ts_id)
+			from TUTOR_SESSION
+			where s_ur_id = ?
+			and time_out is null;';
+			$stmt = $con->prepare($query3);
+			$stmt->bind_param('i', $student_role_id);
+			$stmt->bind_result($ts_count);
 			$stmt->execute();
-			$row_count = $stmt->affected_rows;
+			$stmt->fetch();
+			$stmt->store_result();
 			$stmt->close();
 
-			if ($row_count == 0){
-				echo "FC2";
-			} else {
-				echo "SC0";
+			if($ts_count == 0){
+				$query4 = 'insert into TUTOR_SESSION (t_ur_id, s_ur_id, time_in, c_id) values (?,?,now(),4);';
+				$stmt = $con->prepare($query4);
+				$stmt->bind_param('ii', $tutor_role_id,$student_role_id);
+				$stmt->execute();
+				$row_count = $stmt->affected_rows;
+				$stmt->close();
+
+				if ($row_count == 0){
+					echo "FC2";
+				} else {
+					echo "SC0";
+				}
+			} else{
+				echo "FC1";
 			}
 		} else{
-			echo "FC1";
+			echo "FCE2";
 		}
 	} else{
 		// insert course into active tutor session

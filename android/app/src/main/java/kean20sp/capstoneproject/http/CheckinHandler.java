@@ -119,6 +119,8 @@ public class CheckinHandler extends HTTPConnectionHandler {
                 return COURSE_SELECT_FAILED;
             case "FCE1":
                 return NO_VALID_SESSION;
+            case "FCE2":
+                return INVALID_STUDENT_EMAIL;
             default:
                 return CHECKIN_FAILED;
         }
@@ -128,8 +130,9 @@ public class CheckinHandler extends HTTPConnectionHandler {
     public static final String TUTOR_SESSION_EXISTS = "Student already in an active session.";
     private static final String CHECKIN_FAILED = "Failed to check-in. Try again.";
     public static final String CHECKIN_SUCCESSFUL = "Check-in was successful.";
-    public static final String QRCODE_EXPIRED = "QR-Code was expired.";
-    public static final String COURSE_SELECT_FAILED = "Course selection failed.";
-    public static final String NO_VALID_SESSION = "No valid tutoring session exists.";
+    private static final String QRCODE_EXPIRED = "QR-Code was expired.";
+    private static final String COURSE_SELECT_FAILED = "Course selection failed.";
+    private static final String NO_VALID_SESSION = "No valid tutoring session exists.";
+    private static final String INVALID_STUDENT_EMAIL = "Invalid student email. Try again.";
 
 }
