@@ -2,6 +2,7 @@ package kean20sp.capstoneproject;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,14 +12,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import kean20sp.capstoneproject.http.ClockoutHandler;
 import kean20sp.capstoneproject.http.LogoutHandler;
 import kean20sp.capstoneproject.http.TutorEndAllSessions;
-import kean20sp.capstoneproject.http.TutorEndSessionHandler;
 import kean20sp.capstoneproject.util.AppState;
 
 public class ClockedIn_Activity extends AppCompatActivity {
@@ -27,11 +25,11 @@ public class ClockedIn_Activity extends AppCompatActivity {
     //volatile boolean recalculate_clockin_duration = true;
     //Thread update_duration;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clocked_in_);
-
         //AppState.Debug.log_All();
 
         checkin = (TextView) findViewById(R.id.checkin);
@@ -81,18 +79,6 @@ public class ClockedIn_Activity extends AppCompatActivity {
             }
         });
 
-//        long long_clockin_time = Long.parseLong(str_clockin_time) * 1000;
-//        GregorianCalendar cal = new GregorianCalendar();
-//        cal.setTimeInMillis(long_clockin_time);
-//
-//        int ct_hour = cal.get(Calendar.HOUR_OF_DAY);
-//        int ct_minute = cal.get(Calendar.MINUTE);
-//        String ct_ampm = (cal.get(Calendar.AM_PM) == 0 ? "am" : "pm");
-//        String ct_time = (ct_hour < 10 ? "0"+ct_hour: ct_hour) + ":" +
-//                (ct_minute < 10 ? "0" + ct_minute : ct_minute) + " " + ct_ampm;
-//
-//        clockin_time.setText(ct_time);
-
         Date date_time = new Date(Long.parseLong(str_clockin_time)*1000);
         SimpleDateFormat time_format = new SimpleDateFormat("hh:mm a");
         String formatted_time = time_format.format(date_time);
@@ -118,6 +104,16 @@ public class ClockedIn_Activity extends AppCompatActivity {
 //
 //        update_duration.start();
 
+//        Log.d("mailman","email_tv --> "+(email == null));
+//        Log.d("mailman","checkin_tv --> "+(checkin == null));
+//        Log.d("mailman","clockout --> "+(clockout == null));
+//        Log.d("mailman","clockin_time_tv --> "+(clockin_time == null));
+//        Log.d("mailman","clocked_in_at --> "+(clocked_in_at == null));
+//        Log.d("mailman","clockin_duration_tv --> "+(clockin_duration == null));
+//        Log.d("mailman","user_roles --> "+(user_roles == null));
+//        Log.d("mailman","str_clockin_time --> "+(str_clockin_time == null));
+//        Log.d("mailman","user_role_id --> "+(user_role_id == null));
+//        Log.d("mailman","session_id --> "+(session_id == null));
     }
 
     public void on_click_logout(View v){
@@ -162,6 +158,7 @@ public class ClockedIn_Activity extends AppCompatActivity {
     }
 
     public void on_click_checkin(View v){
+        Thread.currentThread().interrupt();
         Intent it = new Intent(ClockedIn_Activity.this, CheckIn_Activity.class);
         stop_update_duration_thread();
         //Log.d("asshole", "thread is running: "+update_duration.isAlive());
