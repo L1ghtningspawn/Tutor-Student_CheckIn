@@ -9,6 +9,12 @@
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $year = $_POST['orgyear'];
+	
+	//is password valid?
+	if(strlen($pwd) >= 25){
+		echo "FS1";
+		exit();
+	}
 
     $query =
     'select email

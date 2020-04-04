@@ -95,7 +95,7 @@ public class CheckIn_Activity extends AppCompatActivity {
         String formatted_time = time_format.format(date_time);
         clockin_time_tv.setText(formatted_time);
 
-        clockin_time_tv.setText(ct_time);
+        //clockin_time_tv.setText(ct_time);
 //        asshole = new Thread() {
 //            @Override
 //            public void run(){
