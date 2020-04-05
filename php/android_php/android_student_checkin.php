@@ -65,13 +65,14 @@
 		 from LOGIN
 		 where email = ?';
 		 $stmt = $con->prepare($query);
-		 $stmt = $con->bind_param('s',$student_email);
-		 $stmt = $con->bind_result($result_email);
+		 $stmt->bind_param('s',$student_email);
+		 $stmt->bind_result($result_email);
 		 $stmt->execute();
 		 $stmt->store_result();
 		 if($stmt->num_rows == 0){
-			 exit("FC1");
+			 exit("FCE2");
 		 }
+		 $stmt->close();
 
 		// here use tutor id and student email and check in student to session
 		$query2 =
