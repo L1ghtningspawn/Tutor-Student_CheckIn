@@ -59,6 +59,20 @@
 		$tutor_role_id = $_POST['tutor_role_id'];
 		$student_email = $_POST['student_email'];
 
+		//is student_email the email of an actual user?
+		$query =
+		'select email
+		 from LOGIN
+		 where email = ?';
+		 $stmt = $con->prepare($query);
+		 $stmt = $con->bind_param('s',$student_email);
+		 $stmt = $con->bind_result($result_email);
+		 $stmt->execute();
+		 $stmt->store_result();
+		 if($stmt->num_rows == 0){
+			 exit("FC1");
+		 }
+
 		// here use tutor id and student email and check in student to session
 		$query2 =
 		'select ur.ur_id from USER_ROLES as ur
