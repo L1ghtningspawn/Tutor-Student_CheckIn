@@ -195,6 +195,12 @@ public class CheckIn_Activity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         stop_asshole();
-        super.onBackPressed();
+        boolean session_ended = getIntent().getBooleanExtra("session_ended",false);
+        if(session_ended){
+            Intent i = new Intent(CheckIn_Activity.this,ClockedIn_Activity.class);
+            startActivity(i);
+        } else {
+            super.onBackPressed();
+        }
     }
 }
