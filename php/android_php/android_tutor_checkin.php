@@ -43,6 +43,8 @@
 		$tutor_email = $_POST['tutor_email'];
 		$student_email = $_POST['student_email'];
 
+
+
 		//is there an existing session?
 		$query =
 		'select session_id

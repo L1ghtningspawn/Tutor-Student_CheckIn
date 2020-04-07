@@ -17,6 +17,7 @@ public class CheckUserInput {
 
     public static boolean isValidPassword(String password){
         if(password.equals("")) return false;
+        if(password.length() >= 25) return false;
         return true;
     }
 }

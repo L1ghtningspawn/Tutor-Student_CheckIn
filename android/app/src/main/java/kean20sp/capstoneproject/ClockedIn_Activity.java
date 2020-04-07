@@ -158,7 +158,7 @@ public class ClockedIn_Activity extends AppCompatActivity {
     }
 
     public void on_click_checkin(View v){
-        Thread.currentThread().interrupt();
+        //Thread.currentThread().interrupt();
         Intent it = new Intent(ClockedIn_Activity.this, CheckIn_Activity.class);
         stop_update_duration_thread();
         //Log.d("asshole", "thread is running: "+update_duration.isAlive());

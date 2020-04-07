@@ -119,6 +119,7 @@ public class Tutor_Checked_In_Activity extends AppCompatActivity {
                     String result = tesh.Individual_Session_End(student_id, tutor_id);
                     if (result.equals(TutorEndSessionHandler.SESSION_END_SUCCESS)) {
                         Intent it = new Intent(Tutor_Checked_In_Activity.this, Tutor_Active_Session_Activity.class);
+                        it.putExtra("session_ended",true);
                         startActivity(it);
                     } else {
                         Toast.makeText(Tutor_Checked_In_Activity.this,

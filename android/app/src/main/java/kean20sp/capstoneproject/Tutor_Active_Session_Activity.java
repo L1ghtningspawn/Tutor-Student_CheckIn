@@ -27,11 +27,13 @@ import java.util.Date;
 public class Tutor_Active_Session_Activity extends AppCompatActivity {
     TableLayout session_table;
     JSONArray session_data = null;
+    boolean session_ended = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutor__active__session_);
+        session_ended = getIntent().getBooleanExtra("session_ended",false);
 
         //AppState.Debug.log_All();
 
@@ -85,6 +87,7 @@ public class Tutor_Active_Session_Activity extends AppCompatActivity {
                                     String result = tesh.Individual_Session_End(student_id,tutor_id);
                                     if(result.equals(TutorEndSessionHandler.SESSION_END_SUCCESS)){
                                         Intent it = new Intent(Tutor_Active_Session_Activity.this, Tutor_Active_Session_Activity.class);
+                                        it.putExtra("session_ended",true);
                                         startActivity(it);
                                         overridePendingTransition(0,0);
                                     } else {
@@ -127,6 +130,17 @@ public class Tutor_Active_Session_Activity extends AppCompatActivity {
             }
         }
         //AppState.Debug.log_All();
+    }
+
+    @Override
+    public void onBackPressed(){
+        if(session_ended){
+            Intent intent = new Intent(Tutor_Active_Session_Activity.this, CheckIn_Activity.class);
+            intent.putExtra("session_ended",session_ended);
+            startActivity(intent);
+        }else{
+            super.onBackPressed();
+        }
     }
 
 }

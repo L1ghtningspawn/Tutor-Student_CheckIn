@@ -126,6 +126,7 @@ public class CheckinHandler extends HTTPConnectionHandler {
         }
     }
 
+    public static final String INVALID_EMAIL = "We didn't recognize that email.";
     public static final String INVALID_SESSION = "Login Session is invalid. Login Again.";
     public static final String TUTOR_SESSION_EXISTS = "Student already in an active session.";
     private static final String CHECKIN_FAILED = "Failed to check-in. Try again.";
