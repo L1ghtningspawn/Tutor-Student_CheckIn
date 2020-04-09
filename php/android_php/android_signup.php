@@ -9,7 +9,7 @@
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $year = $_POST['orgyear'];
-	
+
 	//is password valid?
 	if(strlen($pwd) >= 25){
 		echo "FS1";
@@ -95,9 +95,22 @@
           if($available_role=='STUDENT'){ $roles_string .= 'St'; }
           if($available_role=='SUPERVISOR'){ $roles_string .= 'Su'; }
         }
+
+        $query =
+        'select a.ur_id
+         from USER_ROLES a, LOGIN b, ROLES c
+         where a.u_id = b.login_id
+     and a.r_id = c.r_id and b.email = ?;';
+        $stmt = $con->prepare($query);
+        $stmt->bind_param("s",$email);
+        $stmt->bind_result($login_id);
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->fetch();
+
         $stmt_available_roles->close();
 
-        echo "SS0;$roles_string;$session_id";
+        echo "SS0;$login_id;$roles_string;$session_id";
       } else {
         echo 'FS1';
       }
