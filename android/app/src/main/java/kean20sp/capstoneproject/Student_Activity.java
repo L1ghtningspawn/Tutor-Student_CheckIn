@@ -114,7 +114,9 @@ public class Student_Activity extends AppCompatActivity {
 
     @Override
     public void onResume(){
-        AppState.UserInfo.user_role_id = AppState.UserInfo.student_role_id;
+        if(AppState.UserInfo.student_role_id != null){
+            AppState.UserInfo.user_role_id = AppState.UserInfo.student_role_id;
+        }
         super.onResume();
     }
 
