@@ -37,21 +37,40 @@
 		} else {
 			$stmt->close();
 
-			$stmt = $con->prepare($query_insertQRCode);
-			$stmt->bind_param("s",$qr_server_key);
+			$query3 =
+			'select count(ts_id)
+			from TUTOR_SESSION
+			where s_ur_id = ?
+			and time_out is null;';
+			$stmt = $con->prepare($query3);
+			$stmt->bind_param('i', $student_role_id);
+			$stmt->bind_result($ts_count);
 			$stmt->execute();
+			$stmt->fetch();
+			$stmt->store_result();
 			$stmt->close();
 
-			$query_session =
-			"insert into TUTOR_SESSION
-			(t_ur_id, s_ur_id, time_in, time_out, c_id)
-			values (?, ?, now(), null, ?);";
-			$stmt = $con->prepare($query_session);
-			$stmt->bind_param("iii",$tutor_role_id, $student_role_id, $course_id);
-			$stmt->execute();
-			$stmt->close();
+			if($ts_count == 0){
+				$stmt = $con->prepare($query_insertQRCode);
+				$stmt->bind_param("s",$qr_server_key);
+				$stmt->execute();
+				$stmt->close();
 
-			echo "SC0";
+				$query_session =
+				"insert into TUTOR_SESSION
+				(t_ur_id, s_ur_id, time_in, time_out, c_id)
+				values (?, ?, now(), null, ?);";
+				$stmt = $con->prepare($query_session);
+				$stmt->bind_param("iii",$tutor_role_id, $student_role_id, $course_id);
+				$stmt->execute();
+				$stmt->close();
+
+				echo "SC0";
+			} else {
+				echo "FCE1";
+			}
+
+
 		}
 		//otherwise return success code
 
