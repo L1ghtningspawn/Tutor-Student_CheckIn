@@ -39,17 +39,18 @@ if(isset($_POST['tutordeptlist'])){
     $stmt->execute();
     $stmt->store_result();
 
-    $user_roles = "";
-    $depts = "";
+    $stmt->fetch();
+    $user_roles = $user_role_id;
+    $depts = $dept_name;
     while($stmt->fetch()){
-      $user_roles .= ";".$user_role_id;
-      $depts .= ";".$dept_name;
+      $user_roles .= "^".$user_role_id;
+      $depts .= "^".$dept_name;
     }
     $rows = $stmt->num_rows;
     $stmt->close();
 
     if($rows > 0){
-      $result = "STu0".$user_roles.$depts;
+      $result = "STu0;".$user_roles.";".$depts;
       echo $result;
     } else {
       $result = "FTu0";
