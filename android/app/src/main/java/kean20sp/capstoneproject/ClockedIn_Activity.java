@@ -65,12 +65,12 @@ public class ClockedIn_Activity extends AppCompatActivity {
             }
         });
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                on_click_logout(v);
-            }
-        });
+//        logout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                on_click_logout(v);
+//            }
+//        });
 
         clockout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,16 +116,16 @@ public class ClockedIn_Activity extends AppCompatActivity {
 //        Log.d("mailman","session_id --> "+(session_id == null));
     }
 
-    public void on_click_logout(View v){
-        //recalculate_clockin_duration = false;
-        LogoutHandler logouthandler = new LogoutHandler();
-        String response = logouthandler.logout(email,session_id);
-
-        Intent it = new Intent(ClockedIn_Activity.this, login.class);
-
-        stop_update_duration_thread();
-        startActivity(it);
-    }
+//    public void on_click_logout(View v){
+//        //recalculate_clockin_duration = false;
+//        LogoutHandler logouthandler = new LogoutHandler();
+//        String response = logouthandler.logout(email,session_id);
+//
+//        Intent it = new Intent(ClockedIn_Activity.this, login.class);
+//
+//        stop_update_duration_thread();
+//        startActivity(it);
+//    }
 
     public void stop_update_duration_thread(){
         //recalculate_clockin_duration = false;

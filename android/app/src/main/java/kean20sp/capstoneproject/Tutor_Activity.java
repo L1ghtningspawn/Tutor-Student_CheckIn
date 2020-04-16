@@ -98,6 +98,7 @@ public class Tutor_Activity extends AppCompatActivity {
 
     public void on_click_logout(View v){
         AppState.Session.activity_id = null;
+        AppState.Session.logout_flag = true;
         LogoutHandler logouthandler = new LogoutHandler();
         String response = logouthandler.logout(user_email,session_id);
 
@@ -149,5 +150,4 @@ public class Tutor_Activity extends AppCompatActivity {
         AppState.IO.write(this);
         super.onResume();
     }
-
 }

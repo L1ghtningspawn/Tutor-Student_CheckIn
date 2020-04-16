@@ -18,6 +18,7 @@ public class AppState {
     public static class Session {
         public static String id;
         public static String activity_id;
+        public static boolean logout_flag;
     }
 
     public static class UserInfo {
@@ -55,6 +56,8 @@ public class AppState {
     public static class Debug {
         public static void log_Session(){
             Log.d("AppState.Session","id = "+Session.id);
+            Log.d("AppState.Session", "activity_id = "+Session.activity_id);
+            Log.d("AppState.Session", "logout_flag = "+Session.logout_flag);
         }
         public static void log_UserInfo(){
             Log.d("AppState.UserInfo", "email = "+UserInfo.email);
@@ -142,6 +145,7 @@ public class AppState {
                 JSONObject session = config.getJSONObject("Session");
                 Session.activity_id = session.getString("activity_id");
                 Session.id = session.getString("id");
+                //Session.logout_flag = session.getBoolean("logout_flag");
 
                 JSONObject userinfo = config.getJSONObject("UserInfo");
                 UserInfo.email = userinfo.getString("email");
@@ -192,6 +196,7 @@ public class AppState {
             JSONObject session = new JSONObject();
             session.put("id",Session.id);
             session.put("activity_id",Session.activity_id);
+            //session.put("logout_flag",Session.logout_flag);
             config.put("Session",session);
 
             JSONObject userinfo = new JSONObject();

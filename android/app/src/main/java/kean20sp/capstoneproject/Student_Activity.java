@@ -71,6 +71,7 @@ public class Student_Activity extends AppCompatActivity {
 
     public void on_click_logout(View v){
         AppState.Session.activity_id = null;
+        AppState.Session.logout_flag = true;
         LogoutHandler logouthandler = new LogoutHandler();
         String response = logouthandler.logout(user_email,session_id);
 
@@ -117,7 +118,7 @@ public class Student_Activity extends AppCompatActivity {
     public void onResume(){
         AppState.Session.activity_id = "Student_Activity";
         AppState.IO.write(this);
-        if(AppState.UserInfo.student_role_id != null){
+        if(AppState.UserInfo.student_role_id != null) {
             AppState.UserInfo.user_role_id = AppState.UserInfo.student_role_id;
         }
         super.onResume();
