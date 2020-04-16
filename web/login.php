@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+
+session_destroy();
+
+?>
+
 <html>
 
 <style>
@@ -48,6 +56,12 @@
 
 
 
+	p.text{
+
+		font-size:25px;
+
+	}
+
 	.input{
 
 		padding:10px 34px;
@@ -72,16 +86,6 @@
 
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
-	<script type="text/javascript">
-
-		$.ajax({
-
-			url:'session_destroy.php'
-
-		});
-
-	</script>
-
 </head>
 
 <body>
@@ -90,7 +94,7 @@
 
 		<img class="logo" src="images/logo.png">
 
-		<button class="head-btn" id="Login" onclick="window.location.href='login.php'">Login</button>
+		<button class="head-btn" id="Login" onclick="window.location.href='login.html'">Login</button>
 
 		<button class="head-btn" id="sign-up" onclick="window.location.href='signup.html'">Sign-up</button>
 
@@ -102,17 +106,11 @@
 
 		<div class="login">
 
-			<form action="signup.php" method="post">
+			<p class="text">Login</p>
+
+			<form action="verify.php" method="post">
 
 				<input class="input" type="text" name="email" placeholder="Email Address">
-
-				<br><br>
-
-				<input class="input" type="text" name="fname" placeholder="First Name">
-
-				<br><br>
-
-				<input class="input" type="text" name="lname" placeholder="Last Name">
 
 				<br><br>
 
@@ -120,13 +118,17 @@
 
 				<br><br>
 
-				<input class="input" type="password" minlength="4" name="password2" placeholder="Comfirm Password">
+				<input type="hidden" name="login" value="set">
 
-				<br><br>
-
-				<input class="button" type="submit" value="Submit">
+				<input class="button" type="submit" value="Login">
 
 			</form>
+
+
+
+			<a href="signup.html">Create Account</a><br>
+
+			<a href="">Forgot Password?</a>
 
 		</div>
 

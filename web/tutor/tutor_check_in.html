@@ -8,11 +8,44 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="../style/style.css">
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', {'packages':['table']});
+		google.charts.setOnLoadCallback(drawTable);
+
+		var activity = [];
+		$.ajax({
+			url:"tutor_active_session.php",
+			dataType:"json",
+			async:false,
+			success:function(result){
+				activity=result;
+			}
+		});
+
+		function drawTable(){
+			for(var i=0; i<activity.length; i++)
+				activity[i].push('<button>Check Out</button>')
+
+			var data = new google.visualization.DataTable();
+			data.addColumn('string','Session');
+			data.addColumn('string','Student');
+			data.addColumn('string','Time In');
+			data.addColumn('string','Course');
+			data.addColumn('string','');
+			data.addRows(activity);
+
+			var table = new google.visualization.Table(document.getElementById("tutor-activity"));
+			table.draw(data, {allowHtml: true, showRowNumber: true, width: '800px', height: '100%'});
+		}
+
+	</script>
 </head>
 <body>
 	<div class="header">
 		<img class="logo" src="../images/logo.png">
-		<button class="head-btn" id="Logout">Logout</button>
+		<button class="head-btn" id="Logout" onclick="window.location.href='../logout.php'">Logout</button>
 	</div>
 
 	<div class="side-bar">
@@ -24,6 +57,11 @@
 			<button class="side-button" id="activity" onclick="window.location.href='tutor_activity.html'">View Activity</button>
 			<button id="help" onclick="">Need help getting started?</button>
 		</div>
+	</div>
+
+	<div class="webpage">
+		<br><p>Session History</p>
+		<div id="tutor-activity"></div>
 	</div>
 
 </body>
