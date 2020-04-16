@@ -34,7 +34,7 @@ public class ClockedIn_Activity extends AppCompatActivity {
 
         checkin = (TextView) findViewById(R.id.checkin);
         clockout = (TextView) findViewById(R.id.clockout);
-        logout = (TextView) findViewById(R.id.logout);
+//        logout = (TextView) findViewById(R.id.logout);
         tutor_mode = (TextView) findViewById(R.id.tutor_mode);
         clocked_in_at = (TextView) findViewById(R.id.clocked_in_at);
         clockin_time = (TextView) findViewById(R.id.clockin_time);
@@ -50,7 +50,7 @@ public class ClockedIn_Activity extends AppCompatActivity {
 
         Typeface light_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
         Typeface regular_font = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
-        logout.setTypeface(light_font);
+//        logout.setTypeface(light_font);
         tutor_mode.setTypeface(regular_font);
         checkin.setTypeface(regular_font);
         clockout.setTypeface(regular_font);
