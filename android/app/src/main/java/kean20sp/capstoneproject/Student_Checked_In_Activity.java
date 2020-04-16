@@ -68,4 +68,11 @@ public class Student_Checked_In_Activity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onResume(){
+        AppState.Session.activity_id = "Student_Checked_In_Activity";
+        AppState.IO.write(this);
+        super.onResume();
+    }
 }

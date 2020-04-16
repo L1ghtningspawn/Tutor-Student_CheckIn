@@ -143,4 +143,11 @@ public class Tutor_Active_Session_Activity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onResume(){
+        AppState.Session.activity_id = "Tutor_Active_Session_Activity";
+        AppState.IO.write(this);
+        super.onResume();
+    }
+
 }

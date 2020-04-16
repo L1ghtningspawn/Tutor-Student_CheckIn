@@ -172,6 +172,8 @@ public class ClockedIn_Activity extends AppCompatActivity {
 
     @Override
     public void onResume(){
+        AppState.Session.activity_id = "ClockedIn_Activity";
+        AppState.IO.write(this);
         //assume asshole was already stopped
         //startup asshole again...
         start_asshole();

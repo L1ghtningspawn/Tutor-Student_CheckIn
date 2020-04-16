@@ -97,6 +97,7 @@ public class Tutor_Activity extends AppCompatActivity {
     }
 
     public void on_click_logout(View v){
+        AppState.Session.activity_id = null;
         LogoutHandler logouthandler = new LogoutHandler();
         String response = logouthandler.logout(user_email,session_id);
 
@@ -140,6 +141,13 @@ public class Tutor_Activity extends AppCompatActivity {
        } else {
            super.onBackPressed();
        }
+    }
+
+    @Override
+    public void onResume(){
+        AppState.Session.activity_id = "Tutor_Activity";
+        AppState.IO.write(this);
+        super.onResume();
     }
 
 }

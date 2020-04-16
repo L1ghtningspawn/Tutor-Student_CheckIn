@@ -21,6 +21,10 @@ public class login extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        AppState.IO.config_file = "config.json";
+        AppState.IO.read(this);
+        AppState.Debug.log_All();
+        startActivityFromAppId(AppState.Session.activity_id);
 
         fgtpsswd = (TextView) findViewById(R.id.forgotpswd);
         lin = (TextView) findViewById(R.id.lin);
@@ -59,6 +63,13 @@ public class login extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onResume(){
+//        AppState.Session.activity_id = "login";
+//        AppState.IO.write(this);
+        super.onResume();
+    }
+
     public void login(View view){
         String pswd_text = pswd.getText().toString();
         String email_text = usrusr.getText().toString();
@@ -91,6 +102,31 @@ public class login extends AppCompatActivity {
             } else {
                 Toast.makeText(this,result,Toast.LENGTH_LONG).show();
             }
+        }
+    }
+
+    public void startActivityFromAppId(String id){
+        if(id == null || id.equals("login")){
+        }
+        if(id.equals("Student_Activity")){
+            Intent i = new Intent(this, Student_Activity.class);
+            startActivity(i);
+        }
+        if(id.equals("Tutor_Activity")){
+            Intent i = new Intent(this, Tutor_Activity.class);
+            startActivity(i);
+        }
+        if(id.equals("ClockedIn_Activity")){
+            Intent i = new Intent(this, ClockedIn_Activity.class);
+            startActivity(i);
+        }
+        if(id.equals("Student_Checked_In_Activity")){
+            Intent i = new Intent(this, Student_Checked_In_Activity.class);
+            startActivity(i);
+        }
+        if(id.equals("Tutor_Active_Session_Activity")){
+            Intent i = new Intent(this, Tutor_Active_Session_Activity.class);
+            startActivity(i);
         }
     }
 }
