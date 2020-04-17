@@ -113,6 +113,9 @@ public class login extends AppCompatActivity {
         } else {
             return;
         }
+        if(id == null){
+            return;
+        }
         if(id.equals("Student_Activity")){
             Intent i = new Intent(this, Student_Activity.class);
             startActivity(i);
