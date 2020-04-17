@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -58,6 +60,7 @@ public class signup2 extends AppCompatActivity {
 
                 String session_id = shandler.session_id();
                 String available_roles = shandler.available_rolse();
+                AppState.UserInfo.user_role_id = shandler.user_role_id;
                 if(result.equals(SignupHandler.SIGNUP_SUCCESSFUL)) {
                     Intent it = new Intent(signup2.this, Student_Activity.class);
                     AppState.Session.id = session_id;

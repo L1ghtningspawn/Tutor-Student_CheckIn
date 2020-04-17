@@ -95,6 +95,8 @@ public class CheckIn_Activity extends AppCompatActivity {
         String formatted_time = time_format.format(date_time);
         clockin_time_tv.setText(formatted_time);
 
+        //clockin_time_tv.setText(ct_time);
+
 //        asshole = new Thread() {
 //            @Override
 //            public void run(){
@@ -194,6 +196,12 @@ public class CheckIn_Activity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         stop_asshole();
-        super.onBackPressed();
+        boolean session_ended = getIntent().getBooleanExtra("session_ended",false);
+        if(session_ended){
+            Intent i = new Intent(CheckIn_Activity.this,ClockedIn_Activity.class);
+            startActivity(i);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

@@ -1,69 +1,137 @@
 <html>
+
 <style>
-	.webpage{
-		position:absolute;
-		top:60px;
-		height:100%;
-		width:100%;
-		text-align:center;
-	}
 
 	.login{
+
 		position:relative;
+
 		width:300px;
+
 		height:400px;
+
 		margin:auto;
+
 		text-align:center;
+
 		border:1px solid black;
+
 		top:60px;
+
 	}
+
+
 
 	.button{
+
 		color:white;
+
 		padding: 10px 100px;
+
 		background-color:black;
+
 		border:none;
+
 		text-align: center;
+
 		text-decoration: none;
+
 		display:inline-block;
+
 		font-size:16px;
+
 		margin:4px 2px;
+
 		cursor:pointer;
+
 	}
+
+
 
 	.input{
+
 		padding:10px 34px;
+
 		text-align:center;
+
 		text-decoration: none;
+
 		font-size:16px;
+
 		margin:4px 2px;
+
 	}
+
 </style>
-	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="style/style.css">
-	</head>
-	<body>
-		<div class="header">
-			<img class="logo" src="images/logo.png">
+
+<head>
+
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" href="style/style.css">
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+	<script type="text/javascript">
+
+		$.ajax({
+
+			url:'session_destroy.php'
+
+		});
+
+	</script>
+
+</head>
+
+<body>
+
+	<div class="header">
+
+		<img class="logo" src="images/logo.png">
+
+		<button class="head-btn" id="Login" onclick="window.location.href='login.php'">Login</button>
+
+		<button class="head-btn" id="sign-up" onclick="window.location.href='signup.html'">Sign-up</button>
+
+	</div>
+
+
+
+	<div class="webpage1">
+
+		<div class="login">
+
+			<form action="signup.php" method="post">
+
+				<input class="input" type="text" name="email" placeholder="Email Address">
+
+				<br><br>
+
+				<input class="input" type="text" name="fname" placeholder="First Name">
+
+				<br><br>
+
+				<input class="input" type="text" name="lname" placeholder="Last Name">
+
+				<br><br>
+
+				<input class="input" type="password" minlength="4" name="password" placeholder="Password">
+
+				<br><br>
+
+				<input class="input" type="password" minlength="4" name="password2" placeholder="Comfirm Password">
+
+				<br><br>
+
+				<input class="button" type="submit" value="Submit">
+
+			</form>
+
 		</div>
 
-		<div class="webpage">
-			<div class="login">
-				<form action="" method="post">
-					<input class="input" type="text" name="email" placeholder="Email Address">
-					<br><br>
-					<input class="input" type="text" name="fname" placeholder="First Name">
-					<br><br>
-					<input class="input" type="text" name="lname" placeholder="Last Name">
-					<br><br>
-					<input class="input" type="password" name="password" placeholder="Password">
-					<br><br>
-					<input class="input" type="password" name="password2" placeholder="Comfirm Password">
-					<br><br>
-					<input class="button" type="submit" value="Submit">
-				</form>
-			</div>
-		</div>
-	</body>
+	</div>
+
+</body>
+
 </html>

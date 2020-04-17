@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,7 +34,7 @@ public class ClockedIn_Activity extends AppCompatActivity {
 
         checkin = (TextView) findViewById(R.id.checkin);
         clockout = (TextView) findViewById(R.id.clockout);
-        logout = (TextView) findViewById(R.id.logout);
+//        logout = (TextView) findViewById(R.id.logout);
         tutor_mode = (TextView) findViewById(R.id.tutor_mode);
         clocked_in_at = (TextView) findViewById(R.id.clocked_in_at);
         clockin_time = (TextView) findViewById(R.id.clockin_time);
@@ -49,7 +50,7 @@ public class ClockedIn_Activity extends AppCompatActivity {
 
         Typeface light_font = Typeface.createFromAsset(getAssets(), "fonts/LatoLight.ttf");
         Typeface regular_font = Typeface.createFromAsset(getAssets(), "fonts/LatoRegular.ttf");
-        logout.setTypeface(light_font);
+//        logout.setTypeface(light_font);
         tutor_mode.setTypeface(regular_font);
         checkin.setTypeface(regular_font);
         clockout.setTypeface(regular_font);
@@ -64,12 +65,12 @@ public class ClockedIn_Activity extends AppCompatActivity {
             }
         });
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                on_click_logout(v);
-            }
-        });
+//        logout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                on_click_logout(v);
+//            }
+//        });
 
         clockout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,16 +116,16 @@ public class ClockedIn_Activity extends AppCompatActivity {
 //        Log.d("mailman","session_id --> "+(session_id == null));
     }
 
-    public void on_click_logout(View v){
-        //recalculate_clockin_duration = false;
-        LogoutHandler logouthandler = new LogoutHandler();
-        String response = logouthandler.logout(email,session_id);
-
-        Intent it = new Intent(ClockedIn_Activity.this, login.class);
-
-        stop_update_duration_thread();
-        startActivity(it);
-    }
+//    public void on_click_logout(View v){
+//        //recalculate_clockin_duration = false;
+//        LogoutHandler logouthandler = new LogoutHandler();
+//        String response = logouthandler.logout(email,session_id);
+//
+//        Intent it = new Intent(ClockedIn_Activity.this, login.class);
+//
+//        stop_update_duration_thread();
+//        startActivity(it);
+//    }
 
     public void stop_update_duration_thread(){
         //recalculate_clockin_duration = false;
@@ -157,7 +158,7 @@ public class ClockedIn_Activity extends AppCompatActivity {
     }
 
     public void on_click_checkin(View v){
-        Thread.currentThread().interrupt();
+        //Thread.currentThread().interrupt();
         Intent it = new Intent(ClockedIn_Activity.this, CheckIn_Activity.class);
         stop_update_duration_thread();
         //Log.d("asshole", "thread is running: "+update_duration.isAlive());
@@ -171,6 +172,8 @@ public class ClockedIn_Activity extends AppCompatActivity {
 
     @Override
     public void onResume(){
+        AppState.Session.activity_id = "ClockedIn_Activity";
+        AppState.IO.write(this);
         //assume asshole was already stopped
         //startup asshole again...
         start_asshole();

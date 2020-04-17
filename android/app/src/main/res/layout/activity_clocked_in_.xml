@@ -45,15 +45,6 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/logout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-
-            android:letterSpacing="0.1"
-            android:text="Logout"
-            android:textColor="#000000" />
     </LinearLayout>
 
     <LinearLayout

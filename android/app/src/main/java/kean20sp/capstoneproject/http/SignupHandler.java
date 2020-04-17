@@ -1,6 +1,7 @@
 package kean20sp.capstoneproject.http;
 
 import android.net.Uri;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -14,6 +15,8 @@ public class SignupHandler extends HTTPConnectionHandler {
     private String session_id = null;
     private String available_roles = null;
     private ArrayList<NameValuePair> pairs;
+
+    public String user_role_id;
 
     public SignupHandler(){
         host = "seesselm-project-page.com";
@@ -73,10 +76,12 @@ public class SignupHandler extends HTTPConnectionHandler {
         String[] response_split = response.split(";");
         String code = response_split[0];
         if(code.equals("SS0")){
-            String available_roles = response_split[1];
-            String session_id = response.replace(response_split[0]+';'+response_split[1]+';',"");
+            user_role_id = response_split[1]; //move later
+            Log.d("signup","ur_id: "+user_role_id);
+            String available_roles = response_split[2];
+            String session_id = response.replace(response_split[0]+';'+response_split[1]+';'+response_split[2]+';',"");
             this.session_id = session_id;
-            this.available_roles = available_roles;;
+            this.available_roles = available_roles;
             return SIGNUP_SUCCESSFUL;
         } else if(code.equals("FSO")){
             return EMAIL_EXISTS;

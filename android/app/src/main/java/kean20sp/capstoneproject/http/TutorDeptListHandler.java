@@ -1,6 +1,7 @@
 package kean20sp.capstoneproject.http;
 
 import android.content.Intent;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,6 +70,7 @@ public class TutorDeptListHandler extends HTTPConnectionHandler {
         while(!response_done & (System.currentTimeMillis() - start) <= tlim){}
         response_done = false;
 
+        Log.d("hitler","response: "+response);
         return process(response);
     }
 
