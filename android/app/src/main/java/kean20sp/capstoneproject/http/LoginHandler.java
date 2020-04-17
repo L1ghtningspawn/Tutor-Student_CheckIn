@@ -79,7 +79,7 @@ public class LoginHandler extends HTTPConnectionHandler{
     private String process(String response) {
         Log.d("loginhandler response","response = "+response);
         if(response==null){
-            return "null";
+            return "Connection Failed. Try Again.";
         }
         String[] response_split = response.split(";");//easy way to pass between php to java
         String code = response_split[0];
