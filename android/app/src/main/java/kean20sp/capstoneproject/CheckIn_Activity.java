@@ -96,6 +96,7 @@ public class CheckIn_Activity extends AppCompatActivity {
         clockin_time_tv.setText(formatted_time);
 
         //clockin_time_tv.setText(ct_time);
+
 //        asshole = new Thread() {
 //            @Override
 //            public void run(){
