@@ -76,6 +76,9 @@ public class TutorDeptListHandler extends HTTPConnectionHandler {
 
 
     private String process(String response) {
+        if(response == null){
+            return "Connection Failed";
+        }
         String[] response_split = response.split(";");
         String code = response_split[0];
         if(code.equals("STu0")){

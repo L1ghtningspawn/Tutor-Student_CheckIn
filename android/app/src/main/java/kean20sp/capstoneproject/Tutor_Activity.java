@@ -102,6 +102,7 @@ public class Tutor_Activity extends AppCompatActivity {
         LogoutHandler logouthandler = new LogoutHandler();
         String response = logouthandler.logout(user_email,session_id);
 
+        AppState.IO.write(this);
         Intent it = new Intent(Tutor_Activity.this, login.class);
 
         startActivity(it);

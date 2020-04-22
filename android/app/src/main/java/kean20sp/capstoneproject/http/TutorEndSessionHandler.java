@@ -50,7 +50,9 @@ public class TutorEndSessionHandler extends HTTPConnectionHandler{
     }
 
     private String process(String response) {
-
+        if(response == null){
+            return "connection failed";
+        }
         if(response.equals("S01")){
             return SESSION_END_SUCCESS;
         }

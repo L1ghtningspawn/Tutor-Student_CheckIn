@@ -77,6 +77,7 @@ public class Student_Activity extends AppCompatActivity {
 
         Intent it = new Intent(Student_Activity.this, login.class);
 
+        AppState.IO.write(this);
         startActivity(it);
     }
 

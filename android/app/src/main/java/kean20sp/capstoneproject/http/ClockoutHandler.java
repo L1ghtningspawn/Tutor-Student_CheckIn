@@ -62,6 +62,9 @@ public class ClockoutHandler extends HTTPConnectionHandler {
 
 
     private String process(String response) {
+        if(response == null){
+            return CONNECTION_FAILED;
+        }
         String[] response_split = response.split(";");
         String code = response_split[0];
         if(code.equals("SCl0")){
@@ -80,6 +83,7 @@ public class ClockoutHandler extends HTTPConnectionHandler {
         return clockout_date;
     }
 
+    public static final String CONNECTION_FAILED = "Connection Failed";
     public static final String CLOCKOUT_SUCCESS = "Clockout Was Successful";
     public static final String CLOCKOUT_FAILURE = "Clockout Failed";
     public static final String UNKNOWN_FAILURE = "Unknown Failure";

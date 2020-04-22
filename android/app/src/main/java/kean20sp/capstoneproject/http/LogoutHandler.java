@@ -60,6 +60,9 @@ public class LogoutHandler extends HTTPConnectionHandler {
 
 
     private String process(String response) {
+        if(response == null){
+            return CONNECTION_FAILED;
+        }
         if(response.equals("SLo0")){
             return LOGOUT_SUCCESS;
         } else if(response.equals("FLo0")){
@@ -69,6 +72,7 @@ public class LogoutHandler extends HTTPConnectionHandler {
         }
     }
 
+    public static final String CONNECTION_FAILED = "Connection Failed";
     public static final String LOGOUT_SUCCESS = "Logout Was Successful";
     public static final String LOGOUT_FAILURE = "Logout Failed";
     public static final String UNKNOWN_FAILURE = "Unknown Failure";
