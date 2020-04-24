@@ -87,10 +87,16 @@ public class Tutor_Activity extends AppCompatActivity {
         session_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int selected_dept = select_program.getSelectedItemPosition();
-                AppState.UserInfo.user_role_id = str_user_roles[selected_dept];
-                Intent intent = new Intent(Tutor_Activity.this, Tutor_Active_Session_Activity.class);
-                startActivity(intent);
+                try {
+                    int selected_dept = select_program.getSelectedItemPosition();
+                    AppState.UserInfo.user_role_id = str_user_roles[selected_dept];
+
+                    Intent intent = new Intent(Tutor_Activity.this, Tutor_Active_Session_Activity.class);
+                    startActivity(intent);
+                }catch(Exception e){
+                    e.printStackTrace();
+                    Toast.makeText(Tutor_Activity.this,"Connection Failure",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     //AppState.Debug.log_All();
@@ -109,30 +115,35 @@ public class Tutor_Activity extends AppCompatActivity {
     }
 
     public void clockin(View v){
-        ClockinHandler clockinhandler = new ClockinHandler();
-        int selected = select_program.getSelectedItemPosition();
-        String user_role_id = str_user_roles[selected];
-        String response = clockinhandler.clockin(user_email,session_id, user_role_id);
+        try {
+            ClockinHandler clockinhandler = new ClockinHandler();
+            int selected = select_program.getSelectedItemPosition();
+            String user_role_id = str_user_roles[selected];
+            String response = clockinhandler.clockin(user_email, session_id, user_role_id);
 
-        clockin_date = clockinhandler.getClockinDate();
-        clockin_id = clockinhandler.getClockin_id();
-        if(response.equals(ClockinHandler.CLOCKIN_FAILURE)){
+            clockin_date = clockinhandler.getClockinDate();
+            clockin_id = clockinhandler.getClockin_id();
+            if (response.equals(ClockinHandler.CLOCKIN_FAILURE)) {
 
-        } else if(response.equals(ClockinHandler.CLOCKIN_SUCCESS)){
-            Toast.makeText(this,response,Toast.LENGTH_SHORT).show();
+            } else if (response.equals(ClockinHandler.CLOCKIN_SUCCESS)) {
+                Toast.makeText(this, response, Toast.LENGTH_SHORT).show();
 
-            Intent it = new Intent(Tutor_Activity.this, ClockedIn_Activity.class);
-            AppState.Clock.in_datetime = clockin_date;
-            //Log.d("clockin_date",clockin_date);
-            AppState.Clock.id = clockin_id;
-            AppState.UserInfo.user_role_id = user_role_id;
-            startActivity(it);
+                Intent it = new Intent(Tutor_Activity.this, ClockedIn_Activity.class);
+                AppState.Clock.in_datetime = clockin_date;
+                //Log.d("clockin_date",clockin_date);
+                AppState.Clock.id = clockin_id;
+                AppState.UserInfo.user_role_id = user_role_id;
+                startActivity(it);
 
-        } else if(response.equals(ClockinHandler.SESSION_EXPIRED)){
-            Toast.makeText(this,response,Toast.LENGTH_SHORT).show();
-            on_click_logout(null);
-        } else if(response.equals(ClockinHandler.UNKNOWN_FAILURE)){
-            Toast.makeText(this,response,Toast.LENGTH_SHORT).show();
+            } else if (response.equals(ClockinHandler.SESSION_EXPIRED)) {
+                Toast.makeText(this, response, Toast.LENGTH_SHORT).show();
+                on_click_logout(null);
+            } else if (response.equals(ClockinHandler.UNKNOWN_FAILURE)) {
+                Toast.makeText(this, response, Toast.LENGTH_SHORT).show();
+            }
+        }catch(Exception e){
+            e.printStackTrace();;
+            Toast.makeText(this,"Connection Failure",Toast.LENGTH_SHORT).show();
         }
     }
 
