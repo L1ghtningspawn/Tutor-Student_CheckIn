@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="kean20sp.capstoneproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,8 +17,11 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".login"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,57 +30,99 @@
         </activity>
         <activity
             android:name=".signup"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:label="@string/title_activity_signup"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".qrcode.BarcodeCaptureActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:label="Read Barcode" />
         <activity
             android:name=".signup2"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:label="@string/title_activity_signup2"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ForgotPassword"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:label="@string/title_activity_forgot_password"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Student_Activity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:label="@string/title_activity_student_"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Tutor_Activity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:label="@string/title_activity_tutor_"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ClockedIn_Activity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:label="@string/title_activity_clocked_in_"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".CheckIn_Activity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:label="@string/title_activity_check_in_"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Tutor_Checked_In_Activity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:label="@string/title_activity_tutor__checked__in_"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Student_Checked_In_Activity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:label="@string/title_activity_student__checked__in_"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Sample_Kotlin_Activity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:label="@string/title_activity_sample__kotlin_"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Student_Select_Course_Activity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:label="@string/title_activity_student__select__course_"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Student_Tutor_History_Activity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:label="@string/title_activity_student__tutor__history_"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Tutor_Active_Session_Activity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:label="@string/title_activity_tutor__active__session_"
             android:theme="@style/AppTheme" />
         <activity android:name=".qrcode.BarcodeCaptureActivity2"></activity>
