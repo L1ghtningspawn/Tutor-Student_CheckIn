@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ('../dbconfig.php');
+include ('../include.php');
 #$var=$_POST['var_from_ajax'];
 $var=$_SESSION["Tutor_id"];
 $query="Select ts_id,s_ur_id,time_in,c_id from $server_database.TUTOR_SESSION where t_ur_id=$var and time_out is null order by ts_id desc";
