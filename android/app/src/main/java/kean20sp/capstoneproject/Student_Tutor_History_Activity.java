@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -20,6 +21,7 @@ import org.json.JSONObject;
 public class Student_Tutor_History_Activity extends AppCompatActivity {
     TableLayout session_table;
     JSONArray session_data = null;
+    TextView shareButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +99,39 @@ public class Student_Tutor_History_Activity extends AppCompatActivity {
             Toast.makeText(this,"Something Went Wrong!", Toast.LENGTH_SHORT).show();
         }
         //AppState.Debug.log_All();
+
+        //setup share button 2020.04.26
+        shareButton = (TextView) findViewById(R.id.share);
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = "";
+                for (int x = 0; x < session_data.length(); x++) {
+                    try {
+                        final JSONObject record = session_data.getJSONObject(x);
+                        String name = record.getString("fname") + " " + record.getString("lname");
+                        String time_in = record.getString("time_in");
+                        String time_out = record.getString("time_out");
+
+                        if(time_out == null) continue;
+
+                        text += name+" "+time_in+" "+time_out+"!\n";
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_SUBJECT, "My Session History");
+                sendIntent.putExtra(Intent.EXTRA_TEXT, text);
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
+            }
+        });
     }
     @Override
     public void onBackPressed() {
