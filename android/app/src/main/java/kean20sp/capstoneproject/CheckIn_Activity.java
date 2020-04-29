@@ -33,7 +33,7 @@ import kean20sp.capstoneproject.util.GetUserInfo;
 import kean20sp.capstoneproject.util.QRUtil;
 
 public class CheckIn_Activity extends AppCompatActivity {
-    TextView email_tv, checkin_tv, logout_tv, clockin_time_tv, clockin_duration_tv, session_history_tv;
+    TextView email_tv, checkin_tv, clockin_time_tv, clockin_duration_tv, session_history_tv;
     ImageView qrcode;
 
     String session_id, email, user_roles, str_clockin_time, clockin_id, user_role_id;
@@ -60,7 +60,7 @@ public class CheckIn_Activity extends AppCompatActivity {
 
         email_tv = (TextView) findViewById(R.id.email);
         checkin_tv = (TextView) findViewById(R.id.checkin);
-        logout_tv = (TextView) findViewById(R.id.logout);
+        //logout_tv = (TextView) findViewById(R.id.logout);
         clockin_time_tv = (TextView) findViewById(R.id.clockin_time);
         clockin_duration_tv = (TextView) findViewById(R.id.clockin_duration);
         session_history_tv = (TextView) findViewById(R.id.session_history);
@@ -82,7 +82,7 @@ public class CheckIn_Activity extends AppCompatActivity {
         checkin_tv.setTypeface(regular_font);
         clockin_time_tv.setTypeface(regular_font);
         clockin_duration_tv.setTypeface(regular_font);
-        logout_tv.setTypeface(light_font);
+        //logout_tv.setTypeface(light_font);
 
         session_id = AppState.Session.id;
         email = AppState.UserInfo.email;
