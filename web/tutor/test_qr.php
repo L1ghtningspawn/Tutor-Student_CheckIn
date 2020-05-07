@@ -1,10 +1,9 @@
 <?php
-
 session_start();
-
 function generateQR()
 {
-    include "../qr_gen/QR/qrlib.php";
+    include ("../qr_gen/QR/qrlib.php");
+    
     include "../qr_gen/server_key.php";
     include "../include.php";
     $query="Select qr_key from $server_database.SERVER_QR_KEYS order by sqk_id desc limit 1";
@@ -25,40 +24,8 @@ function generateQR()
         QRcode::png($qr_code, $filename, 'H', 8, 2);
 }
 
+$_SESSION['Tutor_id']=9999;
+generateQR();
+header("Location: test_qr_display.php");
 
-
-$array=[];
-array_push($array,$_SESSION['u_id']);
-array_push($array,$_SESSION['fname']);
-array_push($array,$_SESSION['lname']);
-array_push($array,$_SESSION['login_id']);
-array_push($array,$_SESSION['email']);
-array_push($array,$_SESSION['year_at_organization']);
-if($_SESSION['Student'])
-{
-    array_push($array,"Student");
-    array_push($array,$_SESSION['Student_id']);
-}
-else
-{
-    array_push($array,"Not-Student");
-    array_push($array,"0");
-}
-if($_SESSION['Tutor'])
-{
-    array_push($array,"Tutor");
-    array_push($array,$_SESSION['Tutor_id']);
-    generateQR();
-}
-else
-{
-    array_push($array,"Not-Tutor");
-    array_push($array,"0");
-}
-
-
-
-#supervisor array info
-
-echo json_encode($array);
 ?>
