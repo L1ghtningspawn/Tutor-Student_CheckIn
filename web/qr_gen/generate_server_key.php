@@ -2,7 +2,7 @@
 
 include ("dbconfig.php");
 $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
- 
+
 function generate_string($input, $strength = 16) {
     $input_length = strlen($input);
     $random_string = '';
@@ -10,7 +10,7 @@ function generate_string($input, $strength = 16) {
         $random_character = $input[mt_rand(0, $input_length - 1)];
         $random_string .= $random_character;
     }
- 
+
     return $random_string;
 }
 ?>

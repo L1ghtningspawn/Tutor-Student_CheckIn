@@ -14,7 +14,7 @@ if(strcmp($password_new,$password_new_confirm)==0)
     $hash=$row['password'];
     if(password_verify($password_old, $hash))
     {
-      
+
         $pass=password_hash($password_new, PASSWORD_BCRYPT);
         $query="Update $server_database.LOGIN set password='$pass' where login_id=$id";
         mysqli_query($con,$query);
