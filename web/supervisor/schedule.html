@@ -8,6 +8,17 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="../style/style.css">
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		$.ajax({
+			url:'check_if_valid.php',
+			success:function(result){
+				if(result == 'False'){
+					window.location.href="../login.php";
+				}
+			}
+		});
+	</script>
 </head>
 <body>
 	<div class="header">
