@@ -8,6 +8,8 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="../style/style.css">
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
 </head>
 <body>
 	<div class="header">
@@ -29,9 +31,22 @@
 	<div class="webpage">
 		<br><p>Timestamp</p><br>
 
-		<button class="button" id="in" onclick="">Clock-In</button>
-		<button class="button" id="out" onclick="" disabled>Clock-Out</button>
+		<button class="button" id="in" onclick="clockin()">Clock-In</button>
+		<button class="button" id="out" onclick="clockout()">Clock-Out</button>
 		<br>
+
+		<script>
+		function clockin(){
+			$.ajax({url: "clock_in.php", success: function(result){
+				if(result != "") alert(result);
+ 			}});
+		}
+		function clockout(){
+			$.ajax({url: "clock_out.php", success: function(result){
+	 			if(result != "") alert(result);
+ 			}});
+		}
+		</script>
 
 		<div id="shift-chart">
 			<table><tr>
