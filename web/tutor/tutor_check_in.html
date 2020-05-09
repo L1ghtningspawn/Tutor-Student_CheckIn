@@ -13,6 +13,15 @@
 	<script type="text/javascript">
 		google.charts.load('current', {'packages':['table']});
 		google.charts.setOnLoadCallback(drawTable);
+		
+		$.ajax({
+			url:'check_if_valid.php',
+			success:function(result){
+				if(result == 'False'){
+					window.location.href="../login.php";
+				} 
+			}
+		});
 
 		var activity = [];
 		$.ajax({
@@ -60,7 +69,7 @@
 	</div>
 
 	<div class="webpage">
-		<br><p>Session History</p>
+		<br><h1>Session History</h1>
 		<div id="tutor-activity"></div>
 	</div>
 
