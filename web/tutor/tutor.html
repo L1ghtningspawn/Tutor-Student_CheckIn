@@ -49,12 +49,30 @@
 		</div>
 	</div>
 
+	<script src='../qrcodejs/qrcode.js'></script>
+
 	<div class="webpage">
 		<br>
 		<p id="tutor">Welcome Tutor</p>
 		<br>
 		<div id="qr">
+
 		</div><br>
+		<script>
+			$.ajax({
+				url:'tutorQR.php',
+				success:function(result){
+					var elly = document.getElementById("qr");
+					var qrcode = new QRCode(elly, {
+						width : elly.clientWidth,
+						height : elly.clientHeight
+					});
+					qrcode.makeCode(result);
+				}
+			});
+
+
+		</script>
 
 		<div class="check-in">
 			<form action="" method="post">
