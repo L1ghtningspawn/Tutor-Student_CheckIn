@@ -6,7 +6,6 @@ public class CheckUserInput {
 
     public static boolean isValidEmail(String email)
     {
-        if(email.length() > 20) return false;
 
         String emailRegex = "^ *[a-zA-Z0-9_+&*-]+(?:\\."+
                 "[a-zA-Z0-9_+&*-]+)*@kean.edu *";
