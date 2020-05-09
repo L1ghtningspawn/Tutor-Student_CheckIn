@@ -2,7 +2,9 @@
 session_start();
 include ("include.php");
 $u_id=$_SESSION['u_id'];
-$ur_id=$_SESSION['Tutor_id'];
+$ur_id_array=$_SESSION['Tutor_id'];
+$ur_id_index=$_SESSION['Tutor_index'];
+$ur_id=$ur_id_array[$ur_id_index];
 $query="Select u_id,fname,lname,login_id,year_at_organization from $server_database.USER_INFO where u_id=$u_id";
 #echo $query;
 #echo "<br>";
