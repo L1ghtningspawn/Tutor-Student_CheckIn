@@ -30,6 +30,15 @@
 				}
 			}
 		});
+		
+		$.ajax({
+			url:'current_department.php',
+			success:function(result){
+				if(result != ''){
+					document.getElementById("dept").innerHTML = "Current Department: " + result;
+				} 
+			}
+		});
 	</script>
 </head>
 <body>
@@ -53,8 +62,9 @@
 
 	<div class="webpage">
 		<br>
-		<p id="tutor">Welcome Tutor</p>
+		<h1 id="tutor">Welcome</h1>
 		<br>
+		<h3 id="dept"></h3>
 		<div id="qr">
 
 		</div><br>
