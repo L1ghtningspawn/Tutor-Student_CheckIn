@@ -12,12 +12,14 @@ function checkRoles($login_id)
     #echo $query;
     $results=mysqli_query($con,$query);
     $tutor_id=[];
+    $supervisor_id=[];
     while($row=mysqli_fetch_assoc($results))
     {
         if($row['r_id']==$supervisor)
         {    
             $_SESSION['Supervisor']=true;
-            $_SESSION['Supervisor_id']=$row['ur_id'];
+            #$_SESSION['Supervisor_id']=$row['ur_id'];
+            array_push($supervisor_id,$row['ur_id']);
         }
         if($row['r_id']==$tutor)
         {
@@ -36,6 +38,12 @@ function checkRoles($login_id)
         $_SESSION['Tutor_array']=$tutor_id;
         $_SESSION['Tutor_index']=0;
         $_SESSION['Tutor_id']=$tutor_id[0];
+    }
+    if(sizeof($supervisor_id)>0)
+    {
+        $_SESSION['Supervisor_array']=$supervisor_id;
+        $_SESSION['Supervisor_index']=0;
+        $_SESSION['Supervisor_id']=$supervisor_id[0];
     }
 }
 
