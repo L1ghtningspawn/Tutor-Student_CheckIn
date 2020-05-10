@@ -8,6 +8,41 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="../style/style.css">
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">
+	$.ajax({
+			url:'check_if_valid.php',
+			success:function(result){
+				if(result == 'False'){
+					window.location.href="../login.php";
+				} else {
+					document.getElementById("student").innerHTML = "Welcome " +result; 
+				}
+			}
+		});
+		
+	$.ajax({
+			url:'../check_if_tutor.php',
+			async:false,
+			success:function(result){
+				if(result == 'False'){
+					var a = document.getElementById('tutor');
+					a.style.display = "none";
+				}
+			}
+		});
+		
+		$.ajax({
+			url:'../check_if_supervisor.php',
+			async:false,
+			success:function(result){
+				if(result == 'False'){
+					var a = document.getElementById('supervisor');
+					a.style.display = "none";
+				}
+			}
+		});
+	</script>
 </head>
 <body>
 	<div class="header">
@@ -19,10 +54,12 @@
 		<div class="container">
 			<button class="side-button" id="home" onclick="window.location.href='student.html'">Home</button>
 			<button class="side-button" id="settings" onclick="window.location.href='student_settings.html'">Account Settings</button>
+			<button class="side-button" id="tutor" onclick="window.location.href='../tutor/tutor.html'">Tutor Mode</button>
+			<button class="side-button" id="supervisor" onclick="window.location.href='../supervisor/supervisor.html'">Supervisor Mode</button>
 			<button id="help" onclick="">Need help getting started?</button>
 		</div>
 	</div>
-
+	
 	<script src="../settings.js"></script>
 
 </body>
