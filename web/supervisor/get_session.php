@@ -13,17 +13,14 @@ function generateQR()
     {
         $qr_key=$row['qr_key'];
     }
-    $ur_id_array=$_SESSION['Tutor_id'];
-    $ur_id_index=$_SESSION['index'];
-    $ur_id=$ur_id_array[$ur_id_index];
-    $qr_code=$ur_id."#".$qr_key;
+    $qr_code=$_SESSION['Tutor_id']."#".$qr_key;
     $PNG_WEB_DIR='../qr_gen/tutor_codes/';
     #$ivlen = openssl_cipher_iv_length($cipher="AES-128-CBC");
         #$iv = openssl_random_pseudo_bytes($ivlen);
         #$ciphertext_raw = openssl_encrypt($qr_code, $cipher, $key, $options=OPENSSL_RAW_DATA, $iv);
         #$hmac = hash_hmac('sha256', $ciphertext_raw, $key, $as_binary=true);
         #$ciphertext = base64_encode( $iv.$hmac.$ciphertext_raw );
-        $filename = $PNG_WEB_DIR.$ur_id.'.png';
+        $filename = $PNG_WEB_DIR.$_SESSION['Tutor_id'].'.png';
         #QRcode::png($ciphertext, $filename, 'H', 8, 2);
         QRcode::png($qr_code, $filename, 'H', 8, 2);
 }
@@ -48,11 +45,8 @@ else
 }
 if($_SESSION['Tutor'])
 {
-    $ur_id_array=$_SESSION['Tutor_id'];
-    $ur_id_index=$_SESSION['index'];
-    $ur_id=$ur_id_array[$ur_id_index];
     array_push($array,"Tutor");
-    array_push($array,$ur_id);
+    array_push($array,$_SESSION['Tutor_id']);
     generateQR();
 }
 else

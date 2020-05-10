@@ -33,8 +33,9 @@ function checkRoles($login_id)
     }
     if(sizeof($tutor_id)>0)
     {
-        $_SESSION['Tutor_id']=$tutor_id;
+        $_SESSION['Tutor_array']=$tutor_id;
         $_SESSION['Tutor_index']=0;
+        $_SESSION['Tutor_id']=$tutor_id[0];
     }
 }
 
