@@ -12,6 +12,7 @@
 	<script type="text/javascript">
 		$.ajax({
 			url:'check_if_valid.php',
+			async:false,
 			success:function(result){
 				if(result == 'False'){
 					window.location.href="../login.php";
@@ -32,7 +33,8 @@
 			<button class="side-button" id="account-manage" onclick="window.location.href='account_management.html'">Manage Tutor Accounts</button>
 			<button class="side-button" id="schedule" onclick="window.location.href='schedule.html'">View/ Manage Schedule</button>
 			<button class="side-button" id="activity" onclick="window.location.href='view_statistics.html'">View Activity/ Statistics</button>
-			<button class="side-button" onclick="window.location.href='../tutor/tutor.html'">Tutor View</button>
+			<button class="side-button" onclick="window.location.href='../student/student.html'">Student Mode</button>
+			<button class="side-button" onclick="window.location.href='../tutor/tutor.html'">Tutor Mode</button>
 			<button id="help" onclick="">Need help getting started?</button>
 		</div>
 	</div>
