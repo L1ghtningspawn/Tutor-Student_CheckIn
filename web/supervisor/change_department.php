@@ -2,9 +2,9 @@
 session_start();
 include ('../include.php');
 $d_id=$_POST['d_id'];
-$ur_id=$_SESSION['Tutor_id'];
-$tutor_array=$_SESSION['Tutor_array'];
-$tutor_index=$_SESSION['Tutor_index'];
+$ur_id=$_SESSION['Supervisor_id'];
+$supervisor_array=$_SESSION['Supervisor_array'];
+$supervisor_index=$_SESSION['Supervisor_index'];
 
 $departments="Select d_id from $server_database.DEPARTMENT where d_id in(Select d_id from $server_database.USER_ROLES_DEPARTMENT where ur_id=$ur_id)";
 $result=mysqli_query($con,$departments);
@@ -26,22 +26,22 @@ else
     while($row=mysqli_fetch_assoc($result))
     {
         $urid=$row['ur_id'];
-        /*if($row['ur_id']==$tutor_array[$i])
+        /*if($row['ur_id']==$supervisor_array[$i])
         {
-            $_SESSION['Tutor_index']=$i;
-            $_SESSION['Tutor_id']=$row['ur_id'];
+            $_SESSION['Supervisor_index']=$i;
+            $_SESSION['Supervisor_id']=$row['ur_id'];
             $i++;
         }
         else
         {
             $i++;
         }*/
-        for($j=0;$j<sizeof($tutor_array);$j++)
+        for($j=0;$j<sizeof($supervisor_array);$j++)
         {
-            if($urid==$tutor_array[$j])
+            if($urid==$supervisor_array[$j])
             {
-                $_SESSION['Tutor_index']=$j;
-                $_SESSION['Tutor_id']=$row['ur_id'];
+                $_SESSION['Supervisor_index']=$j;
+                $_SESSION['Supervisor_id']=$row['ur_id'];
             }
 
         }
