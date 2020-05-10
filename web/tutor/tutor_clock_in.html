@@ -4,6 +4,10 @@
 	#clock-in{
 		background-color:grey;
 	}
+	table, tr, th, td {
+		border: 1px solid black;
+		border-collapse:collapse;
+	}
 </style>
 <head>
 	<meta charset="UTF-8">
@@ -56,11 +60,32 @@
 	 			if(result != "") alert(result);
  			}});
 		}
+		function clockhistory(){
+			var element;
+			var history = "";
+			$.ajax({
+				url: "clock_history.php",
+				success: function(result){
+					var element = document.getElementById("clockhistory");
+					history = JSON.parse(result);
+					for(var x=0;x<history.length;x++){
+						element.innerHTML +=
+							` <tr>
+									<td>${history[x][0]}</td>
+									<td>${history[x][1]}</td>
+								</tr>
+							`;
+					}
+				}
+			});
+		}
 		</script>
 
-		<div id="shift-chart">
-			<table><tr>
-				<td>Date</td><td>Time In</td><td>Time Out</td>
+		<div id="shift-chart" style='text-align:center; display:inline-block; margin-top:50px;'>
+			<table id='clockhistory'><tr>
+				<td>Time In</td><td>Time Out</td>
+			</tr>
+			<script> clockhistory(); </script>
 			</table>
 		</div>
 	</div>
