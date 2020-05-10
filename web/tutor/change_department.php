@@ -11,7 +11,7 @@ $result=mysqli_query($con,$departments);
 $to_web=[];
 while($row=mysqli_fetch_assoc($result))
 {
-    $current=$row['d_id']
+    $current=$row['d_id'];
 }
 if($current==$d_id)
 {
