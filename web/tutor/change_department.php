@@ -19,12 +19,14 @@ if($current==$d_id)
 }
 else
 {
-    $new_role="Select ur_id from USER_ROLE_DEPARTMENT where d_id=$d_id";
+    $new_role="Select ur_id from $server_database.USER_ROLES_DEPARTMENT where d_id=$d_id";
+    #echo $new_role;
     $result=mysqli_query($con,$new_role);
     $i=0;
     while($row=mysqli_fetch_assoc($result))
     {
-        if($row['ur_id']==$tutor_array[$i])
+        $urid=$row['ur_id'];
+        /*if($row['ur_id']==$tutor_array[$i])
         {
             $_SESSION['Tutor_index']=$i;
             $_SESSION['Tutor_id']=$row['ur_id'];
@@ -33,6 +35,15 @@ else
         else
         {
             $i++;
+        }*/
+        for($j=0;$j<sizeof($tutor_array);$j++)
+        {
+            if($urid==$tutor_array[$j])
+            {
+                $_SESSION['Tutor_index']=$j;
+                $_SESSION['Tutor_id']=$row['ur_id'];
+            }
+
         }
     }
 }
