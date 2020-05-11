@@ -1,9 +1,11 @@
 <?php
 session_start();
 
-include("../include.php");
-$u_id=$_SESSION['u_id'];
-$department="SELECT d_id FROM $server_database.USER_ROLES_DEPARTMENT where ur_id in (Select ur_id from $server_database.USER_ROLES where r_id=$supervisor and u_id=$u_id)";
+include ("../include.php");
+#$u_id=$_SESSION['u_id'];
+$ur_id=$_SESSION['Supervisor_id'];
+#$department="SELECT d_id FROM $server_database.USER_ROLES_DEPARTMENT where ur_id in (Select ur_id from $server_database.USER_ROLES where r_id=$supervisor and u_id=$u_id)";
+$department="SELECT d_id FROM $server_database.USER_ROLES_DEPARTMENT where ur_id=$ur_id";
 $result=mysqli_query($con,$department);
 $row=mysqli_fetch_assoc($result);
 $d_id=$row['d_id'];
@@ -22,6 +24,6 @@ while($row=mysqli_fetch_assoc($result))
     array_push($to_web,$user_info);
 }
 
-#echo json_encode($to_web);
+echo json_encode($to_web);
 
 ?>
