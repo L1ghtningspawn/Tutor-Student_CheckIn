@@ -106,7 +106,7 @@
 			data.addColumn('string','Time In');
 			data.addColumn('string','Time Out');
 			data.addColumn('string','Course');
-			data.addRows(activity);
+			data.addRows(arr);
 
 			var table = new google.visualization.Table(document.getElementById("activity"));
 			table.draw(data, {allowHtml: true, showRowNumber: true, width: '800px', height: '100%'});
