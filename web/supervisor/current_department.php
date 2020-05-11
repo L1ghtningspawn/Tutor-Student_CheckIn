@@ -1,4 +1,6 @@
 <?php
+session_start();
+include ('../include.php');
 
 $ur_id=$_SESSION['Supervisor_id'];
 $departments="Select dept_name,d_id from $server_database.DEPARTMENT where d_id in(Select d_id from $server_database.USER_ROLES_DEPARTMENT where ur_id=$ur_id)";
