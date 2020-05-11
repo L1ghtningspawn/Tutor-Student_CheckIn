@@ -56,10 +56,51 @@
 			}
 		});
 
+		function listCourses(){
+			$.ajax({
+				url:"course_list.php",
+				success: function(result){
+					var hi = JSON.parse(result);
+					for(var i=0; i<hi.length; i++){
+						var name = hi[i][1];
+						var id = hi[i][0];
+						if(id != "DUMMY"){
+							$('.course').append(`<option value='${id}'>${name}</option>`);
+						} else {
+							$('.course').append(`<option value='${id}' selected>${name}</option>`);
+						}
+					}
+				}
+			});
+		}
+
+
 		function drawTable(){
+			var arr = [];
+
+			for(var i=0; i<activity.length; l++){
+				var temp = [];
+				if(activity[i][5] ==  "DUMMY"){
+					temp.push(
+						activity[i][1],
+						activity[i][2],
+						activity[i][3],
+						activity[i][4],
+						`<select class='course' id='${activity[i][0]}'>'${listCourses()}'</select>`
+					);
+				} else {
+					temp.push(
+						activity[i][1],
+						activity[i][2],
+						activity[i][3],
+						activity[i][4],
+						activity[i][5]
+					);
+				}
+			}
 
 			var data = new google.visualization.DataTable();
-			data.addColumn('string','Session');
+			//data.addColumn('string','Session');
 			data.addColumn('string','Mentor');
 			data.addColumn('string','Student');
 			data.addColumn('string','Time In');
@@ -68,7 +109,23 @@
 			data.addRows(activity);
 
 			var table = new google.visualization.Table(document.getElementById("activity"));
-			table.draw(data, {showRowNumber: true, width: '800px', height: '100%'});
+			table.draw(data, {allowHtml: true, showRowNumber: true, width: '800px', height: '100%'});
+			var stuff = document.getElementsByClassName('course');
+
+			for(var i=0; i<stuff.length; i++){
+				stuff[i].addEventListener('change',function(){
+					var x =stuff[i].id;
+					$.ajax({
+						url:'course_select.php',
+						type: 'post',
+						data : {
+							sid = x;
+						},
+						success: function(result){
+							console.log(result);						}
+					});
+				});
+			}
 		}
 	</script>
 </head>
