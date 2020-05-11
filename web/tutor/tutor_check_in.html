@@ -45,8 +45,9 @@
 		});
 
 		function drawTable(){
-			for(var i=0; i<activity.length; i++)
-				activity[i].push('<button>Check Out</button>')
+			for(var i=0; i<activity.length; i++){
+				activity[i].push(`<button id='${activity[i][0]}' class='checkout_button'>Check Out</button>`);
+			}
 
 			var data = new google.visualization.DataTable();
 			data.addColumn('string','Session');
@@ -58,6 +59,25 @@
 
 			var table = new google.visualization.Table(document.getElementById("tutor-activity"));
 			table.draw(data, {allowHtml: true, showRowNumber: true, width: '800px', height: '100%'});
+
+			//add onclick for button
+			var checkout_buttons = document.getElementsByClassName("checkout_button");
+			for(var x=0; x < checkout_buttons.length; x++){
+				var button = checkout_buttons[x];
+				button.addEventListener("click",function(){
+					$.ajax({
+						url : "tutor_checkout.php",
+						type: "post",
+						data : {
+							session_id : button.id
+						},
+						success: function(result){
+							alert(result);
+							window.location.reload();
+						}
+					});
+				});
+			}
 		}
 
 	</script>
