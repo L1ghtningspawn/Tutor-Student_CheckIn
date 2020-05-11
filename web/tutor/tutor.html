@@ -22,7 +22,6 @@
 
 		$.ajax({
 			url:'check_if_valid.php',
-			async:false,
 			success:function(result){
 				if(result == 'False'){
 					window.location.href="../login.php";
@@ -34,7 +33,6 @@
 
 		$.ajax({
 			url:'../check_if_supervisor.php',
-			async:false,
 			success:function(result){
 				if(result == 'False'){
 					var a = document.getElementById('supervisor');
