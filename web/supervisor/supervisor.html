@@ -43,9 +43,64 @@
 		</div>
 	</div>
 
+	<script>
+		function currentDepartment(){
+			$.ajax({
+				url : "current_department.php",
+				success: function(result){
+					var json = JSON.parse(result);
+					var cd_name = json[0][0];
+					var cd_id = json[0][1];
+
+					listDepartments(cd_id);
+				}
+			});
+		}
+		function listDepartments(cd_id){
+			$.ajax({
+				url: "get_departments.php",
+				success: function(result){
+					var json = JSON.parse(result);
+					for(var x = 0; x < json.length; x++){
+						var name = json[x][0];
+						var id = json[x][1];
+						if(id != cd_id){
+							$("#listdept").append(`<option value='${id}'>${name}</option>`);
+						} else {
+								$("#listdept").append(`<option value='${id}' selected>${name}</option>`);
+						}
+					}
+				}
+			});
+
+			$("#listdept").change(function(){
+				var new_value = $("#listdept").children("option:selected").val();
+				changeDepartment(new_value);
+			});
+		}
+		function changeDepartment(id){
+			$.ajax({
+				url : "change_department.php",
+				type: "post",
+				data: {
+					d_id : id
+				},
+				success: function(result){
+					if(result != "") alert(result);
+				}
+			});
+		}
+	</script>
+
+
 	<div class="webpage">
 		<br>
 		<h1 id="supervisor">Welcome Supervisor</h1>
+		<h2>Department:
+			<select id='listdept'>
+				<script>currentDepartment();</script>
+			</select>
+		</h2>
 	</div>
 
 </body>
