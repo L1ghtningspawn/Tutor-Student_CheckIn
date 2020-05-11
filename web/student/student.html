@@ -74,6 +74,49 @@
 			});
 		}
 
+		function thingy(){
+			this.stuff = -1;
+			this.setup = function(){
+				var x = this.stuff.id;
+				var s = this.stuff;
+				$.ajax({
+					url:"course_list.php",
+					type: "post",
+					data: {
+							sid : x
+					},
+					success: function(result){
+						var hi = JSON.parse(result);
+						s.innerHTML += `<option>Select Course</option>`;
+						for(var m=0; m<hi.length; m++){
+							var name = hi[m][1];
+							var id = hi[m][0];
+							s.innerHTML += `<option value='${id}'>${name}</option>`;
+						}
+					}
+				});
+			},
+			this.setupListener = function(){
+				var x = this.stuff.id;
+				this.stuff.addEventListener('change',function(){
+					var el = document.getElementById(x);
+					var y = el.value;
+					$.ajax({
+						url:'course_select.php',
+						type: 'post',
+						data : {
+							sid : x,
+							cid : y
+						},
+						success: function(result){
+							console.log(result);
+							window.location.reload();
+						}
+					});
+				});
+			}
+		}
+		var thingies = [];
 
 		function drawTable(){
 			var arr = [];
@@ -86,7 +129,7 @@
 						activity[i][2],
 						activity[i][3],
 						activity[i][4],
-						`<select class='course' id='${activity[i][0]}'>'${listCourses()}'</select>`
+						`<select class='course' id='${activity[i][0]}'></select>`
 					);
 				} else {
 					temp.push(
@@ -111,23 +154,22 @@
 
 			var table = new google.visualization.Table(document.getElementById("activity"));
 			table.draw(data, {allowHtml: true, showRowNumber: true, width: '800px', height: '100%'});
+
 			var stuff = document.getElementsByClassName('course');
 
 			for(var i=0; i<stuff.length; i++){
-				stuff[i].addEventListener('change',function(){
-					var x =stuff[i].id;
-					$.ajax({
-						url:'course_select.php',
-						type: 'post',
-						data : {
-							sid : x
-						},
-						success: function(result){
-							console.log(result);						}
-					});
-				});
-			}
+				var x =stuff[i].id;
+
+				var t = new thingy();
+				t.stuff = stuff[i];
+				thingies.push(t);
+				t.setup();
+				t.setupListener();
+
 		}
+	}
+
+
 	</script>
 </head>
 <body>
