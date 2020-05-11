@@ -23,7 +23,6 @@
 
 	$.ajax({
 			url:'../check_if_tutor.php',
-			async:false,
 			success:function(result){
 				if(result == 'False'){
 					var a = document.getElementById('tutor');
@@ -34,7 +33,6 @@
 
 		$.ajax({
 			url:'../check_if_supervisor.php',
-			async:false,
 			success:function(result){
 				if(result == 'False'){
 					var a = document.getElementById('supervisor');
