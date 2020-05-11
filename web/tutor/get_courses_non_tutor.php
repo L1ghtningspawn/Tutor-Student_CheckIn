@@ -8,7 +8,7 @@ $row=mysqli_fetch_assoc($result);
 $d_id=$row['d_id'];
 
 $not_assigned="Select course_name,c_id from $server_database.COURSE where d_id=$d_id and c_id not in (Select c_id from USER_ROLES_COURSE where ur_id=$ur_id)";
-$result=mysqli_query($con,$non_tutor);
+$result=mysqli_query($con,$not_assigned);
 $to_web=[];
 while($row=mysqli_fetch_assoc($result))
 {

@@ -14,4 +14,12 @@ $d_id=$row['d_id'];
 $ur_id = mysqli_insert_id($con);
 $query2="Insert into $server_database.USER_ROLES_DEPARTMENT (ur_id,d_id) values ($ur_id,$d_id)";
 mysqli_query($con,$query2);
+
+$query3="Select c_id from $server_database.COURSE where d_id=$d_id and course_name like '%QUESTION%'";
+$result=mysqli_query($con,$query3);
+$row=mysqli_fetch_assoc($result);
+$c_id=$row['c_id'];
+
+$query4="Insert into $server_database.USER_ROLES_COURSE (ur_id,c_id) values ($ur_id,$c_id)";
+mysqli_query($con,$query4);
 ?>
