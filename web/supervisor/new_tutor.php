@@ -23,4 +23,6 @@ $c_id=$row2['c_id'];
 
 $query4="Insert into $server_database.USER_ROLES_COURSE (ur_id,c_id) values ($ur_id,$c_id)";
 mysqli_query($con,$query4);
+
+header("Location: account_management.html");
 ?>

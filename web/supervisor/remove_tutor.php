@@ -15,5 +15,5 @@ $query="Update $server_database.USER_ROLES set r_id=$remove_tutor where ur_id=$f
 mysqli_query($con,$query);
 
 
-
+header("Location: account_management.html");
 ?>
