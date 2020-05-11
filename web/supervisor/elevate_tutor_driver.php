@@ -37,7 +37,7 @@ for($i=0;$i<sizeof($to_web);$i++)
 {
     echo "<tr>";
         echo "<td>".$to_web[$i][0]." ".$to_web[$i][1]." ".$to_web[$i][2]." ".$to_web[$i][3]."</td>";
-        echo "<td>"."<form name='input' action='remove_tutor.php' method='post'>"."<input type='hidden' value='".$to_web[$i][3]."' name='u_id'>".'<input type="submit" value="remove '.$to_web[$i][0].'"></form>'."</td>";
+        echo "<td>"."<form name='input' action='remove_tutor.php' method='post'>"."<input type='hidden' value='".$to_web[$i][3]."' name='ur_id'>".'<input type="submit" value="remove '.$to_web[$i][0].'"></form>'."</td>";
     echo "<tr>";
 }
 echo "</table>";
