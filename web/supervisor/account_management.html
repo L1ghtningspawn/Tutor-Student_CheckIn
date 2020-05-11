@@ -4,6 +4,12 @@
 	#account-manage{
 		background-color:grey;
 	}
+
+	table,th,td{
+		border: 1px solid black;
+		margin-left:auto;
+		margin-right:auto;
+	}
 </style>
 <head>
 	<meta charset="UTF-8">
@@ -23,8 +29,9 @@
 		var tutors = [];
 		$.ajax({
 			url:'get_tutors.php',
+			async:false,
 			success:function(result){
-				tutors = result;
+				tutors = JSON.parse(result);
 				console.log(tutors);
 			}
 		});
@@ -32,8 +39,9 @@
 		var non_tutors = [];
 		$.ajax({
 			url:'get_non_tutors.php',
+			async:false,
 			success:function(result){
-				non_tutors = result;
+				non_tutors = JSON.parse(result);
 				console.log(non_tutors);
 			}
 		});
@@ -54,9 +62,47 @@
 			<button class="side-button" id="activity" onclick="window.location.href='view_statistics.html'">View Activity/ Statistics</button>
 			<button class="side-button" onclick="window.location.href='../student/student.html'">Student Mode</button>
 			<button class="side-button" onclick="window.location.href='../tutor/tutor.html'">Tutor Mode</button>
-			<button id="help" onclick="">Need help getting started?</button>
 		</div>
 	</div>
 
+	<div class="webpage">
+		<h1>Student Account Management</h1>
+		<br>
+		<table>
+			<tr>
+				<th>Non-Tutors</th><th>Tutors</th>
+			</tr>
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<th>Student</th><th>Elevate</th>
+						</tr>
+						<script>
+							for(var i=0; i<non_tutors.length; i++){
+								document.write("<tr><td>"+non_tutors[i][0]+" "+non_tutors[i][1]+ " "+non_tutors[i][2]+" "+non_tutors[i][3]+"</td>");
+								document.write("<td>"+"<form name='input' action='new_tutor.php' method='post'>"+"<input type='hidden' value='"+non_tutors[i][3]+"' name='u_id'>"+'<input type="submit" value="elevate '+non_tutors[i][0]+'"></form>'+"</td><tr>");
+							}
+						</script>
+					</table>
+				</td>
+				<td>
+					<table>
+						<tr>
+							<th>Student</th><th>De-Elevate</th>
+						</tr>
+						<script>
+							for(var i=0; i<tutors.length; i++){
+								document.write("<tr><td>"+tutors[i][0]+" "+tutors[i][1]+" "+tutors[i][2]+" "+tutors[i][3]+"</td>");
+								document.write("<td>"+"<form name='input' action='remove_tutor.php' method='post'>"+"<input type='hidden' value='"+tutors[i][3]+"' name='ur_id'>"+'<input type="submit" value="remove '+tutors[i][0]+'"></form>'+"</td><tr>");
+							}
+						</script>
+					</table>
+				</td>
+			</tr>
+		</table>
+
+
+	</div>
 </body>
 </html>
