@@ -19,6 +19,24 @@
 				}
 			}
 		});
+
+		var tutors = [];
+		$.ajax({
+			url:'get_tutors.php',
+			success:function(result){
+				tutors = result;
+				console.log(tutors);
+			}
+		});
+
+		var non_tutors = [];
+		$.ajax({
+			url:'get_non_tutors.php',
+			success:function(result){
+				non_tutors = result;
+				console.log(non_tutors);
+			}
+		});
 	</script>
 </head>
 <body>
