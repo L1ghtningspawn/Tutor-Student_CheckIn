@@ -141,13 +141,30 @@
 		</script>
 
 		<div class="check-in">
-			<form action="" method="post">
+			<form action="tutor_checkin.php" method="post">
 				Check-In:
 				<input type="text" name="email">
 				<input type="submit" value="Submit">
 			</form>
 		</div>
 	</div>
+
+	<script>
+	function tutorCheckin(){
+		var email = $("input[name='email']").value;
+		alert(email);
+		$.ajax({
+			url : "tutor_checkin.php",
+			type : post,
+			data : {
+				student_email : email
+			},
+			success : function(result){
+				echo(result);
+			}
+		});
+	}
+	</script>
 
 </body>
 </html>
